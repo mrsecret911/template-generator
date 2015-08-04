@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/main.min.css">
+  </head>
+  <body>
+    <!-- build nav -->
+    <nav id="nav_wrap">
+      <div class="main_nav nav nav-tabs" id="navTab">
+        <ul class="list-unstyled">
+          <li class="">
+            <a href="#build_settings" data-toggle="tab" class="glyphicon glyphicon-cog" aria-hidden="true" aria-expanded="false"></a>
+          </li>
+          <li class="active">
+            <a href="#build_templates" data-toggle="tab" class="glyphicon glyphicon-duplicate" aria-hidden="true" aria-expanded="true"></a>
+          </li>
+        </ul>
+        <ul class="list-unstyled bottom_nav">
+          <li class="">
+            <a href="#" class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></a>
+          </li>
+          <li class="active">
+            <a href="#" class="glyphicon glyphicon-trash" aria-hidden="true"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="sub_nav tab-content">
+        <div class="tab-pane" id="build_settings">
+          <h4>Settings</h4>
+        </div>
+        <div class="tab-pane active" id="build_templates">
+          <h4>Site title</h4>
+          <input type="text" class="form-control" placeholder="Test page...">
+          <hr>
+          <div class="add_header">
+            <button type="button" class="btn add_btn">Header<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+          </div>
+          <div class="add_footer"><button type="button" class="btn add_btn">Footer<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+          </div>
+          <div class="block_list">
+            <span class="empty">Add blocks</span>
+            <button class="add_block"></button>
+          </div>
+          <div id="temp"></div>
+        </div>
+      </div>
+    </nav>
+    <!-- end of  build nav -->
+
+    <!-- build container -->
+    <div id="build_wrap"></div>
+    <!--end of  build container -->
+
+    <script src="scripts/main.min.js"></script>
+  </body>
+</html>
