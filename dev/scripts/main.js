@@ -1,3 +1,0 @@
-$("#navTab a").tab("show");
-
-

@@ -33,16 +33,21 @@
           <input type="text" class="form-control" placeholder="Test page...">
           <hr>
           <div class="add_header">
-            <button type="button" class="btn add_btn">Header<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+            <button type="button" class="btn add_btn" data-open=".header_template">Header<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
           </div>
-          <div class="add_footer"><button type="button" class="btn add_btn">Footer<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+          <div class="add_footer">
+            <button type="button" class="btn add_btn" data-open=".footer_template">Footer<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>  
           </div>
-          <div class="block_list">
-            <span class="empty">Add blocks</span>
-            <button class="add_block"></button>
+          <div class="add_block">
+            <button type="button" class="btn add_btn" data-open=".block_template">Blocks<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
           </div>
-          <div id="temp"></div>
         </div>
+      </div>
+      <div class="template_wrap">
+        <button class="template_close">x</button>
+        <div class="template header_template"></div>
+        <div class="template footer_template"></div>
+        <div class="template block_template"></div>
       </div>
     </nav>
     <!-- end of  build nav -->
