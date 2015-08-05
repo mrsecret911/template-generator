@@ -1,0 +1,38 @@
+{
+  "blocks": [
+    {
+      "id": "column-3",
+      "imgSrc": "img/blocks/column-3.jpg",
+      "subscription": "blocks-3"
+    },
+    {
+      "id": "column-3",
+      "imgSrc": "img/blocks/column-4.jpg",
+      "subscription": "blocks-4"
+    }
+  ],
+  "headers": [
+    {
+      "id": "column-3",
+      "imgSrc": "img/blocks/column-3.jpg",
+      "subscription": "header-1"
+    },
+    {
+      "id": "header-1",
+      "imgSrc": "img/blocks/column-4.jpg",
+      "subscription": "header-2"
+    }
+  ],
+  "footers": [
+    {
+      "id": "footer-1",
+      "imgSrc": "img/blocks/column-3.jpg",
+      "subscription": "footer-1"
+    },
+    {
+      "id": "footer-2",
+      "imgSrc": "img/blocks/column-4.jpg",
+      "subscription": "footer-2"
+    }
+  ]
+}

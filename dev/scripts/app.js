@@ -1,56 +1,10 @@
-var model = {
-  blocks: [
-    {
-      "id": "column-3",
-      "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "blocks-3"
-    },
-    {
-      "id": "column-3",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-4"
-    }
-  ],
-  headers: [
-    {
-      "id": "column-3",
-      "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "header-1"
-    },
-    {
-      "id": "header-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "header-2"
-    }
-  ],
-  footers: [
-    {
-      "id": "footer-1",
-      "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "footer-1"
-    },
-    {
-      "id": "footer-2",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "footer-2"
-    }
-  ]
-};
-
 var controller = {
-  init: function () {
-    blocksView.init();
-    blocksView.render();
-    
-    footersView.init();
-    footersView.render();
-    
-    headersView.init();
-    headersView.render();
+  init: function() {
+    this.sendRequest();
   },
-  getAllblocks: function () {
+  getAllblocks: function(model) {
     var blocks = [];
-    model.blocks.forEach(function (block) {
+    model.blocks.forEach(function(block) {
       blocks.push({
         id: block.id,
         imgSrc: block.imgSrc,
@@ -59,9 +13,9 @@ var controller = {
     });
     return blocks;
   },
-  getAllFooters: function () {
+  getAllFooters: function(model) {
     var footers = [];
-    model.footers.forEach(function (footer) {
+    model.footers.forEach(function(footer) {
       footers.push({
         id: footer.id,
         imgSrc: footer.imgSrc,
@@ -70,9 +24,9 @@ var controller = {
     });
     return footers;
   },
-  getAllHeaders: function () {
+  getAllHeaders: function(model) {
     var headers = [];
-    model.headers.forEach(function (header) {
+    model.headers.forEach(function(header) {
       headers.push({
         id: header.id,
         imgSrc: header.imgSrc,
@@ -80,16 +34,37 @@ var controller = {
       });
     });
     return headers;
+  },
+  sendRequest: function() {
+    $.ajax({
+      type: "GET",
+      url: "scripts/model.json",
+      async: true,
+      dataType: "json",
+      success: function(data) {
+        blocksView.init();
+        blocksView.render(data);
+
+        footersView.init();
+        footersView.render(data);
+
+        headersView.init();
+        headersView.render(data);
+      },
+      error: function() {
+        console.log("error")
+      }
+    });
   }
 };
 
 var blocksView = {
-  init: function () {
+  init: function() {
     this.$container = $(".block_template");
   },
-  render: function () {
+  render: function(data) {
     var list = '';
-    controller.getAllblocks().forEach(function (block) {
+    controller.getAllblocks(data).forEach(function(block) {
       list += '<img src="' + block.imgSrc + '" alt><span class="subscription">' + block.subscription + '</span>';
     });
     this.$container.html(list);
@@ -97,12 +72,12 @@ var blocksView = {
 };
 
 var footersView = {
-  init: function () {
+  init: function() {
     this.$container = $(".footer_template");
   },
-  render: function () {
+  render: function(data) {
     var list = '';
-    controller.getAllFooters().forEach(function (footer) {
+    controller.getAllFooters(data).forEach(function(footer) {
       list += '<img src="' + footer.imgSrc + '" alt><span class="subscription">' + footer.subscription + '</span>';
     });
     this.$container.html(list);
@@ -110,12 +85,12 @@ var footersView = {
 };
 
 var headersView = {
-  init: function () {
+  init: function() {
     this.$container = $(".header_template");
   },
-  render: function () {
+  render: function(data) {
     var list = '';
-    controller.getAllHeaders().forEach(function (header) {
+    controller.getAllHeaders(data).forEach(function(header) {
       list += '<img src="' + header.imgSrc + '" alt><span class="subscription">' + header.subscription + '</span>';
     });
     this.$container.html(list);
@@ -123,6 +98,3 @@ var headersView = {
 };
 
 controller.init();
-
-
-
