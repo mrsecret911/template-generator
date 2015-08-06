@@ -56,6 +56,12 @@
   });
   /*end of download*/
 
+  /*delete page*/
+  $("#delete_page").on("click", function (){
+    $("#build_wrap").empty();;
+  });
+  /*end of delete*/
+
 })(jQuery);
 
 

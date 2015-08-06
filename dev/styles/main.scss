@@ -7,8 +7,7 @@
   position:relative;
   margin:0px 10px;
   float:left;
-
-  
+  position: fixed;
   div {
     height:3px;
     width:27px;
@@ -172,5 +171,5 @@
 }
 
 #build_wrap {
-  margin-left: 40px;
+  margin: 0 40px 0 63px;
 }

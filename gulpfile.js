@@ -6,6 +6,7 @@ var minifyCSS = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var connect = require('gulp-connect');
+var shell = require('gulp-shell');
 
 gulp.task('html', function() { 
     return gulp.src('./dev/index.html')
@@ -58,6 +59,10 @@ gulp.task('tmpls', function() { 
     .pipe(gulp.dest('./public/scripts'));
 });
 
+gulp.task('localtunnel', shell.task([
+    'lt --port 8080'
+]));
+
 gulp.task('watch', function () {
   gulp.watch('dev/index.html', ['html']);
   gulp.watch('dev/styles/*.scss', ['styles']);
@@ -74,6 +79,4 @@ gulp.task('connectDist', function () {
 
 gulp.task("default", ["html", "styles", "scripts", "fonts", "img", "jsons", "tmpls"]);
 
-gulp.task("serve", ["watch", "connectDist"]);
-
-
+gulp.task("serve", ["watch", "connectDist", "localtunnel"]);
