@@ -1,6 +1,52 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 
+.nav-icon {
+  height:35px;
+  width:43px;
+  position:relative;
+  margin:0px 10px;
+  float:left;
+
+  
+  div {
+    height:3px;
+    width:27px;
+    background:#000;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    transition:all 0.3s;
+    
+    &::before, &::after {
+      content:"";
+      height:3px;
+      width:100%;
+      position:absolute;
+      background:#000;
+      transition-duration:0.3s;
+      transition-delay: 0s;
+    }
+    &::before {top:-10px;}
+    &::after {top:10px;}
+  }
+}
+.cross.active .span::before {
+    top:0px;
+    transform: rotate(45deg);
+  }
+  
+ .cross.active .span::after {
+    top:0;
+    transform: rotate(-45deg);
+  }
+.cross.active .span {
+    background:none;
+  }
+
 .btn.active.focus:focus,
 .btn.active:focus,
 .btn.focus,
@@ -21,12 +67,12 @@
     width: 40px;
     height: 100%;
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
     z-index: 3;
     background: #333;
     &:hover+.sub_nav {
-      left: 0;
+      right: 0;
       opacity: 1;
     }
     &:hover .template_wrap {
@@ -51,26 +97,26 @@
     .bottom_nav {
       position: absolute;
       bottom: 0;
-      left: 0;
+      right: 0;
       width: 100%;
       margin-bottom: 0;
     }
   }
   .sub_nav {
     width: 300px;
-    padding-left: 55px;
-    padding-right: 15px;
+    padding-right: 55px;
+    padding-left: 15px;
     height: 100%;
     position: fixed;
     z-index: 2;
-    left: -300px;
+    right: -300px;
     top: 0;
     background: #F5F5F5;
     box-shadow: 1px 0 5px 0 rgba(0,0,0,.3);
     opacity: 0;
     transition: .2s ease-in-out;
     &:hover {
-      left: 0;
+      right: 0;
       opacity: 1;
     }
     hr {
@@ -84,7 +130,7 @@
       width: 100%;
       background: #00BCD4;
       color: #fff;
-      text-align: left;
+      text-align: center;
       margin: 0 0 10px;
     }
   }
@@ -94,12 +140,13 @@
     width: 250px;
     height: 100%;
     top: 0;
-    left: 0;
+    right: 0;
     transition: 0.2s ease-in-out;
     opacity: 0;
     padding: 15px;
     background: #F5F5F5;
     box-shadow: 1px 0 5px 0 rgba(0,0,0,.3);
+    text-align: center;
     .template {
       display: none;
       &.open {
@@ -108,12 +155,12 @@
     }
   }
   &.template_open .sub_nav{
-    left: 0;
+    right: 0;
     opacity: 1;
     width: 270px;
   }
   &.template_open .template_wrap {
-    left: 270px;
+    right: 270px;
       opacity: 1;
   }
 }
