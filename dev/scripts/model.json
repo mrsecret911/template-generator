@@ -3,12 +3,12 @@
     {
       "id": "block-1",
       "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "blocks-3"
+      "subscription": "blocks-1"
     },
     {
       "id": "block-2",
       "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-4"
+      "subscription": "blocks-2"
     }
   ],
   "headers": [

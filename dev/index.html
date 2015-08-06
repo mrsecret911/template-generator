@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -20,7 +21,7 @@
         </ul>
         <ul class="list-unstyled bottom_nav">
           <li class="">
-            <a href="#" class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></a>
+            <a href="#" class="glyphicon glyphicon-floppy-disk" id="download_page" aria-hidden="true"></a>
           </li>
           <li class="active">
             <a href="#" class="glyphicon glyphicon-trash" aria-hidden="true"></a>
@@ -33,7 +34,7 @@
         </div>
         <div class="tab-pane active" id="build_templates">
           <h4>Site title</h4>
-          <input type="text" class="form-control" placeholder="Test page...">
+            <input type="text" class="form-control" id="page_title" placeholder="Test page..." value="quick-builder">
           <hr>
           <div class="add_header">
             <button type="button" class="btn add_btn" data-open=".header_template">Header<span class="glyphicon glyphicon-chevron-left pull-left"></span></button>

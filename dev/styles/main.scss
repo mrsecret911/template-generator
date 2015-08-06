@@ -149,6 +149,12 @@
     text-align: center;
     .template {
       display: none;
+      li {
+        list-style: none;
+      }
+      img, span {
+        pointer-events: none;
+      };
       &.open {
         display: block;
       }
@@ -163,4 +169,8 @@
     right: 270px;
       opacity: 1;
   }
+}
+
+#build_wrap {
+  margin-left: 40px;
 }
