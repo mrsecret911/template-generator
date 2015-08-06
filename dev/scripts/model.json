@@ -1,24 +1,24 @@
 {
   "blocks": [
     {
-      "id": "column-3",
+      "id": "block-1",
       "imgSrc": "img/blocks/column-3.jpg",
       "subscription": "blocks-3"
     },
     {
-      "id": "column-3",
+      "id": "block-2",
       "imgSrc": "img/blocks/column-4.jpg",
       "subscription": "blocks-4"
     }
   ],
   "headers": [
     {
-      "id": "column-3",
+      "id": "header-1",
       "imgSrc": "img/blocks/column-3.jpg",
       "subscription": "header-1"
     },
     {
-      "id": "header-1",
+      "id": "header-2",
       "imgSrc": "img/blocks/column-4.jpg",
       "subscription": "header-2"
     }
