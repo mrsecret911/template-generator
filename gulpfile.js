@@ -53,6 +53,11 @@ gulp.task('jsons', function() { 
     .pipe(gulp.dest('./public/scripts'));
 });
 
+gulp.task('tmpls', function() { 
+    return gulp.src('./dev/scripts/tmpl.html')
+    .pipe(gulp.dest('./public/scripts'));
+});
+
 gulp.task('watch', function () {
   gulp.watch('dev/index.html', ['html']);
   gulp.watch('dev/styles/*.scss', ['styles']);
@@ -67,7 +72,7 @@ gulp.task('connectDist', function () {
   });
 });
 
-gulp.task("default", ["html", "styles", "scripts", "fonts", "img", "jsons"]);
+gulp.task("default", ["html", "styles", "scripts", "fonts", "img", "jsons", "tmpls"]);
 
 gulp.task("serve", ["watch", "connectDist"]);
 

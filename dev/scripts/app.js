@@ -55,45 +55,87 @@ var controller = {
         console.log("error")
       }
     });
+  },
+  getTemplate: function(id) {
+    $.ajax({
+      type: "GET",
+      url: "scripts/tmpl.html",
+      async: true,
+      success: function(data) {
+        var $templates = $(data)
+        controller.setTemplate($templates, id)
+      },
+      error: function() {
+        console.log("error")
+      }
+    });
+  },
+  setTemplate: function(data, id) {
+    var template = data.find(id).html();
+    $("#build_wrap").append(template);
   }
 };
 
 var blocksView = {
   init: function() {
     this.$container = $(".block_template");
+    this.handleClicks();
   },
   render: function(data) {
     var list = '';
     controller.getAllblocks(data).forEach(function(block) {
-      list += '<img src="' + block.imgSrc + '" alt><span class="subscription">' + block.subscription + '</span>';
+      list += '<li><img src="' + block.imgSrc + '" alt><span class="subscription">' +
+        block.subscription + '</span><span class="hide">' + block.id + '</span></li>';
     });
     this.$container.html(list);
+  },
+  handleClicks: function() {
+    this.$container.on("click", "li", function(e) {
+      var templateId = "#" + $(e.target).find(".hide").html();
+      controller.getTemplate(templateId)
+    })
   }
 };
 
 var footersView = {
   init: function() {
     this.$container = $(".footer_template");
+    this.handleClicks();
   },
   render: function(data) {
     var list = '';
     controller.getAllFooters(data).forEach(function(footer) {
-      list += '<img src="' + footer.imgSrc + '" alt><span class="subscription">' + footer.subscription + '</span>';
+      list += '<li><img src="' + footer.imgSrc + '" alt><span class="subscription">' +
+        footer.subscription + '</span><span class="hide">' + footer.id + '</span></li>';
     });
     this.$container.html(list);
+  },
+  handleClicks: function() {
+    this.$container.on("click", "li", function(e) {
+      var templateId = "#" + $(e.target).find(".hide").html();
+      controller.getTemplate(templateId)
+    })
   }
 };
 
 var headersView = {
   init: function() {
     this.$container = $(".header_template");
+    this.handleClicks();
   },
   render: function(data) {
     var list = '';
     controller.getAllHeaders(data).forEach(function(header) {
-      list += '<img src="' + header.imgSrc + '" alt><span class="subscription">' + header.subscription + '</span>';
+      list += '<li><img src="' + header.imgSrc + '" alt><span class="subscription">' +
+        header.subscription + '</span><span class="hide">' + header.id + '</span></li>';
     });
     this.$container.html(list);
+  },
+  handleClicks: function() {
+    this.$container.on("click", "li", function(e) {
+      var templateId = "#" + $(e.target).find(".hide").html();
+      controller.getTemplate(templateId)
+    })
   }
 };
 

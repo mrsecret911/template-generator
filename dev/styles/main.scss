@@ -102,6 +102,12 @@
     box-shadow: 1px 0 5px 0 rgba(0,0,0,.3);
     .template {
       display: none;
+      li {
+        list-style: none;
+      }
+      img, span {
+        pointer-events: none;
+      };
       &.open {
         display: block;
       }
@@ -116,4 +122,8 @@
     left: 270px;
       opacity: 1;
   }
+}
+
+#build_wrap {
+  margin-left: 40px;
 }
