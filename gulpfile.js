@@ -35,12 +35,20 @@ gulp.task('fonts', function() { 
     .pipe(gulp.dest('./public/fonts'));
 });
 
-gulp.task('scripts', function() {
+gulp.task('libs', function() {
   return gulp.src([
     './bower_components/jquery/dist/jquery.js',
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
     './dev/scripts/libs/saveAs.js',
     './bower_components/jszip/dist/jszip.js',
+  ])
+  .pipe(uglify())
+  .pipe(concat('libs.min.js'))
+  .pipe(gulp.dest('./public/scripts'));
+});
+
+gulp.task('scripts', function() {
+  return gulp.src([
     './dev/scripts/builder-scripts.js',
     './dev/scripts/app.js'
   ])
@@ -77,6 +85,6 @@ gulp.task('connectDist', function () {
   });
 });
 
-gulp.task("default", ["html", "styles", "scripts", "fonts", "img", "jsons", "tmpls"]);
+gulp.task("default", ["html", "styles", "libs", "scripts", "fonts", "img", "jsons", "tmpls"]);
 
 gulp.task("serve", ["watch", "connectDist", "localtunnel"]);
