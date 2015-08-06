@@ -38,6 +38,8 @@ gulp.task('scripts', function() {
   return gulp.src([
     './bower_components/jquery/dist/jquery.js',
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+    './dev/scripts/libs/saveAs.js',
+    './bower_components/jszip/dist/jszip.js',
     './dev/scripts/builder-scripts.js',
     './dev/scripts/app.js'
   ])
