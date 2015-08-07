@@ -2,31 +2,40 @@
 @import "bootstrap/theme";
 
 .nav-icon {
-  height:35px;
-  width:43px;
-  position:relative;
+  right: -11px;
+  top: 0;
+  z-index: 4;
+  height: 30px;
+  width: 41px;
+  position: relative;
   margin:0px 10px;
-  float:left;
   position: fixed;
+  background-color: rgba(40, 40, 40, 0.3);
+  border-bottom-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+  cursor: pointer;
+  &:hover {
+    background: #777;
+  }
   div {
-    height:3px;
-    width:27px;
-    background:#000;
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-    transition:all 0.3s;
+    height: 3px;
+    width: 27px;
+    background: #f6f6f6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.3s;
     
     &::before, &::after {
-      content:"";
-      height:3px;
-      width:100%;
-      position:absolute;
-      background:#000;
-      transition-duration:0.3s;
+      content: "";
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      background: #f6f6f6;
+      transition-duration: 0.3s;
       transition-delay: 0s;
     }
     &::before {top:-10px;}
@@ -36,15 +45,26 @@
 .cross.active .span::before {
     top:0px;
     transform: rotate(45deg);
-  }
+    background: #a30000;
+}
   
- .cross.active .span::after {
+.cross.active .span::after {
     top:0;
     transform: rotate(-45deg);
-  }
+    background: #a30000;
+}
 .cross.active .span {
     background:none;
+}
+
+.nav-icon.active {
+  background-color: rgba(40, 40, 40, 1);
+  border-radius: 0%;
+  height: 40px;
+  &:hover {
+    background: #777;
   }
+}
 
 .btn.active.focus:focus,
 .btn.active:focus,
@@ -76,6 +96,9 @@
     }
     &:hover .template_wrap {
       top: 100%;
+    }
+    #up {
+      margin-top: 40px;
     }
     a {
       width: 100%;
@@ -143,7 +166,7 @@
     transition: 0.2s ease-in-out;
     opacity: 0;
     padding: 15px;
-    background: #F5F5F5;
+    background: #f5f5f5;
     box-shadow: 1px 0 5px 0 rgba(0,0,0,.3);
     text-align: center;
     .template {
