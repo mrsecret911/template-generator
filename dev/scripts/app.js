@@ -86,7 +86,7 @@ var controller = {
     $(".tmplsInMenu").sortable({
       stop: function() {
         var newContainerTemplateList = [];
-        $.each($(e.target).parent().find('li'), function(index, el) {
+        $.each($(".tmplsInMenu").parent().find('li'), function(index, el) {
           var tmplId = $(el).find(".tmpl_id").html();
           newContainerTemplateList.push(tmplId);
         });
