@@ -1,6 +1,13 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 
+/*colors*/
+$white-gray: #f5f5f5;
+$gray: #777;
+$dark-gray: #333;
+$blue: #00BCD4;
+/*end of colors*/
+
 .nav-icon {
   right: -11px;
   top: 0;
@@ -15,7 +22,7 @@
   border-bottom-left-radius: 30%;
   cursor: pointer;
   &:hover {
-    background: #777;
+    background: $gray;
   }
   div {
     height: 3px;
@@ -62,7 +69,7 @@
   border-radius: 0%;
   height: 40px;
   &:hover {
-    background: #777;
+    background: $gray;
   }
 }
 
@@ -89,7 +96,7 @@
     right: 0;
     top: 0;
     z-index: 3;
-    background: #333;
+    background: $dark-gray;
     &:hover+.sub_nav {
       right: 0;
       opacity: 1;
@@ -114,7 +121,7 @@
       display: block;
     }
     .active, a:hover {
-      background: #777;
+      background: $gray;
     }
     .bottom_nav {
       position: absolute;
@@ -133,7 +140,7 @@
     z-index: 2;
     right: -300px;
     top: 0;
-    background: #F5F5F5;
+    background: $white-gray;
     box-shadow: 1px 0 5px 0 rgba(0,0,0,.3);
     opacity: 0;
     transition: .2s ease-in-out;
@@ -146,11 +153,11 @@
       margin: 20px -15px;
     }
     a {
-      color: #333;
+      color: $dark-gray;
     }
     .add_btn {
       width: 100%;
-      background: #00BCD4;
+      background: $blue;
       color: #fff;
       text-align: center;
       margin: 0 0 10px;
@@ -166,7 +173,7 @@
     transition: 0.2s ease-in-out;
     opacity: 0;
     padding: 15px;
-    background: #f5f5f5;
+    background: $white-gray;
     box-shadow: 1px 0 5px 0 rgba(0,0,0,.3);
     text-align: center;
     .template {
@@ -193,6 +200,37 @@
   }
 }
 
-#build_wrap {
-  margin: 0 40px 0 63px;
+/*contextmenu*/
+#context_menu {
+  min-width: 170px;
+  background: $white-gray;
+  box-shadow: 1px 0 5px 0 rgba(0,0,0,0.3);
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  display: none;
+  &.open {
+    display: block;
+  }
+  .context_title {
+    background: $dark-gray;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+  .context_list {
+    margin-bottom: 0;
+    a {
+      color: $dark-gray;
+      display: block;
+      padding: 10px 15px;
+      transition: 0.1s ease-in-out;
+      &:hover {
+        background: #fff;
+        text-decoration: none;
+      }
+    }
+  }
 }
+/*end of contextmenu*/

@@ -61,6 +61,27 @@
     $("#build_wrap").empty();;
   });
   /*end of delete*/
+  
+  /*Context Menu*/
+  var contextMenu = $("#context_menu");
+  var contextTitle = $("#context_menu").find(".context_title");
+  var contextList = $("#context_menu").find(".context_list");
+  
+  $("#build_wrap").on( "contextmenu", function(e) {
+    var positionX = e.pageX;
+    var positionY = e.pageY;
+    var target  = $(e.target);
+    
+    contextMenu.css({"left": positionX, "top": positionY})
+               .addClass("open");
+       
+    return false;
+  });
+  
+  $("body").on("click", function (e){
+    contextMenu.removeClass("open");
+  });
+  /*end of Context Menu*/
 
 })(jQuery);
 
