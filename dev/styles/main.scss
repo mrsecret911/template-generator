@@ -132,6 +132,13 @@
       text-align: center;
       margin: 0 0 10px;
     }
+    .tmplsInMenu li {
+      list-style: none;
+      .tmpl_delete {
+        cursor: pointer;
+        color: #f33;
+      }
+    }
   }
   .template_wrap {
     position: fixed;

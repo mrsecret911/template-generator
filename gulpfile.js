@@ -41,6 +41,7 @@ gulp.task('libs', function() {
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
     './dev/scripts/libs/saveAs.js',
     './bower_components/jszip/dist/jszip.js',
+    './bower_components/jquery-ui/jquery-ui.js'
   ])
   .pipe(uglify())
   .pipe(concat('libs.min.js'))

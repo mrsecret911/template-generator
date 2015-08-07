@@ -1,6 +1,11 @@
+var model = {
+  containerTemplateList: []
+};
+
 var controller = {
   init: function() {
     this.sendRequest();
+    this.sortadTmplList();
   },
   getAllblocks: function(model) {
     var blocks = [];
@@ -50,9 +55,12 @@ var controller = {
 
         headersView.init();
         headersView.render(data);
+
+        tmplsOnPageView.init();
+        tmplsInMenuView.init();
       },
       error: function() {
-        console.log("error")
+        console.log("error");
       }
     });
   },
@@ -62,17 +70,31 @@ var controller = {
       url: "scripts/tmpl.html",
       async: true,
       success: function(data) {
-        var $templates = $(data)
-        controller.setTemplate($templates, id)
+        var $templates = $(data);
+        if (id) {
+          model.containerTemplateList.push(id);
+        }
+        tmplsOnPageView.render($templates);
+        tmplsInMenuView.render();
       },
       error: function() {
-        console.log("error")
+        console.log("error");
       }
     });
   },
-  setTemplate: function(data, id) {
-    var template = data.find(id).html();
-    $("#build_wrap").append(template);
+  sortadTmplList: function() {
+    $(".tmplsInMenu").sortable({
+      stop: function() {
+        var newContainerTemplateList = [];
+        $.each($(e.target).parent().find('li'), function(index, el) {
+          var tmplId = $(el).find(".tmpl_id").html();
+          newContainerTemplateList.push(tmplId);
+        });
+        model.containerTemplateList = newContainerTemplateList;
+        controller.getTemplate();
+      }
+    });
+    $(".tmplsInMenu").disableSelection();
   }
 };
 
@@ -92,8 +114,8 @@ var blocksView = {
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var templateId = "#" + $(e.target).find(".hide").html();
-      controller.getTemplate(templateId)
-    })
+      controller.getTemplate(templateId);
+    });
   }
 };
 
@@ -113,8 +135,8 @@ var footersView = {
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var templateId = "#" + $(e.target).find(".hide").html();
-      controller.getTemplate(templateId)
-    })
+      controller.getTemplate(templateId);
+    });
   }
 };
 
@@ -134,8 +156,46 @@ var headersView = {
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var templateId = "#" + $(e.target).find(".hide").html();
-      controller.getTemplate(templateId)
-    })
+      controller.getTemplate(templateId);
+    });
+  }
+};
+
+var tmplsOnPageView = {
+  init: function() {
+    this.$container = $("#build_wrap");
+  },
+  render: function(tmpls) {
+    var list = '';
+    model.containerTemplateList.forEach(function(el) {
+      var template = tmpls.find(el).html();
+      list += template;
+    });
+    this.$container.html(list);
+  }
+};
+
+var tmplsInMenuView = {
+  init: function() {
+    this.$container = $(".tmplsInMenu");
+    this.handleClicks();
+  },
+  render: function() {
+    var list = '';
+    model.containerTemplateList.forEach(function(tmplId) {
+      list += '<li class="ui-state-default"><span class="tmpl_id">' + tmplId + '</span> <span class="tmpl_delete">x</span></li>';
+    });
+    this.$container.html(list);
+  },
+  handleClicks: function() {
+    this.$container.on("click", ".tmpl_delete", function(e) {
+      var currentSpan = $(e.target);
+      var currentLi = currentSpan.parent();
+      var currentIndex = currentLi.index();
+      model.containerTemplateList.splice(currentIndex, 1);
+      tmplsInMenuView.render();
+      controller.getTemplate();
+    });
   }
 };
 
