@@ -14,7 +14,9 @@ gulp.task('html', function() { 
 });
 
 gulp.task('styles', function() {
-  return gulp.src('./dev/styles/main.scss')
+  return gulp.src([
+   './dev/styles/main.scss',
+   './bower_components/perfect-scrollbar/css/perfect-scrollbar.css'])
   .pipe(sass({
     includePaths: [
       './bower_components/bootstrap-sass/assets/stylesheets'
@@ -41,7 +43,8 @@ gulp.task('libs', function() {
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
     './dev/scripts/libs/saveAs.js',
     './bower_components/jszip/dist/jszip.js',
-    './bower_components/jquery-ui/jquery-ui.js'
+    './bower_components/jquery-ui/jquery-ui.js',
+    './bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js'
   ])
   .pipe(uglify())
   .pipe(concat('libs.min.js'))
