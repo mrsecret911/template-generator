@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
     "jszip": "Stuk/jszip#~2.5.0",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "perfect-scrollbar": "~0.6.4"
   }
 }

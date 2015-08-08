@@ -6,6 +6,7 @@
   $("#navTab a").tab("show");
 
   $("#nav_wrap").find(".add_btn").click(function () {
+    $('.template_wrap').scrollTop(0);
     navWrap.addClass("template_open");
     navWrap.find(".template").removeClass("open");
     navWrap.find($(this).attr("data-open")).addClass("open");
@@ -82,6 +83,8 @@
     contextMenu.removeClass("open");
   });
   /*end of Context Menu*/
+
+  $('.template_wrap').perfectScrollbar();
 
 })(jQuery);
 
