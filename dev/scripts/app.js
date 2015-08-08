@@ -3,7 +3,11 @@ var model = {
 };
 
 var controller = {
+
   init: function() {
+    this.localStorageTemplates();
+    this.localStorageList();
+    this.localStorage();
     this.sendRequest();
     this.sortadTmplList();
   },
@@ -40,6 +44,24 @@ var controller = {
     });
     return headers;
   },
+  localStorage: function() {
+    var newContainerTemplateList = [];
+      $.each($(".tmplsInMenu").parent().find('li'), function(index, el) {
+        var tmplId = $(el).find(".tmpl_id").html();
+        newContainerTemplateList.push(tmplId);
+      });
+    model.containerTemplateList = newContainerTemplateList;
+  },
+  localStorageTemplates: function() {
+    this.$container = $("#build_wrap");
+    var localTemplate = JSON.parse(localStorage.getItem("template"));
+    this.$container.html(localTemplate);
+  },
+  localStorageList: function() {
+    this.$container = $(".tmplsInMenu");
+    var localList = JSON.parse(localStorage.getItem("listItem"));
+    this.$container.html(localList);
+  },
   sendRequest: function() {
     $.ajax({
       type: "GET",
@@ -47,6 +69,7 @@ var controller = {
       async: true,
       dataType: "json",
       success: function(data) {
+        
         blocksView.init();
         blocksView.render(data);
 
@@ -58,6 +81,7 @@ var controller = {
 
         tmplsOnPageView.init();
         tmplsInMenuView.init();
+
       },
       error: function() {
         console.log("error");
@@ -163,16 +187,23 @@ var headersView = {
 
 var tmplsOnPageView = {
   init: function() {
+
     this.$container = $("#build_wrap");
   },
   render: function(tmpls) {
-    var list = '';
+    controller.sortadTmplList()
+    var list = "";
     model.containerTemplateList.forEach(function(el) {
       var template = tmpls.find(el).html();
       list += template;
     });
     this.$container.html(list);
-  }
+
+    var localSet = localStorage.setItem('template', JSON.stringify(list));
+    var localGet = JSON.parse(localStorage.getItem("template"));
+
+    list+=localGet;
+  },
 };
 
 var tmplsInMenuView = {
@@ -181,11 +212,18 @@ var tmplsInMenuView = {
     this.handleClicks();
   },
   render: function() {
-    var list = '';
+    var list = "";
     model.containerTemplateList.forEach(function(tmplId) {
-      list += '<li class="ui-state-default"><span class="tmpl_id">' + tmplId + '</span> <span class="tmpl_delete">x</span></li>';
+      list += '<li class="ui-state-default"><span class="tmpl_id">'
+           + tmplId
+           + '</span> <span class="tmpl_delete">x</span></li>';
     });
     this.$container.html(list);
+
+    var localSet = localStorage.setItem('listItem', JSON.stringify(list));
+    var localGet = JSON.parse(localStorage.getItem("listItem"));
+
+    list+=localGet;
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function(e) {
