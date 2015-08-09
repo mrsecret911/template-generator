@@ -180,6 +180,7 @@
   /*end of Context Menu*/
 
   $('.template_wrap').perfectScrollbar();
+  $('.tmplsBlocksInMenu').perfectScrollbar();
 
 })(jQuery);
 

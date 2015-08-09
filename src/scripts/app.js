@@ -1,5 +1,7 @@
 var model = {
-  containerTemplateList: []
+  containerTemplateBlockList: [],
+  containerTemplateHeaderList: "",
+  containerTemplateFooterList: ""
 };
 
 var controller = {
@@ -45,12 +47,12 @@ var controller = {
     return headers;
   },
   localStorage: function() {
-    var newContainerTemplateList = [];
-      $.each($(".tmplsInMenu").parent().find('li'), function(index, el) {
+    var newContainerTemplateBlockList = [];
+      $.each($(".tmplsBlocksInMenu").parent().find('li'), function(index, el) {
         var tmplId = $(el).find(".tmpl_id").html();
-        newContainerTemplateList.push(tmplId);
+        newContainerTemplateBlockList.push("#" + tmplId);
       });
-    model.containerTemplateList = newContainerTemplateList;
+    model.containerTemplateBlockList = newContainerTemplateBlockList;
   },
   localStorageTemplates: function() {
     this.$container = $("#build_wrap");
@@ -58,7 +60,7 @@ var controller = {
     this.$container.html(localTemplate);
   },
   localStorageList: function() {
-    this.$container = $(".tmplsInMenu");
+    this.$container = $(".tmplsBlocksInMenu");
     var localList = JSON.parse(localStorage.getItem("listItem"));
     this.$container.html(localList);
   },
@@ -80,8 +82,9 @@ var controller = {
         headersView.render(data);
 
         tmplsOnPageView.init();
-        tmplsInMenuView.init();
-
+        tmplsBlocksInMenuView.init();
+        tmplsHeaderInMenuView.init();
+        tmplsFooterInMenuView.init();
       },
       error: function() {
         console.log("error");
@@ -96,10 +99,25 @@ var controller = {
       success: function(data) {
         var $templates = $(data);
         if (id) {
-          model.containerTemplateList.push(id);
+          var tmplsType = id.substr(1,1);
+          console.log(tmplsType)
+          switch (tmplsType) {
+            case "b":
+              model.containerTemplateBlockList.push(id);
+              tmplsBlocksInMenuView.render();
+              break;
+            case "h":
+              model.containerTemplateHeaderList = id;
+              tmplsHeaderInMenuView.render();
+              break;
+            case "f": 
+              model.containerTemplateFooterList = id;
+              tmplsFooterInMenuView.render();
+              break;
+          }
         }
-        tmplsOnPageView.render($templates);
-        tmplsInMenuView.render();
+              tmplsOnPageView.render($templates);
+        
       },
       error: function() {
         console.log("error");
@@ -107,18 +125,18 @@ var controller = {
     });
   },
   sortadTmplList: function() {
-    $(".tmplsInMenu").sortable({
+    $(".tmplsBlocksInMenu").sortable({
       stop: function() {
-        var newContainerTemplateList = [];
-        $.each($(".tmplsInMenu").parent().find('li'), function(index, el) {
+        var newContainerTemplateBlockList = [];
+        $.each($(".tmplsBlocksInMenu").find('li'), function(index, el) {
           var tmplId = $(el).find(".tmpl_id").html();
-          newContainerTemplateList.push(tmplId);
+          newContainerTemplateBlockList.push("#" + tmplId);
         });
-        model.containerTemplateList = newContainerTemplateList;
+        model.containerTemplateBlockList = newContainerTemplateBlockList;
         controller.getTemplate();
       }
     });
-    $(".tmplsInMenu").disableSelection();
+    $(".tmplsBlocksInMenu").disableSelection();
   }
 };
 
@@ -187,16 +205,16 @@ var headersView = {
 
 var tmplsOnPageView = {
   init: function() {
-
     this.$container = $("#build_wrap");
   },
   render: function(tmpls) {
-    controller.sortadTmplList()
     var list = "";
-    model.containerTemplateList.forEach(function(el) {
+    list += model.containerTemplateHeaderList;
+    model.containerTemplateBlockList.forEach(function(el) {
       var template = tmpls.find(el).html();
       list += template;
     });
+    list += model.containerTemplateFooterList;
     this.$container.html(list);
 
     var localSet = localStorage.setItem('template', JSON.stringify(list));
@@ -206,16 +224,16 @@ var tmplsOnPageView = {
   },
 };
 
-var tmplsInMenuView = {
+var tmplsBlocksInMenuView = {
   init: function() {
-    this.$container = $(".tmplsInMenu");
+    this.$container = $(".tmplsBlocksInMenu");
     this.handleClicks();
   },
   render: function() {
     var list = "";
-    model.containerTemplateList.forEach(function(tmplId) {
+    model.containerTemplateBlockList.forEach(function(tmplId) {
       list += '<li class="ui-state-default"><span class="tmpl_id">'
-           + tmplId
+           + tmplId.substr(1)
            + '</span> <span class="tmpl_delete">x</span></li>';
     });
     this.$container.html(list);
@@ -230,11 +248,60 @@ var tmplsInMenuView = {
       var currentSpan = $(e.target);
       var currentLi = currentSpan.parent();
       var currentIndex = currentLi.index();
-      model.containerTemplateList.splice(currentIndex, 1);
-      tmplsInMenuView.render();
+      model.containerTemplateBlockList.splice(currentIndex, 1);
+      tmplsBlocksInMenuView.render();
       controller.getTemplate();
     });
   }
 };
+
+var tmplsHeaderInMenuView = {
+  init: function() {
+    this.$container = $(".tmplsHeaderInMenu");
+    this.handleClicks();
+  },
+  render: function() {
+    var list = "";
+    if (model.containerTemplateHeaderList){
+      list += '<li><span class="tmpl_id">'
+           + model.containerTemplateHeaderList.substr(1)
+           + '</span> <span class="tmpl_delete">x</span></li>';
+    }
+
+    this.$container.html(list);
+
+  },
+  handleClicks: function() {
+    this.$container.on("click", ".tmpl_delete", function(e) {
+      model.containerTemplateHeaderList = "";
+      tmplsHeaderInMenuView.render();
+      controller.getTemplate();
+    });
+  }
+};
+
+var tmplsFooterInMenuView = {
+  init: function() {
+    this.$container = $(".tmplsFooterInMenu");
+    this.handleClicks();
+  },
+  render: function() {
+    var list = "";
+    if (model.containerTemplateFooterList){
+      list += '<li><span class="tmpl_id">'
+           + model.containerTemplateFooterList.substr(1)
+           + '</span> <span class="tmpl_delete">x</span></li>';
+    }
+    this.$container.html(list);
+  },
+  handleClicks: function() {
+    this.$container.on("click", ".tmpl_delete", function(e) {
+      model.containerTemplateFooterList = "";
+      tmplsFooterInMenuView.render();
+      controller.getTemplate();
+    });
+  }
+};
+
 
 controller.init();
