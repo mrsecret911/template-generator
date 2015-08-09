@@ -67,7 +67,7 @@ gulp.task('jsons', function() { 
 });
 
 gulp.task('tmpls', function() { 
-    return gulp.src('./dev/scripts/tmpl.html')
+    return gulp.src('./dev/scripts/*/*.html')
     .pipe(gulp.dest('./public/scripts'));
 });
 

@@ -1,6 +1,11 @@
 {
   "blocks": [
     {
+      "id": "block-icon",
+      "imgSrc": "img/blocks/column-3.jpg",
+      "subscription": "block-icon"
+    },
+    {
       "id": "block-1",
       "imgSrc": "img/blocks/column-3.jpg",
       "subscription": "blocks-1"

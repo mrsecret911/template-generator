@@ -64,22 +64,102 @@
   /*end of delete*/
   
   /*Context Menu*/
+  /*** load components*/
+  $.ajax({
+      type: "GET",
+      url: "scripts/template/components.html",
+      async: true,
+      success: function(data) {
+        var components = $(data);
+        var icons = components.filter('#icon_list').html();
+        $(".icon_modal").find(".modal-body").html(icons);
+      },
+      error: function() {
+        console.log("error");
+      }
+    });
+  /*** end of load components*/
+  
+  /*** event functions*/
+  var eventFunctions = {
+    changeIconFn: function (element, eventLink) {
+      var element = element;
+      var eventLink = $(eventLink);
+      eventLink.on("click", function () {
+        $(".icon_modal").modal("show");
+        $(".icon_modal").find(".glyphicon").dblclick(function (){
+          element.attr("class", $(this).attr("class"));
+          $(".icon_modal").modal("hide");
+        });
+      });
+    },
+    cloneFn: function (element, eventLink) {
+      var element = element;
+      var eventLink = $(eventLink);
+      eventLink.on("click", function () {
+        element.after(element.clone());
+      });
+    },
+    deleteFn: function (element, eventLink) {
+      var element = element;
+      var eventLink = $(eventLink);
+      eventLink.on("click", function () {
+        element.remove();
+      });
+    }
+  };
+  /*** end of event functions*/
+
+
+  var editParameters = {
+    icon: {
+      header: "Icon",
+      list: [
+        {
+          text: "Change",
+          event: "changeIconFn"
+        },
+        {
+          text: "Clone",
+          event: "cloneFn"
+        },
+        {
+          text: "Delete",
+          event: "deleteFn"
+        }
+      ]
+    }
+  };
+
   var contextMenu = $("#context_menu");
   var contextTitle = $("#context_menu").find(".context_title");
   var contextList = $("#context_menu").find(".context_list");
-  
-  $("#build_wrap").on( "contextmenu", function(e) {
+
+  $("#build_wrap").on("contextmenu", function (e) {
     var positionX = e.pageX;
     var positionY = e.pageY;
-    var target  = $(e.target);
-    
+    var target = $(e.target);
+    var element = target.attr("data-element");
+
+    if (editParameters[element]) {
+      contextList.html("");
+      contextTitle.text(editParameters[element].header);
+      editParameters[element].list.forEach(function (el) {
+        var eventLink = $('<a  href="#">');
+        eventLink.text(el.text);
+        eventLink.wrap("<li>");
+        contextList.append(eventLink);
+        eventFunctions[el.event](target, eventLink);
+      });
+    }
+
     contextMenu.css({"left": positionX, "top": positionY})
-               .addClass("open");
-       
+            .addClass("open");
+
     return false;
   });
-  
-  $("body").on("click", function (e){
+
+  $("body").on("click", function (e) {
     contextMenu.removeClass("open");
   });
   /*end of Context Menu*/

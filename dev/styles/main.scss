@@ -273,3 +273,31 @@ $blue: #00BCD4;
   }
 }
 /*end of contextmenu*/
+
+/*data attributes*/
+[data-hover]:hover {
+  outline: 1px solid #00BCD4;
+  outline-offset: 2px;
+}
+/*end of data attributes*/
+
+/*modals*/
+.icon_modal {
+  .bs-glyphicons-list {
+    font-size: 0;
+    li {
+      width: 10%;
+      vertical-align: top;
+      text-align: center;
+    }
+    span {
+      font-size: 24px;
+      padding: 15px;
+      cursor: pointer;
+      &:hover {
+        background: #ddd;
+      }
+    }
+  }
+}
+/*end of modals*/
