@@ -91,7 +91,7 @@ var controller = {
   getTemplate: function(id) {
     $.ajax({
       type: "GET",
-      url: "scripts/tmpl.html",
+      url: "scripts/template/tmpl.html",
       async: true,
       success: function(data) {
         var $templates = $(data);

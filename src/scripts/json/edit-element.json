@@ -1,0 +1,19 @@
+{
+   "icon": {
+      "header": "Icon",
+      "list": [
+        {
+          "text": "Change",
+          "event": "changeIconFn"
+        },
+        {
+          "text": "Clone",
+          "event": "cloneFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
+    }
+}
