@@ -301,3 +301,12 @@ $blue: #00BCD4;
   }
 }
 /*end of modals*/
+
+.modal {
+  .modal-content {
+    background: #ebf5ff;
+    .modal-body{
+      font-size: 18px;
+    }
+  }
+}

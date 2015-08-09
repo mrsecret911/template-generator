@@ -159,9 +159,28 @@
     return false;
   });
 
+  $("#clear").on("click", function(){
+      $(".modal").removeClass("active");
+      $(".modal").addClass("fade");   
+  });
+  
+  $("#save").on("click", function(){
+    $("#download_page").click();
+    model.containerTemplateList = [];
+    tmplsInMenuView.render();
+    controller.getTemplate();
+  });
+
+  $("#remove").on("click", function(){
+    model.containerTemplateList = [];
+    tmplsInMenuView.render();
+    controller.getTemplate();
+  });
+
   $("body").on("click", function (e) {
     contextMenu.removeClass("open");
   });
+  
   /*end of Context Menu*/
 
   $('.template_wrap').perfectScrollbar();

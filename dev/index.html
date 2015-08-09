@@ -21,6 +21,9 @@
         </ul>
         <ul class="list-unstyled bottom_nav">
           <li class="">
+            <a href="#" class="glyphicon glyphicon-new-window" id="clear" data-toggle="modal" data-target="#modal-1" aria-hidden="true"></a>
+          </li>
+          <li class="">
             <a href="#" class="glyphicon glyphicon-floppy-disk" id="download_page" aria-hidden="true"></a>
           </li>
           <li class="active">
@@ -83,6 +86,26 @@
       </div>
     </div>
     <!--end of modals-->
+
+    <!-- modal window -->
+    <div class='modal' id="modal-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Create a New Page</h3>
+          </div>
+          <div class="modal-body">
+            <p>Do you want to save the current page?</p>
+          </div>
+          <div class="modal-footer">
+            <button id="save" class="btn btn-info" type="button" data-dismiss="modal">Yes</button>
+            <button id="remove" class="btn btn-info" type="button" data-dismiss="modal">No</button>
+            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <!-- build container -->
     <div id="build_wrap"></div>
