@@ -20,8 +20,8 @@ $blue: #00BCD4;
   opacity: .5;
   cursor: pointer;
   &:hover {
-/*    background: #777;*/
-      opacity: .8;
+    /*    background: #777;*/
+    opacity: .8;
   }
   div {
     height: 3px;
@@ -34,7 +34,7 @@ $blue: #00BCD4;
     bottom: 0;
     margin: auto;
     transition: all 0.3s;
-    
+
     &::before, &::after {
       content: "";
       height: 3px;
@@ -49,18 +49,18 @@ $blue: #00BCD4;
   }
 }
 .cross.active .span::before {
-    top:0px;
-    transform: rotate(45deg);
-    background: #a30000;
+  top:0px;
+  transform: rotate(45deg);
+  background: #a30000;
 }
-  
+
 .cross.active .span::after {
-    top:0;
-    transform: rotate(-45deg);
-    background: #a30000;
+  top:0;
+  transform: rotate(-45deg);
+  background: #a30000;
 }
 .cross.active .span {
-    background:none;
+  background:none;
 }
 
 .nav-icon.active {
@@ -158,20 +158,20 @@ $blue: #00BCD4;
       color: $dark-gray;
       font-family: 'Glyphicons Halflings';
       span {
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
       }
       span::before {
-      content: "\e047";
-      float: left;
-      margin-right: 40px;
-      font-size: 16px;
-      font-weight: normal;
+        content: "\e047";
+        float: left;
+        margin-right: 40px;
+        font-size: 16px;
+        font-weight: normal;
       }
       span::after {
-      content: "\e259";
-      float: right;
+        content: "\e259";
+        float: right;
       }
       ul {
         margin: 10px 0;
@@ -189,7 +189,7 @@ $blue: #00BCD4;
     .cmn-toggle {
       position: absolute;
       display: none;
-      }
+    }
     .cmn-toggle + label {
       display: block;
       position: relative;
@@ -359,7 +359,7 @@ $blue: #00BCD4;
       }
     }
     li {
-/*      margin-top: 10px;*/
+      /*      margin-top: 10px;*/
     }
     li:hover .subscription {
       visibility: visible;
@@ -373,7 +373,7 @@ $blue: #00BCD4;
   }
   &.template_open .template_wrap {
     right: 270px;
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -438,11 +438,66 @@ $blue: #00BCD4;
     }
   }
 }
+.img_modal {
+  h5 {
+    margin-top: 0;
+  }
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .add_img {
+    width: 100%;
+    background: #00BCD4;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    border: none;
+  }
+  .border-right {
+    border-right: 1px solid #e5e5e5;
+  }
+  .image_list {
+    margin-bottom: 0;
+    font-size: 0;
+    li {
+      width: 25%;
+      padding: 0 5px 10px 5px;
+      position: relative;
+      vertical-align: top;
+      img {
+        max-width: 100%;
+        cursor: pointer;
+      }
+      &:hover .remove {
+        display: block;
+      }
+    }
+    .remove {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      display: none;
+      &:before {
+        content: "\e088";
+        font-size: 14px;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        line-height: 16px;
+        color: firebrick;
+      }
+    }
+  }
+}
 /*end of modals*/
 
 .modal {
   .modal-content {
-    background: #ebf5ff;
     .modal-body{
       font-size: 18px;
     }

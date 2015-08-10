@@ -54,6 +54,7 @@ gulp.task('libs', function() {
 gulp.task('scripts', function() {
   return gulp.src([
     './src/scripts/builder-scripts.js',
+    './src/scripts/context-menu.js',
     './src/scripts/app.js'
   ])
   .pipe(uglify())

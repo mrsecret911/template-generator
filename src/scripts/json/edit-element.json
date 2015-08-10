@@ -15,5 +15,22 @@
           "event": "deleteFn"
         }
       ]
+    },
+    "image": {
+      "header": "Image",
+      "list": [
+        {
+          "text": "Cnahge",
+          "event": "changeImgFn"
+        },
+        {
+          "text": "Clone",
+          "event": "cloneFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
     }
 }
