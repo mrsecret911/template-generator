@@ -1,7 +1,7 @@
 var model = {
   containerTemplateBlockList: [],
   containerTemplateHeaderList: "",
-  containerTemplateFooterList: ""
+  containerTemplateFooterList: "",
 };
 
 var controller = {
@@ -10,8 +10,9 @@ var controller = {
     this.localStorageTemplates();
     this.localStorageList();
     this.localStorage();
-    this.sendRequest();
-    this.sortadTmplList();
+    this.getModel();
+    this.sortadTmplList()
+    this.sendRequestJSON("scripts/json/fonts.json", this.initSettingsFontsView);
   },
   getAllblocks: function(model) {
     var blocks = [];
@@ -64,7 +65,7 @@ var controller = {
     var localList = JSON.parse(localStorage.getItem("listItem"));
     this.$container.html(localList);
   },
-  sendRequest: function() {
+  getModel: function() {
     $.ajax({
       type: "GET",
       url: "scripts/model.json",
@@ -100,7 +101,6 @@ var controller = {
         var $templates = $(data);
         if (id) {
           var tmplsType = id.substr(1,1);
-          console.log(tmplsType)
           switch (tmplsType) {
             case "b":
               model.containerTemplateBlockList.push(id);
@@ -137,7 +137,38 @@ var controller = {
       }
     });
     $(".tmplsBlocksInMenu").disableSelection();
-  }
+  },
+  initSettingsFontsView: function (data) {
+    settingsFontsView.init();
+    settingsFontsView.render(data);
+  },
+  sendRequestJSON: function(url, fun){
+    $.ajax({
+      type: "GET",
+      url: url,
+      async: true,
+      dataType: "json",
+      success: function(data) {
+        fun(data);
+      },
+      error: function() {
+        console.log("error");
+      }
+    })
+  },
+  sendRequest: function(url, fun){
+  $.ajax({
+    type: "GET",
+    url: url,
+    async: true,
+    success: function(data) {
+      fun(data);
+    },
+    error: function() {
+      console.log("error");
+    }
+  })
+}
 };
 
 var blocksView = {
@@ -302,6 +333,36 @@ var tmplsFooterInMenuView = {
     });
   }
 };
+
+var settingsFontsView = {
+  init: function () {
+    this.$container = $(".settings_text-font")
+    this.handleClicks();
+  },
+  render: function (data) {
+    var list = "";
+    data.fonts.forEach(function (font) {
+      list += '<li><img src="' + font.img + '" alt data-link="' + font.link + '" data-name="' + font.name + '"></li>'
+    })
+    this.$container.find("ul").html(list);
+  },
+  handleClicks: function(){
+    this.$container.on("click", "span", function(){
+      settingsFontsView.$container.find("ul"). slideToggle();
+    })
+    this.$container.find("ul").on("click", "img", function(e){
+      var newFontLink = ($(e.target).attr("data-link"));
+      var newFontName = ($(e.target).attr("data-name"));
+      var newFontElHref = $(".newFont").attr("href");
+      if (!newFontElHref) {
+        $("head").append('<link class="newFont" rel="stylesheet" href="' + newFontLink + '">');
+      } else {
+        $(".newFont").attr("href", newFontLink);
+      }
+      $("body").css('font-family', newFontName);
+    })
+  }
+}
 
 
 controller.init();
