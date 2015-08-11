@@ -13,6 +13,7 @@ var controller = {
     this.getModel();
     this.sortadTmplList()
     this.sendRequestJSON("scripts/json/fonts.json", this.initSettingsFontsView);
+    this.pageSaver();
   },
   getAllblocks: function(model) {
     var blocks = [];
@@ -47,6 +48,21 @@ var controller = {
     });
     return headers;
   },
+  localStorageTemplates: function() {
+    this.$container = $("#build_wrap");
+    var localTemplate = JSON.parse(localStorage.getItem("template"));
+    this.$container.html(localTemplate);
+    $("#undefined").remove();
+  },
+  localStorageList: function() {
+    this.$container = $(".tmplsBlocksInMenu");
+    var localList = JSON.parse(localStorage.getItem("listItem"));
+    var localListHeader = JSON.parse(localStorage.getItem("listHeader"));
+    var localListFooter = JSON.parse(localStorage.getItem("listFooter"));
+    this.$container.html(localList);
+    $(".tmplsHeaderInMenu").html(localListHeader);
+    $(".tmplsFooterInMenu").html(localListFooter);
+  },
   localStorage: function() {
     var newContainerTemplateBlockList = [];
       $.each($(".tmplsBlocksInMenu").parent().find('li'), function(index, el) {
@@ -54,16 +70,7 @@ var controller = {
         newContainerTemplateBlockList.push("#" + tmplId);
       });
     model.containerTemplateBlockList = newContainerTemplateBlockList;
-  },
-  localStorageTemplates: function() {
-    this.$container = $("#build_wrap");
-    var localTemplate = JSON.parse(localStorage.getItem("template"));
-    this.$container.html(localTemplate);
-  },
-  localStorageList: function() {
-    this.$container = $(".tmplsBlocksInMenu");
-    var localList = JSON.parse(localStorage.getItem("listItem"));
-    this.$container.html(localList);
+    localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
   },
   getModel: function() {
     $.ajax({
@@ -124,16 +131,51 @@ var controller = {
       }
     });
   },
-  sortadTmplList: function() {
+  pageSaver: function() {
+    $(window).bind('beforeunload', function(){
+      var currentStatus = $("#build_wrap").html();
+      var localSet = localStorage.setItem('template', JSON.stringify(currentStatus));
+      var localGet = JSON.parse(localStorage.getItem("template"));
+      var realStatus = $("#build_wrap").html(localGet);
+      controller.localStorageList();
+    });
+  },
+  templateFromPage: function(tmplId) {
+    var currentStatus = $("#build_wrap").html();
+    var localSet = localStorage.setItem('template', JSON.stringify(currentStatus));
+    var localGet = JSON.parse(localStorage.getItem("template"));
+    var realStatus = $("#build_wrap").html(localGet);
+    controller.localStorageList();
+
+    var list = ""; 
+      list += model.containerTemplateHeaderList;
+        for(var i=0; i <= tmplId.length; i++){
+          list += '<div id="' + tmplId[i]  + '">' +  $('div[id=' + tmplId[i] + ']').html() + '</div>';
+        }
+      list+=model.containerTemplateFooterList;
+
+    localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
+    localStorage.setItem('template',JSON.stringify(list));
+
+    $("#build_wrap").html(list);
+    tmplsBlocksInMenuView.render();
+    $("#undefined").remove();
+  },
+   sortadTmplList: function() {
     $(".tmplsBlocksInMenu").sortable({
       stop: function() {
         var newContainerTemplateBlockList = [];
-        $.each($(".tmplsBlocksInMenu").find('li'), function(index, el) {
+        $.each($(".tmplsBlocksInMenu")
+          .find('li'), function(index, el) {
           var tmplId = $(el).find(".tmpl_id").html();
           newContainerTemplateBlockList.push("#" + tmplId);
         });
         model.containerTemplateBlockList = newContainerTemplateBlockList;
-        controller.getTemplate();
+        model.containerTemplateHeaderList = JSON.parse(localStorage.getItem("blockListModelHeader"));
+        model.containerTemplateFooterList = JSON.parse(localStorage.getItem("blockListModelFooter"));
+        localStorage.setItem('blockListModel', JSON.stringify( model.containerTemplateBlockList ));
+
+        controller.templateFromPage(model.containerTemplateBlockList);
       }
     });
     $(".tmplsBlocksInMenu").disableSelection();
@@ -241,14 +283,15 @@ var tmplsOnPageView = {
   render: function(tmpls) {
     var list = "";
     list += model.containerTemplateHeaderList;
+
     model.containerTemplateBlockList.forEach(function(el) {
       var template = tmpls.find(el).html();
-      list += template;
+      list +=  '<div id="' + el + '">' + template  + '</div>';
     });
     list += model.containerTemplateFooterList;
     this.$container.html(list);
 
-    var localSet = localStorage.setItem('template', JSON.stringify(list));
+    var localSet = localStorage.setItem('template',JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("template"));
 
     list+=localGet;
@@ -281,7 +324,7 @@ var tmplsBlocksInMenuView = {
       var currentIndex = currentLi.index();
       model.containerTemplateBlockList.splice(currentIndex, 1);
       tmplsBlocksInMenuView.render();
-      controller.getTemplate();
+      controller.templateFromPage(model.containerTemplateBlockList);
     });
   }
 };
@@ -301,6 +344,10 @@ var tmplsHeaderInMenuView = {
 
     this.$container.html(list);
 
+    var localSet = localStorage.setItem('listHeader', JSON.stringify(list));
+    var localGet = JSON.parse(localStorage.getItem("listHeader"));
+
+    list+=localGet;
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function(e) {
@@ -324,6 +371,11 @@ var tmplsFooterInMenuView = {
            + '</span> <span class="tmpl_delete">x</span></li>';
     }
     this.$container.html(list);
+
+    var localSet = localStorage.setItem('listFooter', JSON.stringify(list));
+    var localGet = JSON.parse(localStorage.getItem("listFooter"));
+
+    list+=localGet;
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function(e) {

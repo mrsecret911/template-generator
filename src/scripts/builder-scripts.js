@@ -71,14 +71,22 @@
 
   $("#save").on("click", function () {
     $("#download_page").click();
-    model.containerTemplateList = [];
-    tmplsInMenuView.render();
+    model.containerTemplateBlockList = [];
+    model.containerTemplateHeaderList = "";
+    model.containerTemplateFooterList = "";
+    tmplsHeaderInMenuView.render();
+    tmplsBlocksInMenuView.render();
+    tmplsFooterInMenuView.render();
     controller.getTemplate();
   });
 
   $("#remove").on("click", function () {
-    model.containerTemplateList = [];
-    tmplsInMenuView.render();
+    model.containerTemplateBlockList = [];
+    model.containerTemplateHeaderList = "";
+    model.containerTemplateFooterList = "";
+    tmplsHeaderInMenuView.render();
+    tmplsBlocksInMenuView.render();
+    tmplsFooterInMenuView.render();
     controller.getTemplate();
   });
 
