@@ -1,18 +1,26 @@
 (function ($) {
   /*nav*/
-  var navWrap = $("#nav_wrap");
-  $("#nav_wrap").hide();
-
   $("#navTab a").tab("show");
+  
+  var navWrap = $("#nav_wrap");
+  var tabplateBtn = navWrap.find(".add_btn")
 
-  $("#nav_wrap").find(".add_btn").click(function () {
+  tabplateBtn.click(function () {
+    var btn = $(this);
+    if (btn.hasClass("close_icon")) {
+      navWrap.removeClass("template_open");
+      btn.removeClass("close_icon");
+    }
+    else {
+      tabplateBtn.removeClass("close_icon");
+      navWrap.addClass("template_open");
+      btn.addClass("close_icon");
+    }
+
     $('.template_wrap').scrollTop(0);
-    navWrap.addClass("template_open");
+
     navWrap.find(".template").removeClass("open");
     navWrap.find($(this).attr("data-open")).addClass("open");
-  });
-  $("#nav_wrap").find(".template_close").click(function () {
-    navWrap.removeClass("template_open");
   });
 
   var obj = document.querySelectorAll('.nav-icon');
@@ -25,11 +33,11 @@
     toggle.addEventListener("click", function () {
       if (this.classList.contains("active") === true) {
         this.classList.remove("active");
-        $("#nav_wrap").hide();
+        $("#nav_wrap").removeClass("show_nav");
       }
       else {
         this.classList.add("active");
-        $("#nav_wrap").show();
+        $("#nav_wrap").addClass("show_nav");
       }
     });
   }

@@ -32,5 +32,44 @@
           "event": "deleteFn"
         }
       ]
+    },
+    "text": {
+      "header": "Text",
+      "list": [
+        {
+          "text": "Clone",
+          "event": "cloneFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
+    },
+    "title": {
+      "header": "Title",
+      "list": [
+        {
+          "text": "Clone",
+          "event": "cloneFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
+    },
+    "column": {
+      "header": "Column",
+      "list": [
+        {
+          "text": "Clone",
+          "event": "cloneFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
     }
 }
