@@ -12,7 +12,7 @@ var controller = {
   init: function() {
     this.localStorageTemplates();
     this.localStorageList();
-    // this.localStorage();
+    this.localStorage();
     this.getModel();
     this.sortadTmplList();
     this.sendRequestJSON("scripts/json/fonts.json", this.initSettingsFontsView);
@@ -66,15 +66,15 @@ var controller = {
     $(".tmplsHeaderInMenu").html(localListHeader);
     $(".tmplsFooterInMenu").html(localListFooter);
   },
-  // localStorage: function() {
-  //   var newContainerTemplateBlockList = [];
-  //     $.each($(".tmplsBlocksInMenu").parent().find('li'), function(index, el) {
-  //       var tmplId = $(el).find(".tmpl_id").html();
-  //       newContainerTemplateBlockList.push("#" + tmplId);
-  //     });
-  //   model.containerTemplateBlockList = newContainerTemplateBlockList;
-  //   localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
-  // },
+  localStorage: function() {
+    var newContainerTemplateBlockList = [];
+      $.each($(".tmplsBlocksInMenu").find('li'), function(index, el) {
+        var tmplId = $(el).find(".tmpl_id").html();
+        newContainerTemplateBlockList.push("#" + tmplId);
+      });
+    model.containerTemplateBlockList = newContainerTemplateBlockList;
+    localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
+  },
   getModel: function() {
     $.ajax({
       type: "GET",
@@ -149,7 +149,7 @@ var controller = {
       controller.localStorageList();
     });
   },
-   sortadTmplList: function() {
+  sortadTmplList: function() {
     $(".tmplsBlocksInMenu").sortable({
       start: function(event, ui) {
           ui.item.startPos = ui.item.index();
@@ -176,9 +176,6 @@ var controller = {
           newContainerTemplateBlockList.push("#" + tmplId);
         });
         model.containerTemplateBlockList = newContainerTemplateBlockList;
-        // model.containerTemplateHeader = JSON.parse(localStorage.getItem("blockListModelHeader"));
-        // model.containerTemplateFooter = JSON.parse(localStorage.getItem("blockListModelFooter"));
-        // localStorage.setItem('blockListModel', JSON.stringify( model.containerTemplateBlockList ));
         localStorage.setItem('listItem', JSON.stringify($(".tmplsBlocksInMenu").html()));
       },
     });
