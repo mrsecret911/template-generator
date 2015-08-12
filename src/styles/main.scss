@@ -339,7 +339,7 @@ $blue: #00BCD4;
     .tmplsBlocksInMenu {
       margin-top: 5px;
       position: relative;
-      height: 300px;
+      height: 330px;
       overflow: scroll;
     }
     .tmplsBlocksInMenu li {
@@ -350,6 +350,46 @@ $blue: #00BCD4;
     }
     .tmpls li:hover .tmpl_delete{
       visibility: visible;
+    }
+    #social {
+    margin-right: 20%;
+    margin-top: 22px;
+      a {
+        height: 15%;
+        width: 15%;
+        margin-left: 5%;
+        border-radius: 3px;
+        border: 1px solid #dedcd7;
+        float: right;
+        .imgActive {
+          border-radius: 3px;
+          background: #ffffff;
+        }
+        .imgHover {
+          display: none;
+        }
+      }
+      a:hover {
+        border-radius: 3px;
+        .imgActive {
+          display: none;
+        }
+        .imgHover {
+          display: block;
+        }
+      }
+      #twitter:hover {
+        background: #00b8e6;
+      }
+      #facebook:hover {
+        background: #2929a6;
+      }
+      #google:hover {
+        background: #e64848;
+      }
+      #linkedin:hover {
+        background: #b2e0ff;
+      }
     }
   }
   .template_wrap {
