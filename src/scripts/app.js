@@ -1,7 +1,10 @@
 var model = {
   containerTemplateBlockList: [],
-  containerTemplateHeaderList: "",
-  containerTemplateFooterList: "",
+  containerTemplateHeader: "",
+  containerTemplateFooter: "",
+  newTeplateBlock: "",
+  newTemplateHeader: "",
+  newTemplateFooter: ""
 };
 
 var controller = {
@@ -9,9 +12,9 @@ var controller = {
   init: function() {
     this.localStorageTemplates();
     this.localStorageList();
-    this.localStorage();
+    // this.localStorage();
     this.getModel();
-    this.sortadTmplList()
+    this.sortadTmplList();
     this.sendRequestJSON("scripts/json/fonts.json", this.initSettingsFontsView);
     this.pageSaver();
   },
@@ -63,15 +66,15 @@ var controller = {
     $(".tmplsHeaderInMenu").html(localListHeader);
     $(".tmplsFooterInMenu").html(localListFooter);
   },
-  localStorage: function() {
-    var newContainerTemplateBlockList = [];
-      $.each($(".tmplsBlocksInMenu").parent().find('li'), function(index, el) {
-        var tmplId = $(el).find(".tmpl_id").html();
-        newContainerTemplateBlockList.push("#" + tmplId);
-      });
-    model.containerTemplateBlockList = newContainerTemplateBlockList;
-    localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
-  },
+  // localStorage: function() {
+  //   var newContainerTemplateBlockList = [];
+  //     $.each($(".tmplsBlocksInMenu").parent().find('li'), function(index, el) {
+  //       var tmplId = $(el).find(".tmpl_id").html();
+  //       newContainerTemplateBlockList.push("#" + tmplId);
+  //     });
+  //   model.containerTemplateBlockList = newContainerTemplateBlockList;
+  //   localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
+  // },
   getModel: function() {
     $.ajax({
       type: "GET",
@@ -89,7 +92,9 @@ var controller = {
         headersView.init();
         headersView.render(data);
 
-        tmplsOnPageView.init();
+        tmplsOnPageBlockView.init();
+        tmplsOnPageHeaderView.init();
+        tmplsOnPageFooterView.init();
         tmplsBlocksInMenuView.init();
         tmplsHeaderInMenuView.init();
         tmplsFooterInMenuView.init();
@@ -111,20 +116,24 @@ var controller = {
           switch (tmplsType) {
             case "b":
               model.containerTemplateBlockList.push(id);
+              controller.setNewTemplateBlock($templates,id);
               tmplsBlocksInMenuView.render();
+              tmplsOnPageBlockView.render();
               break;
             case "h":
-              model.containerTemplateHeaderList = id;
+              model.containerTemplateHeader = id;
+              controller.setNewTemplateHeader($templates,id);
               tmplsHeaderInMenuView.render();
+              tmplsOnPageHeaderView.render();
               break;
             case "f": 
-              model.containerTemplateFooterList = id;
+              model.containerTemplateFooter = id;
+              controller.setNewTemplateFooter($templates,id);
               tmplsFooterInMenuView.render();
+              tmplsOnPageFooterView.render();
               break;
           }
         }
-              tmplsOnPageView.render($templates);
-        
       },
       error: function() {
         console.log("error");
@@ -140,30 +149,26 @@ var controller = {
       controller.localStorageList();
     });
   },
-  templateFromPage: function(tmplId) {
-    var currentStatus = $("#build_wrap").html();
-    var localSet = localStorage.setItem('template', JSON.stringify(currentStatus));
-    var localGet = JSON.parse(localStorage.getItem("template"));
-    var realStatus = $("#build_wrap").html(localGet);
-    controller.localStorageList();
-
-    var list = ""; 
-      list += model.containerTemplateHeaderList;
-        for(var i=0; i <= tmplId.length; i++){
-          list += '<div id="' + tmplId[i]  + '">' +  $('div[id=' + tmplId[i] + ']').html() + '</div>';
-        }
-      list+=model.containerTemplateFooterList;
-
-    localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
-    localStorage.setItem('template',JSON.stringify(list));
-
-    $("#build_wrap").html(list);
-    tmplsBlocksInMenuView.render();
-    $("#undefined").remove();
-  },
    sortadTmplList: function() {
     $(".tmplsBlocksInMenu").sortable({
-      stop: function() {
+      start: function(event, ui) {
+          ui.item.startPos = ui.item.index();
+      },
+      stop: function(event, ui) {
+        var start = ui.item.startPos;
+        var end = ui.item.index();
+        var $divs = $("#build_wrap > div");
+        if ( start !== end) {
+          var block = $divs.eq(start).clone();
+          $divs.eq(start).remove();
+          if (end) {
+            $("#build_wrap > div").eq(end - 1).after(block);
+          } else {
+           $("#build_wrap > div").eq(0).before(block);
+          }
+        }
+
+
         var newContainerTemplateBlockList = [];
         $.each($(".tmplsBlocksInMenu")
           .find('li'), function(index, el) {
@@ -171,12 +176,11 @@ var controller = {
           newContainerTemplateBlockList.push("#" + tmplId);
         });
         model.containerTemplateBlockList = newContainerTemplateBlockList;
-        model.containerTemplateHeaderList = JSON.parse(localStorage.getItem("blockListModelHeader"));
-        model.containerTemplateFooterList = JSON.parse(localStorage.getItem("blockListModelFooter"));
-        localStorage.setItem('blockListModel', JSON.stringify( model.containerTemplateBlockList ));
-
-        controller.templateFromPage(model.containerTemplateBlockList);
-      }
+        // model.containerTemplateHeader = JSON.parse(localStorage.getItem("blockListModelHeader"));
+        // model.containerTemplateFooter = JSON.parse(localStorage.getItem("blockListModelFooter"));
+        // localStorage.setItem('blockListModel', JSON.stringify( model.containerTemplateBlockList ));
+        localStorage.setItem('listItem', JSON.stringify($(".tmplsBlocksInMenu").html()));
+      },
     });
     $(".tmplsBlocksInMenu").disableSelection();
   },
@@ -196,21 +200,62 @@ var controller = {
       error: function() {
         console.log("error");
       }
-    })
+    });
   },
   sendRequest: function(url, fun){
-  $.ajax({
-    type: "GET",
-    url: url,
-    async: true,
-    success: function(data) {
-      fun(data);
-    },
-    error: function() {
-      console.log("error");
+    $.ajax({
+      type: "GET",
+      url: url,
+      async: true,
+      success: function(data) {
+        fun(data);
+      },
+      error: function() {
+        console.log("error");
+      }
+    });
+  },
+  getBlocksFromPage: function () {
+    var $content = $("#build_wrap").clone();
+    if ($content.find("header").length > 0) {
+      $content.find("header").remove();
     }
-  })
-}
+    if ($content.find("footer").length > 0) {
+      $content.find("footer").remove();
+    }
+    return $content.html();
+  },
+  getHeaderFromPage: function () {
+    var $content = $("#build_wrap");
+    var header = "";
+    if ($content.find("header").length > 0) {
+      header = "<header>" + $content.find("header").html() + "</header>";
+    }
+    return header;
+  },
+  getFooterFromPage: function () {
+    var $content = $("#build_wrap");
+    var footer = "";
+    if ($content.find("footer").length > 0) {
+      footer = "<footer>" + $content.find("footer").html() + "</footer>";
+    }
+    return footer;
+  },
+  setNewTemplateBlock: function (tmpls, id) {
+    model.newTeplateBlock = tmpls.find(id).html();
+  },
+  setNewTemplateHeader: function (tmpls, id) {
+    model.newTemplateHeader = tmpls.find(id).html();
+  },
+  setNewTemplateFooter: function (tmpls, id) {
+    model.newTemplateFooter = tmpls.find(id).html();
+  },
+  deleteBlockOnPage: function (num) {
+    $("#build_wrap > div").eq(num).remove();
+  },
+  deleteHeaderOrFooterOnPage: function (name) {
+    $("#build_wrap").find(name).remove();
+  }
 };
 
 var blocksView = {
@@ -276,26 +321,43 @@ var headersView = {
   }
 };
 
-var tmplsOnPageView = {
+var tmplsOnPageBlockView = {
   init: function() {
     this.$container = $("#build_wrap");
   },
-  render: function(tmpls) {
+  render: function() {
     var list = "";
-    list += model.containerTemplateHeaderList;
-
-    model.containerTemplateBlockList.forEach(function(el) {
-      var template = tmpls.find(el).html();
-      list +=  '<div id="' + el + '">' + template  + '</div>';
-    });
-    list += model.containerTemplateFooterList;
+    list += controller.getHeaderFromPage();
+    list += controller.getBlocksFromPage() + model.newTeplateBlock;
+    list += controller.getFooterFromPage();
     this.$container.html(list);
-
-    var localSet = localStorage.setItem('template',JSON.stringify(list));
-    var localGet = JSON.parse(localStorage.getItem("template"));
-
-    list+=localGet;
   },
+};
+
+var tmplsOnPageHeaderView = {
+  init: function() {
+    this.$container = $("#build_wrap");
+  },
+  render: function() {
+    var list = "";
+    list += model.newTemplateHeader;
+    list += controller.getBlocksFromPage();
+    list += controller.getFooterFromPage();
+    this.$container.html(list);
+  },
+};
+
+var tmplsOnPageFooterView = {
+  init: function() {
+    this.$container = $("#build_wrap");
+  },
+  render: function() {
+    var list = "";
+    list += controller.getHeaderFromPage();
+    list += controller.getBlocksFromPage();
+    list += model.newTemplateFooter;
+    this.$container.html(list);
+  }
 };
 
 var tmplsBlocksInMenuView = {
@@ -324,7 +386,8 @@ var tmplsBlocksInMenuView = {
       var currentIndex = currentLi.index();
       model.containerTemplateBlockList.splice(currentIndex, 1);
       tmplsBlocksInMenuView.render();
-      controller.templateFromPage(model.containerTemplateBlockList);
+      controller.deleteBlockOnPage(currentIndex);
+      localStorage.setItem('listItem', JSON.stringify($(".tmplsBlocksInMenu").html()));
     });
   }
 };
@@ -336,9 +399,9 @@ var tmplsHeaderInMenuView = {
   },
   render: function() {
     var list = "";
-    if (model.containerTemplateHeaderList){
+    if (model.containerTemplateHeader){
       list += '<li><span class="tmpl_id">'
-           + model.containerTemplateHeaderList.substr(1)
+           + model.containerTemplateHeader.substr(1)
            + '</span> <span class="tmpl_delete">x</span></li>';
     }
 
@@ -350,10 +413,10 @@ var tmplsHeaderInMenuView = {
     list+=localGet;
   },
   handleClicks: function() {
-    this.$container.on("click", ".tmpl_delete", function(e) {
-      model.containerTemplateHeaderList = "";
+    this.$container.on("click", ".tmpl_delete", function() {
+      model.containerTemplateHeader = "";
       tmplsHeaderInMenuView.render();
-      controller.getTemplate();
+      controller.deleteHeaderOrFooterOnPage("header");
     });
   }
 };
@@ -365,9 +428,9 @@ var tmplsFooterInMenuView = {
   },
   render: function() {
     var list = "";
-    if (model.containerTemplateFooterList){
+    if (model.containerTemplateFooter){
       list += '<li><span class="tmpl_id">'
-           + model.containerTemplateFooterList.substr(1)
+           + model.containerTemplateFooter.substr(1)
            + '</span> <span class="tmpl_delete">x</span></li>';
     }
     this.$container.html(list);
@@ -378,30 +441,30 @@ var tmplsFooterInMenuView = {
     list+=localGet;
   },
   handleClicks: function() {
-    this.$container.on("click", ".tmpl_delete", function(e) {
-      model.containerTemplateFooterList = "";
+    this.$container.on("click", ".tmpl_delete", function() {
+      model.containerTemplateFooter = "";
       tmplsFooterInMenuView.render();
-      controller.getTemplate();
+      controller.deleteHeaderOrFooterOnPage("footer");
     });
   }
 };
 
 var settingsFontsView = {
   init: function () {
-    this.$container = $(".settings_text-font")
+    this.$container = $(".settings_text-font");
     this.handleClicks();
   },
   render: function (data) {
     var list = "";
     data.fonts.forEach(function (font) {
-      list += '<li><img src="' + font.img + '" alt data-link="' + font.link + '" data-name="' + font.name + '"></li>'
-    })
+      list += '<li><img src="' + font.img + '" alt data-link="' + font.link + '" data-name="' + font.name + '"></li>';
+    });
     this.$container.find("ul").html(list);
   },
   handleClicks: function(){
     this.$container.on("click", "span", function(){
       settingsFontsView.$container.find("ul"). slideToggle();
-    })
+    });
     this.$container.find("ul").on("click", "img", function(e){
       var newFontLink = ($(e.target).attr("data-link"));
       var newFontName = ($(e.target).attr("data-name"));
@@ -412,9 +475,9 @@ var settingsFontsView = {
         $(".newFont").attr("href", newFontLink);
       }
       $("body").css('font-family', newFontName);
-    })
+    });
   }
-}
+};
 
 
 controller.init();
