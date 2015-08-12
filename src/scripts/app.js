@@ -4,7 +4,8 @@ var model = {
   containerTemplateFooter: "",
   newTeplateBlock: "",
   newTemplateHeader: "",
-  newTemplateFooter: ""
+  newTemplateFooter: "",
+  buildWrapContent: ""
 };
 
 var controller = {
@@ -17,6 +18,9 @@ var controller = {
     this.sortadTmplList();
     this.sendRequestJSON("scripts/json/fonts.json", this.initSettingsFontsView);
     this.pageSaver();
+    settingsLineHeightView.init();
+    settingsTabletView.init();
+    settingsMobileView.init();
   },
   getAllblocks: function(model) {
     var blocks = [];
@@ -68,12 +72,12 @@ var controller = {
   },
   localStorage: function() {
     var newContainerTemplateBlockList = [];
-      $.each($(".tmplsBlocksInMenu").find('li'), function(index, el) {
-        var tmplId = $(el).find(".tmpl_id").html();
-        newContainerTemplateBlockList.push("#" + tmplId);
-      });
+    $.each($(".tmplsBlocksInMenu").find('li'), function(index, el) {
+      var tmplId = $(el).find(".tmpl_id").html();
+      newContainerTemplateBlockList.push("#" + tmplId);
+    });
     model.containerTemplateBlockList = newContainerTemplateBlockList;
-    localStorage.setItem('blockListModel',JSON.stringify(model.containerTemplateBlockList));
+    localStorage.setItem('blockListModel', JSON.stringify(model.containerTemplateBlockList));
   },
   getModel: function() {
     $.ajax({
@@ -82,7 +86,7 @@ var controller = {
       async: true,
       dataType: "json",
       success: function(data) {
-        
+
         blocksView.init();
         blocksView.render(data);
 
@@ -112,23 +116,23 @@ var controller = {
       success: function(data) {
         var $templates = $(data);
         if (id) {
-          var tmplsType = id.substr(1,1);
+          var tmplsType = id.substr(1, 1);
           switch (tmplsType) {
             case "b":
               model.containerTemplateBlockList.push(id);
-              controller.setNewTemplateBlock($templates,id);
+              controller.setNewTemplateBlock($templates, id);
               tmplsBlocksInMenuView.render();
               tmplsOnPageBlockView.render();
               break;
             case "h":
               model.containerTemplateHeader = id;
-              controller.setNewTemplateHeader($templates,id);
+              controller.setNewTemplateHeader($templates, id);
               tmplsHeaderInMenuView.render();
               tmplsOnPageHeaderView.render();
               break;
-            case "f": 
+            case "f":
               model.containerTemplateFooter = id;
-              controller.setNewTemplateFooter($templates,id);
+              controller.setNewTemplateFooter($templates, id);
               tmplsFooterInMenuView.render();
               tmplsOnPageFooterView.render();
               break;
@@ -141,8 +145,12 @@ var controller = {
     });
   },
   pageSaver: function() {
-    $(window).bind('beforeunload', function(){
+    $(window).bind('beforeunload', function() {
       var currentStatus = $("#build_wrap").html();
+      if ($("#build_wrap").find("iframe").length > 0) {
+        currentStatus = model.buildWrapContent;
+      }
+
       var localSet = localStorage.setItem('template', JSON.stringify(currentStatus));
       var localGet = JSON.parse(localStorage.getItem("template"));
       var realStatus = $("#build_wrap").html(localGet);
@@ -152,19 +160,19 @@ var controller = {
   sortadTmplList: function() {
     $(".tmplsBlocksInMenu").sortable({
       start: function(event, ui) {
-          ui.item.startPos = ui.item.index();
+        ui.item.startPos = ui.item.index();
       },
       stop: function(event, ui) {
         var start = ui.item.startPos;
         var end = ui.item.index();
         var $divs = $("#build_wrap > div");
-        if ( start !== end) {
+        if (start !== end) {
           var block = $divs.eq(start).clone();
           $divs.eq(start).remove();
           if (end) {
             $("#build_wrap > div").eq(end - 1).after(block);
           } else {
-           $("#build_wrap > div").eq(0).before(block);
+            $("#build_wrap > div").eq(0).before(block);
           }
         }
 
@@ -172,20 +180,20 @@ var controller = {
         var newContainerTemplateBlockList = [];
         $.each($(".tmplsBlocksInMenu")
           .find('li'), function(index, el) {
-          var tmplId = $(el).find(".tmpl_id").html();
-          newContainerTemplateBlockList.push("#" + tmplId);
-        });
+            var tmplId = $(el).find(".tmpl_id").html();
+            newContainerTemplateBlockList.push("#" + tmplId);
+          });
         model.containerTemplateBlockList = newContainerTemplateBlockList;
         localStorage.setItem('listItem', JSON.stringify($(".tmplsBlocksInMenu").html()));
       },
     });
     $(".tmplsBlocksInMenu").disableSelection();
   },
-  initSettingsFontsView: function (data) {
+  initSettingsFontsView: function(data) {
     settingsFontsView.init();
     settingsFontsView.render(data);
   },
-  sendRequestJSON: function(url, fun){
+  sendRequestJSON: function(url, fun) {
     $.ajax({
       type: "GET",
       url: url,
@@ -199,7 +207,7 @@ var controller = {
       }
     });
   },
-  sendRequest: function(url, fun){
+  sendRequest: function(url, fun) {
     $.ajax({
       type: "GET",
       url: url,
@@ -212,7 +220,7 @@ var controller = {
       }
     });
   },
-  getBlocksFromPage: function () {
+  getBlocksFromPage: function() {
     var $content = $("#build_wrap").clone();
     if ($content.find("header").length > 0) {
       $content.find("header").remove();
@@ -222,7 +230,7 @@ var controller = {
     }
     return $content.html();
   },
-  getHeaderFromPage: function () {
+  getHeaderFromPage: function() {
     var $content = $("#build_wrap");
     var header = "";
     if ($content.find("header").length > 0) {
@@ -230,7 +238,7 @@ var controller = {
     }
     return header;
   },
-  getFooterFromPage: function () {
+  getFooterFromPage: function() {
     var $content = $("#build_wrap");
     var footer = "";
     if ($content.find("footer").length > 0) {
@@ -238,21 +246,21 @@ var controller = {
     }
     return footer;
   },
-  setNewTemplateBlock: function (tmpls, id) {
+  setNewTemplateBlock: function(tmpls, id) {
     model.newTeplateBlock = tmpls.find(id).html();
   },
-  setNewTemplateHeader: function (tmpls, id) {
+  setNewTemplateHeader: function(tmpls, id) {
     model.newTemplateHeader = tmpls.find(id).html();
   },
-  setNewTemplateFooter: function (tmpls, id) {
+  setNewTemplateFooter: function(tmpls, id) {
     model.newTemplateFooter = tmpls.find(id).html();
   },
-  deleteBlockOnPage: function (num) {
+  deleteBlockOnPage: function(num) {
     $("#build_wrap > div").eq(num).remove();
   },
-  deleteHeaderOrFooterOnPage: function (name) {
+  deleteHeaderOrFooterOnPage: function(name) {
     $("#build_wrap").find(name).remove();
-  }
+  },
 };
 
 var blocksView = {
@@ -365,16 +373,14 @@ var tmplsBlocksInMenuView = {
   render: function() {
     var list = "";
     model.containerTemplateBlockList.forEach(function(tmplId) {
-      list += '<li class="ui-state-default"><span class="tmpl_id">'
-           + tmplId.substr(1)
-           + '</span> <span class="tmpl_delete">x</span></li>';
+      list += '<li class="ui-state-default"><span class="tmpl_id">' + tmplId.substr(1) + '</span> <span class="tmpl_delete">x</span></li>';
     });
     this.$container.html(list);
 
     var localSet = localStorage.setItem('listItem', JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("listItem"));
 
-    list+=localGet;
+    list += localGet;
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function(e) {
@@ -396,10 +402,8 @@ var tmplsHeaderInMenuView = {
   },
   render: function() {
     var list = "";
-    if (model.containerTemplateHeader){
-      list += '<li><span class="tmpl_id">'
-           + model.containerTemplateHeader.substr(1)
-           + '</span> <span class="tmpl_delete">x</span></li>';
+    if (model.containerTemplateHeader) {
+      list += '<li><span class="tmpl_id">' + model.containerTemplateHeader.substr(1) + '</span> <span class="tmpl_delete">x</span></li>';
     }
 
     this.$container.html(list);
@@ -407,7 +411,7 @@ var tmplsHeaderInMenuView = {
     var localSet = localStorage.setItem('listHeader', JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("listHeader"));
 
-    list+=localGet;
+    list += localGet;
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function() {
@@ -425,17 +429,15 @@ var tmplsFooterInMenuView = {
   },
   render: function() {
     var list = "";
-    if (model.containerTemplateFooter){
-      list += '<li><span class="tmpl_id">'
-           + model.containerTemplateFooter.substr(1)
-           + '</span> <span class="tmpl_delete">x</span></li>';
+    if (model.containerTemplateFooter) {
+      list += '<li><span class="tmpl_id">' + model.containerTemplateFooter.substr(1) + '</span> <span class="tmpl_delete">x</span></li>';
     }
     this.$container.html(list);
 
     var localSet = localStorage.setItem('listFooter', JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("listFooter"));
 
-    list+=localGet;
+    list += localGet;
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function() {
@@ -447,34 +449,130 @@ var tmplsFooterInMenuView = {
 };
 
 var settingsFontsView = {
-  init: function () {
+  init: function() {
     this.$container = $(".settings_text-font");
     this.handleClicks();
   },
-  render: function (data) {
+  render: function(data) {
     var list = "";
-    data.fonts.forEach(function (font) {
+    data.fonts.forEach(function(font) {
       list += '<li><img src="' + font.img + '" alt data-link="' + font.link + '" data-name="' + font.name + '"></li>';
     });
     this.$container.find("ul").html(list);
   },
-  handleClicks: function(){
-    this.$container.on("click", "span", function(){
-      settingsFontsView.$container.find("ul"). slideToggle();
+  handleClicks: function() {
+    this.$container.on("click", "span", function() {
+      settingsFontsView.$container.find("ul").slideToggle();
     });
-    this.$container.find("ul").on("click", "img", function(e){
+    this.$container.find("ul").on("click", "img", function(e) {
       var newFontLink = ($(e.target).attr("data-link"));
       var newFontName = ($(e.target).attr("data-name"));
       var newFontElHref = $(".newFont").attr("href");
+      model.newFontLinkTag = '<link class="newFont" rel="stylesheet" href="' + newFontLink + '">';
       if (!newFontElHref) {
-        $("head").append('<link class="newFont" rel="stylesheet" href="' + newFontLink + '">');
+        $("head").append(model.newFontLinkTag);
       } else {
         $(".newFont").attr("href", newFontLink);
       }
-      $("body").css('font-family', newFontName);
+      $("#build_wrap").css('font-family', newFontName);
     });
   }
 };
+
+var settingsLineHeightView = {
+  init: function() {
+    this.$container = $(".settings_text-line-height");
+    this.setDefaultValueInput();
+    this.handleClicks();
+  },
+  handleClicks: function() {
+    this.$container.on("change", "input", function() {
+      $("#build_wrap p").css("line-height", settingsLineHeightView.$container.find("input").val() + "px");
+    });
+  },
+  setDefaultValueInput: function() {
+    if (oldLineHeught) {
+      var oldLineHeught = $("#build_wrap p").css("line-height");
+      oldLineHeught = oldLineHeught.substr(0, oldLineHeught.length - 2);
+      this.$container.find("input").val(oldLineHeught);
+    }
+  }
+};
+
+var settingsTabletView = {
+  init: function() {
+    this.$container = $(".settings_tablet-view");
+    this.handleClicks();
+  },
+  handleClicks: function() {
+    this.$container.on("change", "input", function(e) {
+      var $currentEl = $(e.target);
+      if ($currentEl.prop('checked')) {
+        if (!$("#cmn-toggle2").prop('checked')) {
+          model.buildWrapContent = $("#build_wrap").html();
+        }
+        $("#build_wrap").empty();
+        $("#cmn-toggle2").prop('checked', false);
+        var pageHeight = $(window).innerHeight() - 80;
+        var $frame = $('<div class="iframe-tablet"><iframe src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
+        $("#build_wrap").html($frame);
+        var headContent = $("head").html();
+        var $frameFromPage = $("iframe");
+        setTimeout(function() {
+          $frameFromPage.contents().find('head').html(headContent);
+          $frameFromPage.contents().find('body').html(model.buildWrapContent);
+          $frameFromPage.contents().find('body').css("pointer-events", "none");
+          var contenteditableList = $frameFromPage.contents().find("[contenteditable=true]");
+          $.each(contenteditableList, function(index, el) {
+            $(el).removeAttr("contenteditable");
+          });
+          $("body").addClass("backgroundStyle");
+        }, 1);
+      } else {
+        $('#build_wrap').html(model.buildWrapContent);
+        $("body").removeClass("backgroundStyle");
+      }
+    });
+  },
+};
+
+var settingsMobileView = {
+  init: function() {
+    this.$container = $(".settings_mobile-view");
+    this.handleClicks();
+  },
+  handleClicks: function() {
+    this.$container.on("change", "input", function(e) {
+      var $currentEl = $(e.target);
+      if ($currentEl.prop('checked')) {
+        if (!$("#cmn-toggle1").prop('checked')) {
+          model.buildWrapContent = $("#build_wrap").html();
+        }
+        $("#build_wrap").empty();
+        $("#cmn-toggle1").prop('checked', false);
+        var pageHeight = $(window).innerHeight() - 80;
+        var $frame = $('<div class="iframe-mobile"><iframe src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
+        $("#build_wrap").html($frame);
+        var headContent = $("head").html();
+        var $frameFromPage = $("iframe");
+        setTimeout(function() {
+          $frameFromPage.contents().find('head').html(headContent);
+          $frameFromPage.contents().find('body').html(model.buildWrapContent);
+          $frameFromPage.contents().find('body').css("pointer-events", "none");
+          var contenteditableList = $frameFromPage.contents().find("[contenteditable=true]");
+          $.each(contenteditableList, function(index, el) {
+            $(el).removeAttr("contenteditable");
+          });
+          $("body").addClass("backgroundStyle");
+        }, 1);
+      } else {
+        $('#build_wrap').html(model.buildWrapContent);
+        $("body").removeClass("backgroundStyle");
+      }
+    });
+  },
+};
+
 
 
 controller.init();
