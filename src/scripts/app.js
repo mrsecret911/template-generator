@@ -5,7 +5,10 @@ var model = {
   newTeplateBlock: "",
   newTemplateHeader: "",
   newTemplateFooter: "",
-  buildWrapContent: ""
+  buildWrapContent: "",
+  newFontName: "",
+  newLineHeight: "",
+  newFontLinkTag: ""
 };
 
 var controller = {
@@ -56,10 +59,16 @@ var controller = {
     return headers;
   },
   localStorageTemplates: function() {
+    var localLinkGet = JSON.parse(localStorage.getItem("link"));
+    $("head").append(localLinkGet);
+    model.newFontLinkTag = localLinkGet;
+    model.newFontName = JSON.parse(localStorage.getItem("newFontName"));
+
+    model.newLineHeight = JSON.parse(localStorage.getItem("newLineHeight"));
+
     this.$container = $("#build_wrap");
     var localTemplate = JSON.parse(localStorage.getItem("template"));
     this.$container.html(localTemplate);
-    $("#undefined").remove();
   },
   localStorageList: function() {
     this.$container = $(".tmplsBlocksInMenu");
@@ -137,6 +146,7 @@ var controller = {
               tmplsOnPageFooterView.render();
               break;
           }
+          controller.makeStyleChange(model.newFontName, model.newLineHeight);
         }
       },
       error: function() {
@@ -150,10 +160,13 @@ var controller = {
       if ($("#build_wrap").find("iframe").length > 0) {
         currentStatus = model.buildWrapContent;
       }
-
-      var localSet = localStorage.setItem('template', JSON.stringify(currentStatus));
+      localStorage.setItem('template', JSON.stringify(currentStatus));
       var localGet = JSON.parse(localStorage.getItem("template"));
-      var realStatus = $("#build_wrap").html(localGet);
+      localStorage.setItem('link', JSON.stringify(model.newFontLinkTag));
+      localStorage.setItem('newFontName', JSON.stringify(model.newFontName));
+      localStorage.setItem('newLineHeight', JSON.stringify(model.newLineHeight));
+      $("#build_wrap").html(localGet);
+
       controller.localStorageList();
     });
   },
@@ -175,7 +188,6 @@ var controller = {
             $("#build_wrap > div").eq(0).before(block);
           }
         }
-
 
         var newContainerTemplateBlockList = [];
         $.each($(".tmplsBlocksInMenu")
@@ -261,6 +273,53 @@ var controller = {
   deleteHeaderOrFooterOnPage: function(name) {
     $("#build_wrap").find(name).remove();
   },
+  makeStyleChange: function(font, lineHeight) {
+    font = font || "";
+    lineHeight = lineHeight || "";
+    if (font.length) {
+      $("#build_wrap > div, header, footer").css('font-family', font);
+    } else if (lineHeight.length) {
+      $("#build_wrap p").css("line-height", lineHeight + "px");
+    }
+  },
+  turnOnModeView: function() {
+    var $clickOffSetEl = $(".settings_text-font,.settings_text-line-height");
+    $clickOffSetEl.css("pointer-events", "none");
+    var $clickOffEl = $(".main_nav a:not([href$='#build_settings'])");
+    $.each($clickOffEl, function(index, el) {
+      $(el).one("click.delete", function() {
+        $("#cmn-toggle1").prop('checked', false);
+        $("#build_wrap").html(model.buildWrapContent);
+        $("body").removeClass("backgroundStyle");
+        $clickOffEl.off("click.delete");
+        $clickOffSetEl.css("pointer-events", "all");
+      });
+      var eventList = $._data($(el)[0], "events");
+      eventList.click.unshift(eventList.click.pop());
+    });
+  },
+  turnOffModeView: function() {
+    var $clickOffSetEl = $(".settings_text-font,.settings_text-line-height");
+    $clickOffSetEl.css("pointer-events", "all");
+    var $clickOffEl = $(".main_nav a:not([href$='#build_settings'])");
+    $.each($clickOffEl, function(index, el) {
+      $(el).off("click.delete");
+    });
+  },
+  addContentsToIframe: function() {
+    var headContent = $("head").html();
+    var $frameFromPage = $("iframe");
+    setTimeout(function() {
+      $frameFromPage.contents().find('head').html(headContent);
+      $frameFromPage.contents().find('body').html(model.buildWrapContent);
+      $frameFromPage.contents().find('body').css("pointer-events", "none");
+      var contenteditableList = $frameFromPage.contents().find("[contenteditable=true]");
+      $.each(contenteditableList, function(index, el) {
+        $(el).removeAttr("contenteditable");
+      });
+      $("body").addClass("backgroundStyle");
+    }, 1);
+  }
 };
 
 var blocksView = {
@@ -281,7 +340,7 @@ var blocksView = {
       var templateId = "#" + $(e.target).find(".hide").html();
       controller.getTemplate(templateId);
     });
-  }
+  },
 };
 
 var footersView = {
@@ -377,7 +436,7 @@ var tmplsBlocksInMenuView = {
     });
     this.$container.html(list);
 
-    var localSet = localStorage.setItem('listItem', JSON.stringify(list));
+    localStorage.setItem('listItem', JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("listItem"));
 
     list += localGet;
@@ -408,7 +467,7 @@ var tmplsHeaderInMenuView = {
 
     this.$container.html(list);
 
-    var localSet = localStorage.setItem('listHeader', JSON.stringify(list));
+    localStorage.setItem('listHeader', JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("listHeader"));
 
     list += localGet;
@@ -434,7 +493,7 @@ var tmplsFooterInMenuView = {
     }
     this.$container.html(list);
 
-    var localSet = localStorage.setItem('listFooter', JSON.stringify(list));
+    localStorage.setItem('listFooter', JSON.stringify(list));
     var localGet = JSON.parse(localStorage.getItem("listFooter"));
 
     list += localGet;
@@ -466,7 +525,7 @@ var settingsFontsView = {
     });
     this.$container.find("ul").on("click", "img", function(e) {
       var newFontLink = ($(e.target).attr("data-link"));
-      var newFontName = ($(e.target).attr("data-name"));
+      model.newFontName = ($(e.target).attr("data-name"));
       var newFontElHref = $(".newFont").attr("href");
       model.newFontLinkTag = '<link class="newFont" rel="stylesheet" href="' + newFontLink + '">';
       if (!newFontElHref) {
@@ -474,7 +533,9 @@ var settingsFontsView = {
       } else {
         $(".newFont").attr("href", newFontLink);
       }
-      $("#build_wrap").css('font-family', newFontName);
+      controller.makeStyleChange(model.newFontName);
+      localStorage.setItem('link', JSON.stringify(model.newFontLinkTag));
+      localStorage.setItem('newFontName', JSON.stringify(model.newFontName));
     });
   }
 };
@@ -487,7 +548,8 @@ var settingsLineHeightView = {
   },
   handleClicks: function() {
     this.$container.on("change", "input", function() {
-      $("#build_wrap p").css("line-height", settingsLineHeightView.$container.find("input").val() + "px");
+      model.newLineHeight = settingsLineHeightView.$container.find("input").val();
+      controller.makeStyleChange(undefined, model.newLineHeight);
     });
   },
   setDefaultValueInput: function() {
@@ -516,19 +578,10 @@ var settingsTabletView = {
         var pageHeight = $(window).innerHeight() - 80;
         var $frame = $('<div class="iframe-tablet"><iframe src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
         $("#build_wrap").html($frame);
-        var headContent = $("head").html();
-        var $frameFromPage = $("iframe");
-        setTimeout(function() {
-          $frameFromPage.contents().find('head').html(headContent);
-          $frameFromPage.contents().find('body').html(model.buildWrapContent);
-          $frameFromPage.contents().find('body').css("pointer-events", "none");
-          var contenteditableList = $frameFromPage.contents().find("[contenteditable=true]");
-          $.each(contenteditableList, function(index, el) {
-            $(el).removeAttr("contenteditable");
-          });
-          $("body").addClass("backgroundStyle");
-        }, 1);
+        controller.addContentsToIframe();
+        controller.turnOnModeView();
       } else {
+        controller.turnOffModeView();
         $('#build_wrap').html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
       }
@@ -553,26 +606,15 @@ var settingsMobileView = {
         var pageHeight = $(window).innerHeight() - 80;
         var $frame = $('<div class="iframe-mobile"><iframe src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
         $("#build_wrap").html($frame);
-        var headContent = $("head").html();
-        var $frameFromPage = $("iframe");
-        setTimeout(function() {
-          $frameFromPage.contents().find('head').html(headContent);
-          $frameFromPage.contents().find('body').html(model.buildWrapContent);
-          $frameFromPage.contents().find('body').css("pointer-events", "none");
-          var contenteditableList = $frameFromPage.contents().find("[contenteditable=true]");
-          $.each(contenteditableList, function(index, el) {
-            $(el).removeAttr("contenteditable");
-          });
-          $("body").addClass("backgroundStyle");
-        }, 1);
+        controller.addContentsToIframe();
+        controller.turnOnModeView();
       } else {
+        controller.turnOffModeView();
         $('#build_wrap').html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
       }
     });
   },
 };
-
-
 
 controller.init();
