@@ -178,11 +178,11 @@ $blue: #00BCD4;
       }
       &.settings_text-font {
         span::before {
-        content: "\e047";
+          content: "\e047";
         }
         span::after {
-        content: "\e259";
-        float: right;
+          content: "\e259";
+          float: right;
         }
         ul {
           display: none;
@@ -248,7 +248,7 @@ $blue: #00BCD4;
     .cmn-toggle {
       position: absolute;
       display: none;
-      }
+    }
     .cmn-toggle + label {
       display: block;
       position: relative;
@@ -407,8 +407,8 @@ $blue: #00BCD4;
       visibility: visible;
     }
     #social {
-    margin-right: 20%;
-    margin-top: 22px;
+      margin-right: 20%;
+      margin-top: 22px;
       a {
         height: 15%;
         width: 15%;
@@ -666,6 +666,16 @@ iframe {
   border-radius: 5px;
 }
 .backgroundStyle {
-    background-color: #bdbdbd;
+  background-color: #bdbdbd;
 }
 /*end iframe*/
+
+/*dragAndDrop*/
+
+.drag-start {
+  opacity: 0.5;
+}
+.drag-over {
+  outline: 2px dotted #333;
+}
+/*end of dragAndDrop*/

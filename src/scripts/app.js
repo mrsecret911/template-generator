@@ -31,7 +31,8 @@ var controller = {
       blocks.push({
         id: block.id,
         imgSrc: block.imgSrc,
-        subscription: block.subscription
+        subscription: block.subscription,
+        events: block.events
       });
     });
     return blocks;
@@ -42,7 +43,8 @@ var controller = {
       footers.push({
         id: footer.id,
         imgSrc: footer.imgSrc,
-        subscription: footer.subscription
+        subscription: footer.subscription,
+        events: footer.events
       });
     });
     return footers;
@@ -53,7 +55,8 @@ var controller = {
       headers.push({
         id: header.id,
         imgSrc: header.imgSrc,
-        subscription: header.subscription
+        subscription: header.subscription,
+        events: header.events
       });
     });
     return headers;
@@ -97,6 +100,7 @@ var controller = {
       success: function(data) {
 
         blocksView.init();
+        //console.log(data);
         blocksView.render(data);
 
         footersView.init();
@@ -117,7 +121,8 @@ var controller = {
       }
     });
   },
-  getTemplate: function(id, type) {
+  getTemplate: function(id, type, templatEvents) {
+    
     $.ajax({
       type: "GET",
       url: "scripts/template/tmpl.html",
@@ -130,7 +135,7 @@ var controller = {
               model.containerTemplateBlockList.push(id);
               controller.setNewTemplateBlock($templates, id);
               tmplsBlocksInMenuView.render();
-              tmplsOnPageBlockView.render();
+              tmplsOnPageBlockView.render(templatEvents);
               break;
             case "header":
               model.containerTemplateHeader = id;
@@ -329,7 +334,7 @@ var blocksView = {
   render: function(data) {
     var list = '';
     controller.getAllblocks(data).forEach(function(block) {
-      list += '<li data-type="block" data-id="#' + block.id + '"><img src="' + block.imgSrc + '" alt><span class="subscription">' +
+      list += '<li data-type="block" data-events="' + block.events + '" data-id="#' + block.id + '"><img src="' + block.imgSrc + '" alt><span class="subscription">' +
         block.subscription + '</span></li>';
     }); 
     this.$container.html(list);
@@ -337,7 +342,7 @@ var blocksView = {
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
-      controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
+      controller.getTemplate(element.attr("data-id"), element.attr("data-type"), element.attr("data-events"));
     });
   },
 };
@@ -388,12 +393,18 @@ var tmplsOnPageBlockView = {
   init: function() {
     this.$container = $("#build_wrap");
   },
-  render: function() {
+  render: function(events) {
     var list = "";
     list += controller.getHeaderFromPage();
     list += controller.getBlocksFromPage() + model.newTeplateBlock;
     list += controller.getFooterFromPage();
-    this.$container.html(list);
+    var element = $.parseHTML(list);
+    events.split(",").forEach(function (fn){
+      if (fn === "dragAndDrop") {
+        $(element).dragAndDrop({draggable:".draggable"});
+      }
+    });
+    this.$container.append(element);
   },
 };
 

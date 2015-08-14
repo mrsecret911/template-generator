@@ -57,6 +57,7 @@
     var cols = settings.draggable ? $(this).find(settings.draggable) : $(this).children();
 
     [].forEach.call(cols, function (col) {
+      $(col).attr("draggable",true);
       col.addEventListener('dragstart', handleDragStart, false);
       col.addEventListener('dragenter', handleDragEnter, false);
       col.addEventListener('dragover', handleDragOver, false);
