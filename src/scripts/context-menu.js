@@ -1,5 +1,21 @@
 (function ($) {
   /*** modal functions*/
+  /*** load components*/
+  $.ajax({
+    type: "GET",
+    url: "scripts/template/components.html",
+    async: true,
+    success: function (data) {
+      var components = $(data);
+      var icons = components.filter('#icon_list').html();
+      $(".icon_modal").find(".modal-body").html(icons);
+    },
+    error: function () {
+      console.log("error");
+    }
+  });
+  /*** end of load components*/
+
   //.img_modal
   var imageModal = $(".img_modal");
   var addImgBtn = imageModal.find(".add_img");

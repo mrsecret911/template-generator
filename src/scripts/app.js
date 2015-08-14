@@ -117,7 +117,7 @@ var controller = {
       }
     });
   },
-  getTemplate: function(id) {
+  getTemplate: function(id, type) {
     $.ajax({
       type: "GET",
       url: "scripts/template/tmpl.html",
@@ -125,21 +125,20 @@ var controller = {
       success: function(data) {
         var $templates = $(data);
         if (id) {
-          var tmplsType = id.substr(1, 1);
-          switch (tmplsType) {
-            case "b":
+          switch (type) {
+            case "block":
               model.containerTemplateBlockList.push(id);
               controller.setNewTemplateBlock($templates, id);
               tmplsBlocksInMenuView.render();
               tmplsOnPageBlockView.render();
               break;
-            case "h":
+            case "header":
               model.containerTemplateHeader = id;
               controller.setNewTemplateHeader($templates, id);
               tmplsHeaderInMenuView.render();
               tmplsOnPageHeaderView.render();
               break;
-            case "f":
+            case "footer":
               model.containerTemplateFooter = id;
               controller.setNewTemplateFooter($templates, id);
               tmplsFooterInMenuView.render();
@@ -330,15 +329,15 @@ var blocksView = {
   render: function(data) {
     var list = '';
     controller.getAllblocks(data).forEach(function(block) {
-      list += '<li><img src="' + block.imgSrc + '" alt><span class="subscription">' +
-        block.subscription + '</span><span class="hide">' + block.id + '</span></li>';
-    });
+      list += '<li data-type="block" data-id="#' + block.id + '"><img src="' + block.imgSrc + '" alt><span class="subscription">' +
+        block.subscription + '</span></li>';
+    }); 
     this.$container.html(list);
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
-      var templateId = "#" + $(e.target).find(".hide").html();
-      controller.getTemplate(templateId);
+      var element = $(e.target);
+      controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
     });
   },
 };
@@ -351,15 +350,15 @@ var footersView = {
   render: function(data) {
     var list = '';
     controller.getAllFooters(data).forEach(function(footer) {
-      list += '<li><img src="' + footer.imgSrc + '" alt><span class="subscription">' +
-        footer.subscription + '</span><span class="hide">' + footer.id + '</span></li>';
+      list += '<li data-type="footer" data-id="#' + footer.id + '"><img src="' + footer.imgSrc + '" alt><span class="subscription">' +
+        footer.subscription + '</span></li>';
     });
     this.$container.html(list);
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
-      var templateId = "#" + $(e.target).find(".hide").html();
-      controller.getTemplate(templateId);
+      var element = $(e.target);
+      controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
     });
   }
 };
@@ -372,15 +371,15 @@ var headersView = {
   render: function(data) {
     var list = '';
     controller.getAllHeaders(data).forEach(function(header) {
-      list += '<li><img src="' + header.imgSrc + '" alt><span class="subscription">' +
-        header.subscription + '</span><span class="hide">' + header.id + '</span></li>';
+      list += '<li data-type="header" data-id="#' + header.id + '"><img src="' + header.imgSrc + '" alt><span class="subscription">' +
+        header.subscription + '</span></li>';
     });
     this.$container.html(list);
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
-      var templateId = "#" + $(e.target).find(".hide").html();
-      controller.getTemplate(templateId);
+      var element = $(e.target);
+      controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
     });
   }
 };

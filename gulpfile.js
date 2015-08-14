@@ -44,7 +44,8 @@ gulp.task('libs', function() {
     './src/scripts/libs/saveAs.js',
     './bower_components/jszip/dist/jszip.js',
     './bower_components/jquery-ui/jquery-ui.js',
-    './bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js'
+    './src/scripts/libs/jquery-draggable.js',
+    './bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js',
   ])
   .pipe(uglify())
   .pipe(concat('libs.min.js'))
