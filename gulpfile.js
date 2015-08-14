@@ -27,6 +27,12 @@ gulp.task('styles', function() {
   .pipe(gulp.dest('./public/styles'));
 });
 
+gulp.task('styleTmpls', function() { 
+    return gulp.src('./src/styles/tmpls.scss')
+  .pipe(sass())
+  .pipe(gulp.dest('./public/styles'));
+});
+
 gulp.task('img', function() { 
     return gulp.src('./src/img/*/**')
     .pipe(gulp.dest('./public/img/'));
@@ -80,8 +86,10 @@ gulp.task('localtunnel', shell.task([
 
 gulp.task('watch', function () {
   gulp.watch('src/index.html', ['html']);
+  gulp.watch('src/styles/*.scss', ['styles','styleTmpls']);
   gulp.watch('src/styles/*.scss', ['styles']);
   gulp.watch('src/scripts/*.js', ['scripts']);
+  gulp.watch('src/scripts/template/*.html', ['tmpls']);
   gulp.watch('src/scripts/**/*.json', ['jsons']);
 });
 
@@ -93,6 +101,6 @@ gulp.task('connectDist', function () {
   });
 });
 
-gulp.task("default", ["html", "styles", "libs", "scripts", "fonts", "img", "jsons", "tmpls"]);
+gulp.task("default", ["html", "styles", "styleTmpls", "libs", "scripts", "fonts", "img", "jsons", "tmpls"]);
 
 gulp.task("serve", ["watch", "connectDist", "localtunnel"]);

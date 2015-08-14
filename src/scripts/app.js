@@ -8,7 +8,9 @@ var model = {
   buildWrapContent: "",
   newFontName: "",
   newLineHeight: "",
-  newFontLinkTag: ""
+  newFontLinkTag: "",
+  styleTemplate: {},
+  styleInRow: ""
 };
 
 var controller = {
@@ -161,7 +163,7 @@ var controller = {
   pageSaver: function() {
     $(window).bind('beforeunload', function() {
       var currentStatus = $("#build_wrap").html();
-      if ($("#build_wrap").find("iframe").length > 0) {
+      if ($("#build_wrap").find(".iframe_device").length > 0) {
         currentStatus = model.buildWrapContent;
       }
       localStorage.setItem('template', JSON.stringify(currentStatus));
@@ -223,13 +225,13 @@ var controller = {
       }
     });
   },
-  sendRequest: function(url, fun) {
+  sendRequest: function(url, fun, id) {
     $.ajax({
       type: "GET",
       url: url,
       async: true,
       success: function(data) {
-        fun(data);
+        fun(data, id);
       },
       error: function() {
         console.log("error");
@@ -263,13 +265,13 @@ var controller = {
     return footer;
   },
   setNewTemplateBlock: function(tmpls, id) {
-    model.newTeplateBlock = tmpls.find(id).html();
+    model.newTeplateBlock = tmpls.filter(id).html();
   },
   setNewTemplateHeader: function(tmpls, id) {
-    model.newTemplateHeader = tmpls.find(id).html();
+    model.newTemplateHeader = tmpls.filter(id).html();
   },
   setNewTemplateFooter: function(tmpls, id) {
-    model.newTemplateFooter = tmpls.find(id).html();
+    model.newTemplateFooter = tmpls.filter(id).html();
   },
   deleteBlockOnPage: function(num) {
     $("#build_wrap > div").eq(num).remove();
@@ -323,6 +325,20 @@ var controller = {
       });
       $("body").addClass("backgroundStyle");
     }, 1);
+  },
+  setStyle: function (data,id) {
+    var styleForTmpl = $(data).filter(id).html();
+    var $styleForTmpl = $(styleForTmpl).filter("style");
+    model.styleTemplate[id] = $styleForTmpl.html();
+    controller.setStyleInRow();
+  },
+  setStyleInRow: function () {
+    var styleArr = [];
+    for (var tmpl in model.styleTemplate) {
+      styleArr.push(model.styleTemplate[tmpl]);
+    }
+    model.styleInRow = styleArr.join(" ");
+    console.log(model.styleInRow);
   }
 };
 
@@ -343,6 +359,7 @@ var blocksView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"), element.attr("data-events"));
+      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
     });
   },
 };
@@ -364,6 +381,7 @@ var footersView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
+      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
     });
   }
 };
@@ -385,6 +403,7 @@ var headersView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
+      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
     });
   }
 };
@@ -586,7 +605,7 @@ var settingsTabletView = {
         $("#build_wrap").empty();
         $("#cmn-toggle2").prop('checked', false);
         var pageHeight = $(window).innerHeight() - 80;
-        var $frame = $('<div class="iframe-tablet"><iframe src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
+        var $frame = $('<div class="iframe-tablet"><iframe class="iframe_device" src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
         $("#build_wrap").html($frame);
         controller.addContentsToIframe();
         controller.turnOnModeView();
@@ -614,7 +633,7 @@ var settingsMobileView = {
         $("#build_wrap").empty();
         $("#cmn-toggle1").prop('checked', false);
         var pageHeight = $(window).innerHeight() - 80;
-        var $frame = $('<div class="iframe-mobile"><iframe src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
+        var $frame = $('<div class="iframe-mobile"><iframe class="iframe_device" src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
         $("#build_wrap").html($frame);
         controller.addContentsToIframe();
         controller.turnOnModeView();

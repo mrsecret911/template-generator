@@ -71,5 +71,18 @@
           "event": "deleteFn"
         }
       ]
+    },
+    "video": {
+      "header": "Video",
+      "list": [
+        {
+          "text": "Cnahge",
+          "event": "changeVideoFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
     }
 }

@@ -76,6 +76,21 @@
         });
         $(".img_modal").modal("show");
       });
+    },
+    changeVideoFn: function (element, eventLink) {
+      element = element;
+      eventLink = $(eventLink);
+      var imageModal = $(".video_modal");
+      var addVideoBtn = imageModal.find(".add_video");
+      var addImgInput = imageModal.find(".video_src");
+      eventLink.on("click", function () {
+        addVideoBtn.on("click", function () {
+          var url = addImgInput.val() || element.attr("src");
+          element.attr("src", url);
+          $(".video_modal").modal("hide");
+        });
+        $(".video_modal").modal("show");
+      });
     }
   };
   /*** end of event functions*/
@@ -110,6 +125,9 @@
       contextList.html("");
       contextTitle.text(editParameters[element]["header"]);
       editParameters[element].list.forEach(function (el) {
+        if (element === "video") {
+          target = target.siblings("iframe");
+        }
         var eventLink = $('<a  href="#">');
         eventLink.text(el["text"]);
         eventLink.wrap("<li>");

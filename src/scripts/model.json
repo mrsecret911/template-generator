@@ -18,9 +18,9 @@
       "subscription": "blocks-1"
     },
     {
-      "id": "block-1",
+      "id": "block-video",
       "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
+      "subscription": "blocks-video"
     },
     {
       "id": "block-1",

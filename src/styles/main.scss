@@ -633,6 +633,23 @@ $blue: #00BCD4;
     }
   }
 }
+.video_modal {
+  h5 {
+    margin-top: 0;
+  }
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .add_video {
+    width: 100%;
+    background: #00BCD4;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    border: none;
+  }
+}
 /*end of modals*/
 
 /*drug and drop*/
@@ -661,12 +678,12 @@ $blue: #00BCD4;
   margin: 20px auto;
   width: 320px;
 }
-iframe {
+.iframe_device {
   border: solid 5px $dark-gray;
   border-radius: 5px;
 }
 .backgroundStyle {
-  background-color: #bdbdbd;
+    background-color: #bdbdbd;
 }
 /*end iframe*/
 

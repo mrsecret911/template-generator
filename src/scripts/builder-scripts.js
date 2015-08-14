@@ -3,7 +3,7 @@
   $("#navTab a").tab("show");
   
   var navWrap = $("#nav_wrap");
-  var tabplateBtn = navWrap.find(".add_btn")
+  var tabplateBtn = navWrap.find(".add_btn");
 
   tabplateBtn.click(function () {
     var btn = $(this);
@@ -50,12 +50,12 @@
     var jquerySrc = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">';
     var bootstrapJsSrc = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>';
     var title = $("#page_title").val();
-    var header = '<!DOCTYPE html><html><head><title>' + title + '</title><meta charset="utf-8">' + bootstrapCssSrc + '<link rel="stylesheet" href="styles/style.css">'+ model.newFontLinkTag +'</head><body>';
+    var header = '<!DOCTYPE html><html><head><title>' + title + '</title><meta charset="utf-8">' + bootstrapCssSrc + '<link rel="stylesheet" href="css/style.css">'+ model.newFontLinkTag +'</head><body>';
     var body = $("#build_wrap").html();
     var footer = jquerySrc + bootstrapJsSrc + '</body></html>';
-    var styles = "";
+    var styles = model.styleInRow.replace( /[\s\n\r]+/g, ' ');
     zip.file("public/index.html", header + body + header);
-    zip.file("public/css/styles.html", styles);
+    zip.file("public/css/style.css", styles);
 
     var content = zip.generate({
       type: "blob"
@@ -77,7 +77,6 @@
     tmplsHeaderInMenuView.render();
     tmplsBlocksInMenuView.render();
     tmplsFooterInMenuView.render();
-    ;
   });
   /*end of delete*/
 
@@ -111,6 +110,5 @@
   $('.tmplsBlocksInMenu').perfectScrollbar();
 
 })(jQuery);
-
 
 
