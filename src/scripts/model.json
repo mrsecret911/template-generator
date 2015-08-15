@@ -20,7 +20,8 @@
     {
       "id": "block-video",
       "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-video"
+      "subscription": "blocks-video",
+      "events": "editVideo"
     },
     {
       "id": "block-1",

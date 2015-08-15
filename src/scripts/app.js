@@ -102,7 +102,6 @@ var controller = {
       success: function(data) {
 
         blocksView.init();
-        //console.log(data);
         blocksView.render(data);
 
         footersView.init();
@@ -338,7 +337,6 @@ var controller = {
       styleArr.push(model.styleTemplate[tmpl]);
     }
     model.styleInRow = styleArr.join(" ");
-    console.log(model.styleInRow);
   }
 };
 
@@ -359,7 +357,7 @@ var blocksView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"), element.attr("data-events"));
-      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
+      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"));
     });
   },
 };
@@ -381,7 +379,7 @@ var footersView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
+      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"));
     });
   }
 };
@@ -403,7 +401,7 @@ var headersView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
+      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"));
     });
   }
 };
@@ -421,9 +419,17 @@ var tmplsOnPageBlockView = {
     events.split(",").forEach(function (fn){
       if (fn === "dragAndDrop") {
         $(element).dragAndDrop({draggable:".draggable"});
+      } else if (fn === "editVideo") {
+        $(element).find(".block-over").on("click", function(e){
+          var event = jQuery.Event( "contextmenu" );
+          event.pageX = e.pageX;
+          event.pageY = e.pageY;
+          $( this ).trigger( event);
+          return false
+        })
       }
     });
-    this.$container.append(element);
+    this.$container.html(element);
   },
 };
 

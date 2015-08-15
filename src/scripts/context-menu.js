@@ -45,7 +45,12 @@
     deleteFn: function (element, eventLink) {
       var element = element;
       var eventLink = $(eventLink);
-      eventLink.on("click", function () {
+      eventLink = $(eventLink);
+      if (element.prop("tagName") === "IFRAME") {
+        element = element.parent().children();
+      }
+      eventLink.on("click", function (e) {
+        e.preventDefault()
         element.remove();
       });
     },
@@ -78,12 +83,13 @@
       });
     },
     changeVideoFn: function (element, eventLink) {
-      element = element;
-      eventLink = $(eventLink);
+      var element = element;
+      var eventLink = $(eventLink);
       var imageModal = $(".video_modal");
       var addVideoBtn = imageModal.find(".add_video");
       var addImgInput = imageModal.find(".video_src");
-      eventLink.on("click", function () {
+      eventLink.on("click", function (e) {
+        e.preventDefault()
         addVideoBtn.on("click", function () {
           var url = addImgInput.val() || element.attr("src");
           element.attr("src", url);
@@ -122,12 +128,12 @@
     var element = target.attr("data-element");
 
     if (editParameters[element]) {
+      if (element === "video") {
+        target = target.siblings("iframe");
+      }
       contextList.html("");
       contextTitle.text(editParameters[element]["header"]);
       editParameters[element].list.forEach(function (el) {
-        if (element === "video") {
-          target = target.siblings("iframe");
-        }
         var eventLink = $('<a  href="#">');
         eventLink.text(el["text"]);
         eventLink.wrap("<li>");
