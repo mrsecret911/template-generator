@@ -102,7 +102,6 @@ var controller = {
       success: function(data) {
 
         blocksView.init();
-        //console.log(data);
         blocksView.render(data);
 
         footersView.init();
@@ -123,7 +122,7 @@ var controller = {
       }
     });
   },
-  getTemplate: function(id, type, templatEvents) {
+  getTemplate: function(id, type) {
     
     $.ajax({
       type: "GET",
@@ -137,7 +136,7 @@ var controller = {
               model.containerTemplateBlockList.push(id);
               controller.setNewTemplateBlock($templates, id);
               tmplsBlocksInMenuView.render();
-              tmplsOnPageBlockView.render(templatEvents);
+              tmplsOnPageBlockView.render();
               break;
             case "header":
               model.containerTemplateHeader = id;
@@ -194,7 +193,7 @@ var controller = {
             $("#build_wrap > div").eq(0).before(block);
           }
         }
-
+        eventView.init();
         var newContainerTemplateBlockList = [];
         $.each($(".tmplsBlocksInMenu")
           .find('li'), function(index, el) {
@@ -350,16 +349,16 @@ var blocksView = {
   render: function(data) {
     var list = '';
     controller.getAllblocks(data).forEach(function(block) {
-      list += '<li data-type="block" data-events="' + block.events + '" data-id="#' + block.id + '"><img src="' + block.imgSrc + '" alt><span class="subscription">' +
+      list += '<li data-type="block" data-id="#' + block.id + '"><img src="' + block.imgSrc + '" alt><span class="subscription">' +
         block.subscription + '</span></li>';
     }); 
     this.$container.html(list);
+    eventView.init();
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
-      controller.getTemplate(element.attr("data-id"), element.attr("data-type"), element.attr("data-events"));
-      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
+      controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
     });
   },
 };
@@ -381,7 +380,6 @@ var footersView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
     });
   }
 };
@@ -398,12 +396,12 @@ var headersView = {
         header.subscription + '</span></li>';
     });
     this.$container.html(list);
+    
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      // controller.sendRequest("scripts/template/style.html", controller.setStyle, templateId);
     });
   }
 };
@@ -417,13 +415,8 @@ var tmplsOnPageBlockView = {
     list += controller.getHeaderFromPage();
     list += controller.getBlocksFromPage() + model.newTeplateBlock;
     list += controller.getFooterFromPage();
-    var element = $.parseHTML(list);
-    events.split(",").forEach(function (fn){
-      if (fn === "dragAndDrop") {
-        $(element).dragAndDrop({draggable:".draggable"});
-      }
-    });
-    this.$container.append(element);
+    this.$container.html(list);
+    eventView.init();
   },
 };
 
@@ -644,6 +637,13 @@ var settingsMobileView = {
       }
     });
   },
+};
+
+var eventView = {
+  init: function () {
+    console.log(111);
+    $(".drag_and_drop").dragAndDrop({draggable: ".draggable"});
+  }
 };
 
 controller.init();

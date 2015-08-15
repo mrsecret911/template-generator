@@ -3,14 +3,12 @@
     {
       "id": "block-review",
       "imgSrc": "img/blocks/block-review.jpg",
-      "subscription": "block-review",
-      "events": "dragAndDrop"
+      "subscription": "block-review"
     },
     {
       "id": "block-icon",
       "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "block-icon",
-      "events": "dragAndDrop"
+      "subscription": "block-icon"
     },
     {
       "id": "block-1",
