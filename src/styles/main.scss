@@ -637,6 +637,39 @@ $blue: #00BCD4;
     border: none;
   }
 }
+.background_modal {
+   h5 {
+    margin-top: 0;
+  }
+  select {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  .add_background {
+    float: right;
+    background: #00BCD4;
+    color: #fff;
+    text-align: center;
+    border: none;
+  }
+}
+.link_modal {
+  h5 {
+    margin-top: 0;
+  }
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .add_link {
+    width: 100%;
+    background: #00BCD4;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    border: none;
+  }
+}
 /*end of modals*/
 
 /*drug and drop*/

@@ -1,15 +1,27 @@
 <script type="tmpl/html" id="header-1">
 <header>
-  <div class="navbar-header header">
-    <a class="navbar-brand" href="#">Quick builder</a>
-  </div>
-</header>
-</script>
-<script type="tmpl/html" id="header-2">
-<header>
-  <div class="container navbar-header header">
-    <a class="navbar-brand" href="#">Awesome quick builder</a>
-  </div>
+  <nav class="navbar navbarOne navbar-top" role="navigation" id="navig">
+      <div class="container-fluid" data-hover data-element="background">
+        <a class="navbar-brand  navbar-left" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/ScientificLinux-Logo.gif" alt="logo" data-element="image"></a>
+        <div class="navbar-header navbar-left">
+          <ul class="nav navbar-nav">
+            <li><a href="#" contenteditable="true" data-hover data-element="link">Home</a></li>
+            <li><a href="#"  contenteditable="true" data-hover data-element="link">About</a></li>
+            <li><a href="#"  contenteditable="true" data-hover data-element="link">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"  contenteditable="true" data-hover data-element="link">Dropdown Menu <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" contenteditable="true" data-element="link">Link1</a></li>
+                <li><a href="#" contenteditable="true" data-element="link">Link2</a></li>
+                <li><a href="#" contenteditable="true" data-element="link">link3</a></li>
+                <li class="divider"></li>
+                <li><a href="#" contenteditable="true" data-element="link">Separated link</a></li>
+              </ul>
+            </li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
 </header>
 </script>
 <script type="tmpl/html" id="block-1">
