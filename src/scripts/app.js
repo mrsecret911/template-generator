@@ -67,6 +67,8 @@ var controller = {
     var localLinkGet = JSON.parse(localStorage.getItem("link"));
     $("head").append(localLinkGet);
     model.newFontLinkTag = localLinkGet;
+    model.styleTemplate = JSON.parse(localStorage.getItem("styleTemplate"));
+    this.setStyleInRow();
     model.newFontName = JSON.parse(localStorage.getItem("newFontName"));
 
     model.newLineHeight = JSON.parse(localStorage.getItem("newLineHeight"));
@@ -123,7 +125,7 @@ var controller = {
     });
   },
   getTemplate: function(id, type) {
-    
+
     $.ajax({
       type: "GET",
       url: "scripts/template/tmpl.html",
@@ -170,6 +172,7 @@ var controller = {
       localStorage.setItem('link', JSON.stringify(model.newFontLinkTag));
       localStorage.setItem('newFontName', JSON.stringify(model.newFontName));
       localStorage.setItem('newLineHeight', JSON.stringify(model.newLineHeight));
+      localStorage.setItem('styleTemplate', JSON.stringify(model.styleTemplate));
       $("#build_wrap").html(localGet);
 
       controller.localStorageList();
@@ -224,13 +227,13 @@ var controller = {
       }
     });
   },
-  sendRequest: function(url, fun, id) {
+  sendRequest: function(url, fun, id, type) {
     $.ajax({
       type: "GET",
       url: url,
       async: true,
       success: function(data) {
-        fun(data, id);
+        fun(data, id, type);
       },
       error: function() {
         console.log("error");
@@ -322,19 +325,31 @@ var controller = {
       $.each(contenteditableList, function(index, el) {
         $(el).removeAttr("contenteditable");
       });
-      $("body").addClass("backgroundStyle");
-    }, 1);
+    }, 400);
+    $("body").addClass("backgroundStyle");
   },
-  setStyle: function (data,id) {
+  setStyle: function(data, id, type) {
     var styleForTmpl = $(data).filter(id).html();
     var $styleForTmpl = $(styleForTmpl).filter("style");
-    model.styleTemplate[id] = $styleForTmpl.html();
-    controller.setStyleInRow();
+    if ($styleForTmpl.length > 0) {
+      if (type === "header") {
+        model.styleTemplate["header"] = $styleForTmpl.html();
+      }
+      if (type === "footer") {
+        model.styleTemplate["footer"] = $styleForTmpl.html();
+      }
+      if (type === "block") {
+        model.styleTemplate[id] = $styleForTmpl.html();
+      }
+      controller.setStyleInRow();
+    }
   },
-  setStyleInRow: function () {
+  setStyleInRow: function() {
     var styleArr = [];
     for (var tmpl in model.styleTemplate) {
-      styleArr.push(model.styleTemplate[tmpl]);
+      if (model.styleTemplate.hasOwnProperty(tmpl)) {
+        styleArr.push(model.styleTemplate[tmpl]);
+      }
     }
     model.styleInRow = styleArr.join(" ");
   }
@@ -350,7 +365,7 @@ var blocksView = {
     controller.getAllblocks(data).forEach(function(block) {
       list += '<li data-type="block" data-id="#' + block.id + '"><img src="' + block.imgSrc + '" alt><span class="subscription">' +
         block.subscription + '</span></li>';
-    }); 
+    });
     this.$container.html(list);
     eventView.init();
   },
@@ -358,7 +373,7 @@ var blocksView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"));
+      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"), element.attr("data-type"));
     });
   },
 };
@@ -380,7 +395,7 @@ var footersView = {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"));
+      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"), element.attr("data-type"));
     });
   }
 };
@@ -397,13 +412,13 @@ var headersView = {
         header.subscription + '</span></li>';
     });
     this.$container.html(list);
-    
+
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
       var element = $(e.target);
       controller.getTemplate(element.attr("data-id"), element.attr("data-type"));
-      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"));
+      controller.sendRequest("scripts/template/style.html", controller.setStyle, element.attr("data-id"), element.attr("data-type"));
     });
   }
 };
@@ -412,7 +427,7 @@ var tmplsOnPageBlockView = {
   init: function() {
     this.$container = $("#build_wrap");
   },
-  render: function(events) {
+  render: function() {
     var list = "";
     list += controller.getHeaderFromPage();
     list += controller.getBlocksFromPage() + model.newTeplateBlock;
@@ -470,7 +485,12 @@ var tmplsBlocksInMenuView = {
       var currentSpan = $(e.target);
       var currentLi = currentSpan.parent();
       var currentIndex = currentLi.index();
+      var tmplId = model.containerTemplateBlockList[currentIndex];
       model.containerTemplateBlockList.splice(currentIndex, 1);
+      if (model.styleTemplate[tmplId] && $.inArray(tmplId, model.containerTemplateBlockList) === -1) {
+        model.styleTemplate[tmplId] = null;
+        controller.setStyleInRow();
+      }
       tmplsBlocksInMenuView.render();
       controller.deleteBlockOnPage(currentIndex);
       localStorage.setItem('listItem', JSON.stringify($(".tmplsBlocksInMenu").html()));
@@ -498,6 +518,9 @@ var tmplsHeaderInMenuView = {
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function() {
+      if (model.styleTemplate["header"]) {
+        model.styleTemplate["header"] = null;
+      }
       model.containerTemplateHeader = "";
       tmplsHeaderInMenuView.render();
       controller.deleteHeaderOrFooterOnPage("header");
@@ -524,6 +547,9 @@ var tmplsFooterInMenuView = {
   },
   handleClicks: function() {
     this.$container.on("click", ".tmpl_delete", function() {
+      if (model.styleTemplate["footer"]) {
+        model.styleTemplate["footer"] = null;
+      }
       model.containerTemplateFooter = "";
       tmplsFooterInMenuView.render();
       controller.deleteHeaderOrFooterOnPage("footer");
@@ -599,15 +625,19 @@ var settingsTabletView = {
         }
         $("#build_wrap").empty();
         $("#cmn-toggle2").prop('checked', false);
-        var pageHeight = $(window).innerHeight() - 80;
+        var pageHeight = $(window).innerHeight() - 60;
         var $frame = $('<div class="iframe-tablet"><iframe class="iframe_device" src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
         $("#build_wrap").html($frame);
+        $frame.show(function() {
+          $frame.find("iframe").css("opacity", "1");
+        });
         controller.addContentsToIframe();
         controller.turnOnModeView();
       } else {
         controller.turnOffModeView();
         $('#build_wrap').html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
+        eventView.init();
       }
     });
   },
@@ -627,28 +657,34 @@ var settingsMobileView = {
         }
         $("#build_wrap").empty();
         $("#cmn-toggle1").prop('checked', false);
-        var pageHeight = $(window).innerHeight() - 80;
+        var pageHeight = $(window).innerHeight() - 60;
         var $frame = $('<div class="iframe-mobile"><iframe class="iframe_device" src="" style="width: inherit;height:' + pageHeight + 'px">your browser needs to be updated.</iframe></div>');
         $("#build_wrap").html($frame);
+        $frame.show(function() {
+          $frame.find("iframe").css("opacity", "1");
+        });
         controller.addContentsToIframe();
         controller.turnOnModeView();
       } else {
         controller.turnOffModeView();
         $('#build_wrap').html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
+        eventView.init();
       }
     });
   },
 };
 
 var eventView = {
-  init: function () {
-    $(".drag_and_drop").dragAndDrop({draggable: ".draggable"});
-    $(".block-over").on("click", function(e){
-      var event = jQuery.Event( "contextmenu" );
+  init: function() {
+    $(".drag_and_drop").dragAndDrop({
+      draggable: ".draggable"
+    });
+    $(".block-over").on("click", function(e) {
+      var event = $.Event("contextmenu");
       event.pageX = e.pageX;
       event.pageY = e.pageY;
-      $(e.target).trigger( event);
+      $(e.target).trigger(event);
       return false;
     });
   }

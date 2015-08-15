@@ -74,6 +74,7 @@
     model.newFontName = "";
     model.newLineHeight = "";
     model.newFontLinkTag = "";
+    model.styleTemplate = {};
     tmplsHeaderInMenuView.render();
     tmplsBlocksInMenuView.render();
     tmplsFooterInMenuView.render();

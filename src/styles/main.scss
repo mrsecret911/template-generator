@@ -163,12 +163,14 @@ $blue: #00BCD4;
     }
     .settings {
       color: $dark-gray;
-      font-family: 'Glyphicons Halflings';
       span {
         cursor: pointer;
         font-size: 15px;
         font-weight: bold;
         width: 70%
+      }
+      span::before, span::after {
+        font-family: 'Glyphicons Halflings';
       }
       span::before {
         float: left;
@@ -658,17 +660,20 @@ $blue: #00BCD4;
 .iframe-tablet {
   margin: 20px auto;
   width: 640px;
+  display: none;
 }
 .iframe-mobile {
   margin: 20px auto;
   width: 320px;
+  display: none;
 }
 .iframe_device {
   border: solid 5px $dark-gray;
   border-radius: 5px;
+  opacity: 0;
 }
 .backgroundStyle {
-    background-color: #bdbdbd;
+  background: url("./../img/background.png");
 }
 /*end iframe*/
 
