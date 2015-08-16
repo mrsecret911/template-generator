@@ -35,6 +35,8 @@
 
   /*download*/
   $("#download_page").on("click", function () {
+    var $editButVideo = $(".video-over").detach();
+    var $editButMap = $(".map-over").detach();
     var zip = new JSZip();
     var bootstrapCssSrc = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">';
     var jquerySrc = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">';
@@ -51,6 +53,8 @@
       type: "blob"
     });
     saveAs(content, title + ".zip");
+    $(".block-video").find("iframe").parent().append($editButVideo);
+    $(".block-map").find("iframe").parent().append($editButMap);
   });
   /*end of download*/
 

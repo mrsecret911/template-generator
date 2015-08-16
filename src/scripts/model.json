@@ -21,9 +21,9 @@
       "subscription": "blocks-video"
     },
     {
-      "id": "block-top-1",
-      "imgSrc": "img/blocks/block-top-1.jpg",
-      "subscription": "first block"
+      "id": "block-map",
+      "imgSrc": "img/blocks/column-4.jpg",
+      "subscription": "blocks-map"
     },
     {
       "id": "block-icons-1",

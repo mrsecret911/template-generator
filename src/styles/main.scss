@@ -166,7 +166,6 @@ $blue: #00BCD4;
       span {
         cursor: pointer;
         font-size: 15px;
-        font-weight: bold;
         width: 70%
       }
       span::before, span::after {
@@ -638,6 +637,23 @@ $blue: #00BCD4;
     border: none;
   }
 }
+.map_modal {
+  h5 {
+    margin-top: 0;
+  }
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .add_map {
+    width: 100%;
+    background: #00BCD4;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    border: none;
+  }
+}
 .background_modal {
    h5 {
     margin-top: 0;
@@ -733,3 +749,28 @@ $blue: #00BCD4;
   }
 }
 /*end of dragAndDrop*/
+
+/*Edit button*/
+iframe:hover + .block-over{
+  opacity: 0.6;
+}
+.block-over {
+  cursor: pointer;
+  position: absolute;
+  color: #fff;
+  font-size: 16px;
+  top: 60px;
+  width: 100px;
+  height: 40px;
+  background-color: #777;
+  opacity: 0;
+  text-align: center;
+  line-height: 40px;
+  &.map-over {
+    top: 110px;
+  }
+}
+.block-over:hover {
+  opacity: 0.9;
+}
+/*End of edit button*/
