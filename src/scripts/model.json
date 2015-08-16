@@ -21,44 +21,19 @@
       "subscription": "blocks-video"
     },
     {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
+      "id": "block-top-1",
+      "imgSrc": "img/blocks/block-top-1.jpg",
+      "subscription": "first block"
     },
     {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
+      "id": "block-icons-1",
+      "imgSrc": "img/blocks/block-icons-1.jpg",
+      "subscription": "block with icons"
     },
     {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
-    },
-    {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
-    },
-    {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
-    },
-    {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
-    },
-    {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
-    },
-    {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-1"
+      "id": "block-portfolio-1",
+      "imgSrc": "img/blocks/block-portfolio-1.jpg",
+      "subscription": "block portfolio"
     }
   ],
   "headers": [
