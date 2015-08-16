@@ -42,6 +42,13 @@
         element.after(element.clone());
       });
     },
+    cloneFnLink: function (element, eventLink) {
+      var element = element.parent();
+      var eventLink = $(eventLink);
+      eventLink.on("click", function () {
+        element.after( element.clone());
+      });
+    },
     deleteFn: function (element, eventLink) {
       var element = element;
       var eventLink = $(eventLink);
@@ -143,7 +150,38 @@
         });
         $(".map_modal").modal("show");
       });
-    }
+    },
+    changeLinkFn: function (element, eventLink) {
+      element = element;
+      eventLink = $(eventLink);
+      var linkModal = $(".link_modal");
+      var addlinkBtn = linkModal.find(".add_link");
+      var addLinkInput = linkModal.find(".link_src");
+      eventLink.on("click", function () {
+        addlinkBtn.on("click", function () {
+          var inputVal = addLinkInput.val();
+          element.attr("href", '"'+ inputVal +'"');
+          $(".link_modal").modal("hide");
+          inputVal.clear();
+        });
+        $(".link_modal").modal("show");
+      });
+    },
+    changeBackgroundFn: function (element, eventLink) {
+      element = element;
+      eventLink = $(eventLink);
+      var backModal = $(".background_modal");
+      var addBackBtn = backModal.find(".add_background");
+      var addBackInput = backModal.find(".background_value");
+      eventLink.on("click", function () {
+        addBackBtn.on("click", function () {
+          var inputVal = addBackInput.val();
+          $("#navig").attr("class", "navbar " + inputVal + " navbar-top");
+          $(".background_modal").modal("hide");
+        });
+        $(".background_modal").modal("show");
+      });
+    },
   };
   /*** end of event functions*/
 

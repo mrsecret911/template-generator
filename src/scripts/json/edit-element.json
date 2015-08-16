@@ -105,5 +105,31 @@
           "event": "deleteFn"
         }
       ]
+    },
+    "link": {
+      "header": "link",
+      "list": [
+        {
+          "text": "Change link",
+          "event": "changeLinkFn"
+        },
+        {
+          "text": "Delete link",
+          "event": "deleteFn"
+        },
+        {
+          "text": "Clone",
+          "event": "cloneFnLink"
+        }
+      ]
+    },
+    "background": {
+      "header": "background",
+      "list": [
+        {
+          "text": "Change background",
+          "event": "changeBackgroundFn"
+        }
+      ]
     }
 }

@@ -18,3 +18,36 @@
   }
 }
 /* End of block-map */
+
+/* header */
+.navbarOne {
+  border: 2px outset #8F4700;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #993300;
+  font-weight: bold;
+  font-size: 20px;
+  font-style: italic;
+  opacity: 0,6;
+  li, a {
+    color: #FF9933;
+  }
+  li a:hover {
+    background-color: #669999;
+  }
+  img {
+    height: 25px;
+  }
+}
+.navbar-default {
+  img {
+    height: 25px;
+  }
+}
+.navbar-inverse {
+  img {
+    height: 25px;
+  }
+}
+/*End of header*/
