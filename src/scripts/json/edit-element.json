@@ -80,6 +80,27 @@
           "event": "changeVideoFn"
         },
         {
+          "text": "Expand",
+          "event": "expandVideoFn"
+        },
+        {
+          "text": "Shrink",
+          "event": "shrinkVideoFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
+        }
+      ]
+    },
+    "map": {
+      "header": "Map",
+      "list": [
+        {
+          "text": "Cnahge",
+          "event": "changeMapFn"
+        },
+        {
           "text": "Delete",
           "event": "deleteFn"
         }

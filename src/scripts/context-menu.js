@@ -97,6 +97,52 @@
         });
         $(".video_modal").modal("show");
       });
+    },
+    expandVideoFn: function (element, eventLink) {
+      var $eventLink = $(eventLink);
+      $eventLink.on("click", function (e) {
+        var classEl = element.parent().prop("class");
+        var classElWidth = +classEl.substr(-1);
+        if (classElWidth < 8) {
+          var classElSib = element.parent().siblings().prop("class");
+          var newClassEl = classEl.substring(0, classEl.length - 1) + (classElWidth + 1);
+          var newClassElSib = classElSib.substring(0, classEl.length - 1) + (+classElSib.substr(-1) - 1);
+          element.parent().prop("class", newClassEl);
+          element.parent().siblings().prop("class", newClassElSib);
+        }
+        return false;
+      });
+    },
+    shrinkVideoFn: function (element, eventLink) {
+      var $eventLink = $(eventLink);
+      $eventLink.on("click", function (e) {
+        var classEl = element.parent().prop("class");
+        var classElWidth = +classEl.substr(-1);
+        if (classElWidth > 3) {
+          var classElSib = element.parent().siblings().prop("class");
+          var newClassEl = classEl.substring(0, classEl.length - 1) + (classElWidth - 1);
+          var newClassElSib = classElSib.substring(0, classEl.length - 1) + (+classElSib.substr(-1) + 1);
+          element.parent().prop("class", newClassEl);
+          element.parent().siblings().prop("class", newClassElSib);
+        }
+        return false;
+      });
+    },
+    changeMapFn: function (element, eventLink) {
+      var element = element;
+      var eventLink = $(eventLink);
+      var mapModal = $(".map_modal");
+      var addMapBtn = mapModal.find(".add_map");
+      var addMapInput = mapModal.find(".map_src");
+      eventLink.on("click", function (e) {
+        e.preventDefault()
+        addMapBtn.on("click", function () {
+          var url = addMapInput.val() || element.attr("src");
+          element.attr("src", url);
+          $(".map_modal").modal("hide");
+        });
+        $(".map_modal").modal("show");
+      });
     }
   };
   /*** end of event functions*/
@@ -128,7 +174,7 @@
     var element = target.attr("data-element");
 
     if (editParameters[element]) {
-      if (element === "video") {
+      if (element === "video" || element === "map") {
         target = target.siblings("iframe");
       }
       contextList.html("");
