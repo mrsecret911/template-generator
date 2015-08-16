@@ -16,7 +16,8 @@ gulp.task('html', function() { 
 gulp.task('styles', function() {
   return gulp.src([
    './src/styles/main.scss',
-   './bower_components/perfect-scrollbar/css/perfect-scrollbar.css'])
+   './bower_components/perfect-scrollbar/css/perfect-scrollbar.css',
+   './src/styles/preloader.css'])
   .pipe(sass({
     includePaths: [
       './bower_components/bootstrap-sass/assets/stylesheets'
@@ -61,6 +62,7 @@ gulp.task('libs', function() {
 
 gulp.task('scripts', function() {
   return gulp.src([
+    './src/scripts/preloader.js',
     './src/scripts/builder-scripts.js',
     './src/scripts/context-menu.js',
     './src/scripts/app.js'
@@ -87,7 +89,7 @@ gulp.task('localtunnel', shell.task([
 gulp.task('watch', function () {
   gulp.watch('src/index.html', ['html']);
   gulp.watch('src/styles/*.scss', ['styles','styleTmpls']);
-  gulp.watch('src/styles/*.scss', ['styles']);
+  gulp.watch('src/styles/*.css', ['styles']);
   gulp.watch('src/scripts/*.js', ['scripts']);
   gulp.watch('src/scripts/template/*.html', ['tmpls']);
   gulp.watch('src/scripts/**/*.json', ['jsons']);

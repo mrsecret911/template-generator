@@ -7,7 +7,9 @@ $gray: #777;
 $dark-gray: #333;
 $blue: #00BCD4;
 /*end of colors*/
-
+/*#content: {
+  display:none;
+}*/
 .nav-icon {
   right: 0;
   top: 0;
@@ -723,7 +725,7 @@ $blue: #00BCD4;
   opacity: 0;
 }
 .backgroundStyle {
-  background: url("./../img/background.png");
+  background: url(./../img/background/background.png);
 }
 /*end iframe*/
 
