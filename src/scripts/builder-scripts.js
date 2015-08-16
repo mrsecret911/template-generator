@@ -1,10 +1,14 @@
 (function ($) {
   /*nav*/
   $("#navTab a").tab("show");
-  
+
   var navWrap = $("#nav_wrap");
   var tabplateBtn = navWrap.find(".add_btn");
 
+  $(".main_nav, .nav-icon").click(function () {
+    navWrap.removeClass("template_open");
+    tabplateBtn.removeClass("close_icon");
+  });
   tabplateBtn.click(function () {
     var btn = $(this);
     if (btn.hasClass("close_icon")) {
@@ -23,24 +27,10 @@
     navWrap.find($(this).attr("data-open")).addClass("open");
   });
 
-  var obj = document.querySelectorAll('.nav-icon');
-  for (var i = obj.length - 1; i >= 0; i--) {
-    var toggle = obj[i];
-    toggleSwitch(toggle);
-  }
-
-  function toggleSwitch(toggle) {
-    toggle.addEventListener("click", function () {
-      if (this.classList.contains("active") === true) {
-        this.classList.remove("active");
-        $("#nav_wrap").removeClass("show_nav");
-      }
-      else {
-        this.classList.add("active");
-        $("#nav_wrap").addClass("show_nav");
-      }
-    });
-  }
+  $(".nav-icon").click(function () {
+    $(this).toggleClass("active");
+    $("#nav_wrap").toggleClass("show_nav");
+  });
   /*end of nav*/
 
   /*download*/
