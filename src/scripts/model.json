@@ -34,6 +34,11 @@
       "id": "block-portfolio-1",
       "imgSrc": "img/blocks/block-portfolio-1.jpg",
       "subscription": "block portfolio"
+    },
+    {
+      "id": "block-photo_par",
+      "imgSrc": "img/blocks/block-portfolio-1.jpg",
+      "subscription": "block photo with paragraph"
     }
   ],
   "headers": [
@@ -43,16 +48,16 @@
       "subscription": "header-1"
     },
     {
-      "id": "header-2",
+      "id": "header-center",
       "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "header-2"
+      "subscription": "header-center"
     }
   ],
   "footers": [
     {
-      "id": "footer-1",
+      "id": "footer-thin",
       "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "footer-1"
+      "subscription": "footer-thin"
     },
     {
       "id": "footer-2",
