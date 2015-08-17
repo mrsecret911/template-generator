@@ -689,6 +689,11 @@ $blue: #00BCD4;
     border: none;
   }
 }
+#modal-save {
+  .modal-body {
+    font-style: italic;
+  }
+}
 /*end of modals*/
 
 /*drug and drop*/
