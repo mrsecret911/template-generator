@@ -63,9 +63,9 @@
   ],
   "headers": [
     {
-      "id": "header-1",
+      "id": "header-simple",
       "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "header-1"
+      "subscription": "Simple-Header"
     },
     {
       "id": "header-2",
@@ -75,9 +75,9 @@
   ],
   "footers": [
     {
-      "id": "footer-1",
+      "id": "center-footer",
       "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "footer-1"
+      "subscription": "center-footer"
     },
     {
       "id": "footer-2",

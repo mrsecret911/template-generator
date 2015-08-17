@@ -658,16 +658,17 @@ $blue: #00BCD4;
     border: none;
   }
 }
-.background_modal {
-  h5 {
+
+.background_modalHeader, .background_modalFooter {
+   h5 {
     margin-top: 0;
   }
-  select {
-    width: 50%;
+  .background_value, #ownColor {
+    width: 80%;
     margin-bottom: 10px;
   }
-  .add_background {
-    float: right;
+  .add_background, .add_backgroundSelect {
+    float: left;
     background: #00BCD4;
     color: #fff;
     text-align: center;
