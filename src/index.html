@@ -1,255 +1,327 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="title" content="Html generator">
-    <meta name="description" content="Create your own page with HTML page generator. it's avaliable and free to use. Be creative with big size of templates and light functionality">
-    <link rel="stylesheet" href="styles/main.min.css">
-    <link rel="stylesheet" href="styles/tmpls.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <div id="loader-wrapper">
-      <div id="loader"></div>
-      <div class="loader-section section-left"><h1>Template generator</h1></div>
-      <div class="loader-section section-right"><h1>Make a website - it's easy</h1></div>
-     </div>
-    <!-- build nav -->
-    <div class="nav-icon cross">
-      <div class="span"></div>
-    </div>
-    <nav id="nav_wrap">
-      <div class="main_nav nav nav-tabs" id="navTab">
-        <ul class="list-unstyled">
-          <li class="">
-            <a href="#build_settings" data-toggle="tab" class="glyphicon glyphicon-cog" aria-hidden="true" aria-expanded="false" id="up"></a>
-          </li>
-          <li class="active">
-            <a href="#build_templates" data-toggle="tab" class="glyphicon glyphicon-duplicate" aria-hidden="true" aria-expanded="true"></a>
-          </li>
-        </ul>
-        <ul class="list-unstyled bottom_nav">
-          <li class="">
-            <a href="#" class="glyphicon glyphicon-new-window" id="clear" data-toggle="modal" data-target="#modal-1" aria-hidden="true"></a>
-          </li>
-          <li class="">
-            <a href="#" class="glyphicon glyphicon-floppy-disk" id="download_page" aria-hidden="true"></a>
-          </li>
-          <li class="active">
-            <a href="#" class="glyphicon glyphicon-trash" id="delete_page" aria-hidden="true"></a>
-          </li>
-        </ul>
-      </div>
-      <div class="sub_nav tab-content">
-        <div class="tab-pane" id="build_settings">
-          <h4>Settings</h4>
-          <hr>
-          <h5>Page settings</h5>
-          <hr>
-          <div class="settings settings_text-font">
-            <span>Font</span>
-            <ul></ul>
-          </div>
-          <hr>
-          <div class="settings settings_text-line-height">
-            <span>Line-height</span>
-            <input type="range" min="16" max="24">
-          </div>
-          <hr>
-          <h5>Device mode</h5>
-          <hr>
-          <div class="settings settings_tablet-view">
-            <span>Tablet-view</span>
-            <input id="cmn-toggle1" class="cmn-toggle cmn-toggle-round" type="checkbox">
-            <label for="cmn-toggle1"></label>
-          </div>
-          <hr>
-          <div class="settings settings_mobile-view">
-            <span>Mobile-view</span>
-            <input id="cmn-toggle2" class="cmn-toggle cmn-toggle-round" type="checkbox">
-            <label for="cmn-toggle2"></label>
-          </div>
-        </div>
-        <div class="tab-pane active" id="build_templates">
-          <h4>Site title</h4>
-            <input type="text" class="form-control" id="page_title" placeholder="Test page..." value="quick-builder">
-          <hr>
-          <div class="add_header">
-            <button type="button" class="btn add_btn" data-open=".header_template">Header<span class="arrow_icon"></span></button>
-          </div>
-          <div class="tmpls tmplsHeaderInMenu"></div>
-          <div class="add_footer">
-            <button type="button" class="btn add_btn" data-open=".footer_template">Footer<span class="arrow_icon"></span></button>  
-          </div>
-          <div class="tmpls tmplsFooterInMenu"></div>
-          <div class="add_block">
-            <button type="button" class="btn add_btn" data-open=".block_template">Blocks<span class="arrow_icon"></span></button>
-          </div>
-          <div class="tmpls tmplsBlocksInMenu"></div>
-          <div id="social">
-            <a id="twitter" target="_blank" href="https://twitter.com/intent/tweet?text=Create your own page with HTML page generator. it's avaliable and free to use. Be creative with big size of templates and light functionality - https://github.com/mrsecret911/quick-builder">
-              <img class="imgActive" src="img/social_icons/twitter.png" alt="twitter">
-              <img class="imgHover" src="img/social_icons/twitterHover.png" alt="twitter">
-            </a>
-            <a id="facebook" target="_blank" href="http://www.facebook.com/sharer.php?u=https://github.com/mrsecret911/quick-builder">
-              <img class="imgActive" src="img/social_icons/facebook.png" alt="facebook">
-              <img class="imgHover" src="img/social_icons/facebookHover.png" alt="facebook">
-            </a>
-            <a id="google" target="_blank" href="https://plus.google.com/share?url=https://github.com/mrsecret911/quick-builder">
-              <img class="imgActive" src="img/social_icons/google.png" alt="google">
-              <img class="imgHover" src="img/social_icons/googleHover.png" alt="google">
-            </a>
-            <a id="linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.facebook.com/sharer.php?u=https://github.com/mrsecret911/quick-builder&title=Html%20generator&summary=Create%20your%20own%20page%20with%20HTML%20page%20generator.%20it's%20avaliable%20and%20free%20to%20use.%20Be%20creative%20with%20big%20size%20of%20templates%20and%20light%20functionality&source=">
-              <img class="imgActive" src="img/social_icons/linkedin.png" alt="linkedin">
-              <img class="imgHover" src="img/social_icons/linkedinHover.png" alt="linkedin">
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="template_wrap">
-          <ul class="template header_template"></ul>
-          <ul class="template footer_template"></ul>
-          <ul class="template block_template"></ul>
-      </div>
-    </nav>
-    <!-- end of  build nav -->
+<head>
+  <meta charset="utf-8">
+  <meta name="title" content="Html generator">
+  <meta name="description" content="Create your own page with HTML page generator. it's avaliable and free to use. Be creative with big size of templates and light functionality">
+  <link rel="stylesheet" href="styles/main.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/tmpls.css">
 
-    <!-- contextmenu -->
-    <div id="context_menu">
-      <div class="context_title">Title</div>
-      <ul class="context_list list-unstyled">
-        <li><a href="#">Change something</a></li>
-        <li><a href="#">Change some</a></li>
-        <li><a href="#">Change lorem  </a></li>
+</head>
+<body>
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"><h1>Template generator</h1></div>
+    <div class="loader-section section-right"><h1>Make a website - it's easy</h1></div>
+  </div>
+  <!-- build nav -->
+  <div class="nav-icon cross">
+    <div class="span"></div>
+  </div>
+  <nav id="nav_wrap">
+    <div class="main_nav nav nav-tabs" id="navTab">
+      <ul class="list-unstyled">
+        <li class="">
+          <a href="#build_settings" data-toggle="tab" class="glyphicon glyphicon-cog" aria-hidden="true" aria-expanded="false" id="up"></a>
+        </li>
+        <li class="active">
+          <a href="#build_templates" data-toggle="tab" class="glyphicon glyphicon-duplicate" aria-hidden="true" aria-expanded="true"></a>
+        </li>
+      </ul>
+      <ul class="list-unstyled bottom_nav">
+        <li class="">
+          <a href="#" class="glyphicon glyphicon-floppy-disk"  data-toggle="modal" data-target="#modal-save" id="download_page" aria-hidden="true"></a>
+        </li>
+        <li class="active">
+          <a href="#" class="glyphicon glyphicon-trash" id="delete_page" aria-hidden="true"></a>
+        </li>
       </ul>
     </div>
-    <!-- end of contextmenu -->
-    
-    <!-- modals -->
-    <div class="modal fade icon_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            
-          </div>
+    <div class="sub_nav tab-content">
+      <div class="tab-pane" id="build_settings">
+        <h4>Settings</h4>
+        <hr>
+        <h5>Page settings</h5>
+        <hr>
+        <div class="settings settings_text-font">
+          <span>Font</span>
+          <ul></ul>
+        </div>
+        <hr>
+        <div class="settings settings_text-line-height">
+          <span>Line-height</span>
+          <input type="range" min="16" max="24">
+        </div>
+        <hr>
+        <h5>Device mode</h5>
+        <hr>
+        <div class="settings settings_tablet-view">
+          <span>Tablet-view</span>
+          <input id="cmn-toggle1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+          <label for="cmn-toggle1"></label>
+        </div>
+        <hr>
+        <div class="settings settings_mobile-view">
+          <span>Mobile-view</span>
+          <input id="cmn-toggle2" class="cmn-toggle cmn-toggle-round" type="checkbox">
+          <label for="cmn-toggle2"></label>
+        </div>
+      </div>
+      <div class="tab-pane active" id="build_templates">
+        <h4>Site title</h4>
+        <input type="text" class="form-control" id="page_title" placeholder="Test page..." value="quick-builder">
+        <hr>
+        <div class="add_header">
+          <button type="button" class="btn add_btn" data-open=".header_template">Header<span class="arrow_icon"></span></button>
+        </div>
+        <div class="tmpls tmplsHeaderInMenu"></div>
+        <div class="add_footer">
+          <button type="button" class="btn add_btn" data-open=".footer_template">Footer<span class="arrow_icon"></span></button>  
+        </div>
+        <div class="tmpls tmplsFooterInMenu"></div>
+        <div class="add_block">
+          <button type="button" class="btn add_btn" data-open=".block_template">Blocks<span class="arrow_icon"></span></button>
+        </div>
+        <div class="tmpls tmplsBlocksInMenu"></div>
+        <div id="social">
+          <a id="twitter" target="_blank" href="https://twitter.com/intent/tweet?text=Create your own page with HTML page generator. it's avaliable and free to use. Be creative with big size of templates and light functionality - https://github.com/mrsecret911/quick-builder">
+            <img class="imgActive" src="img/social_icons/twitter.png" alt="twitter">
+            <img class="imgHover" src="img/social_icons/twitterHover.png" alt="twitter">
+          </a>
+          <a id="facebook" target="_blank" href="http://www.facebook.com/sharer.php?u=https://github.com/mrsecret911/quick-builder">
+            <img class="imgActive" src="img/social_icons/facebook.png" alt="facebook">
+            <img class="imgHover" src="img/social_icons/facebookHover.png" alt="facebook">
+          </a>
+          <a id="google" target="_blank" href="https://plus.google.com/share?url=https://github.com/mrsecret911/quick-builder">
+            <img class="imgActive" src="img/social_icons/google.png" alt="google">
+            <img class="imgHover" src="img/social_icons/googleHover.png" alt="google">
+          </a>
+          <a id="linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.facebook.com/sharer.php?u=https://github.com/mrsecret911/quick-builder&title=Html%20generator&summary=Create%20your%20own%20page%20with%20HTML%20page%20generator.%20it's%20avaliable%20and%20free%20to%20use.%20Be%20creative%20with%20big%20size%20of%20templates%20and%20light%20functionality&source=">
+            <img class="imgActive" src="img/social_icons/linkedin.png" alt="linkedin">
+            <img class="imgHover" src="img/social_icons/linkedinHover.png" alt="linkedin">
+          </a>
         </div>
       </div>
     </div>
-    
-    <div class="modal fade img_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Images</h4>
-          </div>
-          <div class="modal-body row">
-            <div class="col-xs-4 border-right">
-              <h5>Image url:</h5>
-              <input type="text" class="image_src">
-              <button class="add_img">Add image</button>  
-            </div>
-            <div class="col-xs-8">
-              <ul class="image_list list-inline"></ul>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="template_wrap">
+      <ul class="template header_template"></ul>
+      <ul class="template footer_template"></ul>
+      <ul class="template block_template"></ul>
     </div>
-    <div class="modal fade link_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Link</h4>
-          </div>
-          <div class="modal-body row">
-            <div class="col-xs-6">
-              <h5>Page name:</h5>
-              <input type="text" class="name_src">
-            </div>
-            <div class="col-xs-6">
-              <h5>Link url:</h5>
-              <input type="text" class="link_src">
-            </div>
-            <div class="col-xs-4 col-xs-offset-4">
-              <button class="add_link">Save change</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade video_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Video</h4>
-          </div>
-          <div class="modal-body row">
-            <div class="col-xs-6">
-              <h5>Video embed url:</h5>
-              <input type="text" class="video_src">
-              <button class="add_video">Change video</button>
-            </div>
-            <div class="col-xs-6">
-              <h5>Get the embed url from video-sharing website and paste here.<h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade map_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Map</h4>
-          </div>
-          <div class="modal-body row">
-            <div class="col-xs-6">
-              <h5>Map embed url:</h5>
-              <input type="text" class="map_src">
-              <button class="add_map">Change map</button>
-            </div>
-            <div class="col-xs-6">
-              <h5>Get the embed url from map-sharing website and paste here.<h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--end of modals-->
+  </nav>
+  <!-- end of  build nav -->
 
-    <!-- modal window -->
-    <div class='modal' id="modal-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal">&times;</button>
-            <h3 class="modal-title">Create a New Page</h3>
+  <!-- contextmenu -->
+  <div id="context_menu">
+    <div class="context_title">Title</div>
+    <ul class="context_list list-unstyled">
+      <li><a href="#">Change something</a></li>
+      <li><a href="#">Change some</a></li>
+      <li><a href="#">Change lorem  </a></li>
+    </ul>
+  </div>
+  <!-- end of contextmenu -->
+
+  <!-- modals -->
+  <div class="modal fade icon_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade img_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Images</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-xs-4 border-right">
+            <h5>Image url:</h5>
+            <input type="text" class="image_src">
+            <button class="add_img">Add image</button>  
           </div>
-          <div class="modal-body">
-            <p>Do you want to save the current page?</p>
-          </div>
-          <div class="modal-footer">
-            <button id="save" class="btn btn-info" type="button" data-dismiss="modal">Yes</button>
-            <button id="remove" class="btn btn-info" type="button" data-dismiss="modal">No</button>
-            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+          <div class="col-xs-8">
+            <ul class="image_list list-inline"></ul>
           </div>
         </div>
       </div>
     </div>
-    <!-- End of modal window -->
-    
-    <!-- build container -->
-    <div id="build_wrap"></div>
-    <!--end of  build container -->
-    <script src="scripts/libs.min.js"></script>
-    <script src="scripts/main.min.js"></script>
-  </body>
+  </div>
+
+  <div class="modal fade link_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Link</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-xs-6">
+            <h5>Page name:</h5>
+            <input type="text" class="name_src">
+          </div>
+          <div class="col-xs-6">
+            <h5>Link url:</h5>
+            <input type="text" class="link_src">
+          </div>
+          <div class="col-xs-4 col-xs-offset-4">
+            <button class="add_link">Save change</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade background_modalHeader">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Background-color</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-xs-4 border-right">
+            <h5>Change from select:</h5>
+            <select class="background_value">
+              <option value="#E1BEE7">Purple</option>
+              <option value="#9FA8DA">Indigo</option>
+              <option value="#80DEEA">Cyan</option>
+              <option value="#FFE082">Amber</option>
+              <option value="#E6EE9C">Lime</option>
+              <option value="#FFAB91">Deep orange</option>
+              <option value="#B39DDB">Deep purple</option>
+              <option value="#66BB6A">Light green</option>
+            </select>
+            <button class="add_backgroundSelect">Change</button>
+          </div>
+          <div class="col-xs-4 border-left">
+            <h5>Write your own color</h5>
+            <input type="text" id="ownColor">
+            <button class="add_background">Change</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade background_modalFooter">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Background-color</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-xs-4 border-right">
+            <h5>Change from select:</h5>
+            <select class="background_value">
+              <option value="#E1BEE7">Purple</option>
+              <option value="#9FA8DA">Indigo</option>
+              <option value="#80DEEA">Cyan</option>
+              <option value="#FFE082">Amber</option>
+              <option value="#E6EE9C">Lime</option>
+              <option value="#FFAB91">Deep orange</option>
+              <option value="#B39DDB">Deep purple</option>
+              <option value="#66BB6A">Light green</option>
+            </select>
+            <button class="add_backgroundSelect">Change</button>
+          </div>
+          <div class="col-xs-4 border-left">
+            <h5>Write your own color</h5>
+            <input type="text" id="ownColor">
+            <button class="add_background">Change</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade video_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Video</h4>
+        </div>
+
+        <div class="modal-body row">
+
+          <div class="col-xs-6">
+            <h5>Video embed url:</h5>
+            <input type="text" class="video_src">
+            <button class="add_video">Change video</button>
+          </div>
+
+          <div class="col-xs-6">
+            <h5>Get the embed url from video-sharing website and paste here.</h5>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal fade map_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Map</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-xs-6">
+            <h5>Map embed url:</h5>
+            <input type="text" class="map_src">
+            <button class="add_map">Change map</button>
+          </div>
+          <div class="col-xs-6"><h5>Get the embed url from map-sharing website and paste here.<h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end of modals-->
+
+  <!-- modal window -->
+  <div class='modal' id="modal-save">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Save the page</h3>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to save the current page?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="save" class="btn btn-info" type="button" data-dismiss="modal">Yes</button>
+          <button id="remove" class="btn btn-info" type="button" data-dismiss="modal">No</button>
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of modal window -->
+
+  <!-- build container -->
+  <div id="build_wrap"></div>
+  <!--end of  build container -->
+  <script src="scripts/libs.min.js"></script>
+  <script src="scripts/main.min.js"></script>
+
+
+  <script>
+  $("#loader-wrapper").remove();
+  </script>
+</body>
 </html>

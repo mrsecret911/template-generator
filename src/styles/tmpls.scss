@@ -19,38 +19,40 @@
 }
 /* End of block-map */
 
-/* header */
-.navbarOne {
-  border: 2px outset #8F4700;
-  border-radius: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  background-color: #993300;
+/* header center */
+.navigationMenu {
+  border: 1px solid #9E9E9E;
+  border-radius: 0;
+  background-color: #FFF;
   font-weight: bold;
-  font-size: 20px;
-  font-style: italic;
-  opacity: 0,6;
+  button {
+    border: 1px solid #9E9E9E;
+    padding-bottom:0px;
+    padding-top: 10px;
+  }
+  .navbar-right {
+    padding-right: 20px;
+  }
   li, a {
-    color: #FF9933;
+    color: #757575;
   }
-  li a:hover {
-    background-color: #669999;
+  .navbar-brand {
+    color: #000
   }
   img {
     height: 25px;
   }
-}
-.navbar-default {
-  img {
-    height: 25px;
+  .dropdown {
+    border-left: 1px solid #9E9E9E;
+  }
+  li:hover{
+    display: block;
+  }
+  .dropdown:hover ul {
+    display: block;
   }
 }
-.navbar-inverse {
-  img {
-    height: 25px;
-  }
-}
-/*End of header*/
+/*End of header center*/
 
 
 /*block-top-1*/
@@ -90,6 +92,11 @@
     &:hover {
       color: #fff;
       background: #eb3812;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 34px;
     }
   }
 }
@@ -171,6 +178,207 @@
     }  
   }
 }
+/*end of block-portfolio-1*/
+
+/*large-footer-1*/
+.large-footer-1 {
+  background: #333;
+  color: #fff;
+  padding: 50px 0;
+
+  .column-1 {
+    text-align: right;
+  }
+  .column-2 span {
+    font-size: 80px;
+  }
+  .column-3 {
+    text-align: left;
+    li {
+      margin: 10px 0;  
+      span {
+        margin-right: 10px;  
+      }
+    }
+  }
+  a, a:hover {
+    color: #fff;
+  }
+  .fa {
+    font-size: 30px;
+  }
+  .copyright {
+    margin: 30px 0;
+  }
+  h2, h4 {
+    margin-top: 0;
+  }
+  h4 {
+    margin-bottom: 20px;  
+  }
+  @media screen and (max-width: 768px) {
+    .column-1, .column-3 {
+      text-align: center;
+    }
+    .column-3 ul {
+      margin-bottom: 0;
+      li {
+        display: inline-block;
+        margin-right: 15px;
+      }
+    }
+    .column-2 span {
+      margin-bottom: 10px;
+    }
+  }  
+}
+
+/*end of large-footer-1*/
+
+/*large-carousel-1*/
+.large-carousel-1 {
+  position: relative;
+  .text_wrap {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  h1 {
+    margin-top: 0;
+    font-size: 70px;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    padding: 0 10px;
+  }
+  p {
+    font-size: 34px;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    padding: 0 10px;
+  }
+  .carousel-control {
+    z-index: 10;
+  }
+  @media screen and (max-width: 768px){
+    h1 {
+      font-size: 38px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
+/*end of large-carousel-1*/
+
+/*large-image-1*/
+.large-image-1 {
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  padding: 120px 0;
+  h2 {
+    margin: 0 0 35px 0;
+    font-size: 42px;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+/*end of large-image-1*/
+
+/*product-sale-1*/
+.product-sale-1 {
+  padding: 50px 0;
+  h2 {
+    margin-top: 0;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  .old-price {
+    font-size: 20px;
+    text-decoration: line-through;
+    color: #666;
+    font-weight: 100;
+  }
+  .new-price {
+    font-size: 26px;
+    color: #265a88;
+    font-weight: 100;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+/*end of product-sale-1*/
+
+/*block-reviews-2*/
+.block-reviews-2 {
+  padding: 50px 0;
+  h2 {
+    text-align: center;
+    margin: 0 0 50px 0;
+  }
+  .rev_wrap {
+    background: #f9f9f9;
+    border-radius: 3px;
+    border-radius: 3px;
+    border: 2px solid #eee;
+    padding: 15px;
+    text-align: center;
+  }
+  img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+  .name {
+    font-weight: bold;
+  }
+}
+/*end of block-reviews-2*/
+
+/*center-footer*/
+#center-footer {
+  margin:0;
+  width: 100%;
+  padding: 60px;
+  text-align: center;
+  background-color: #66BB6A;
+  .row {
+    width: 100%;
+    color: #fff;
+    #linkLogo{
+      padding: 15px;
+      font-weight: bold;
+      font-size: 20px;
+      a {
+        color: #fff;
+      }
+    }
+    p {
+      margin-bottom: 2px;
+    }
+    li span {
+      padding: 15px;
+      color: #E0E0E0;
+    }
+  }
+  .fade-half {
+    color: #E0E0E0;
+    font-size: 15px;
+  }
+}
+
+/*end of center-footer*/
 /*end of block-portfolio-1*/
 
 /*Footer-thin*/

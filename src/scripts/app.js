@@ -196,7 +196,7 @@ var controller = {
             $("#build_wrap > div").eq(0).before(block);
           }
         }
-        eventView.init();
+        controller.addEvents();
         var newContainerTemplateBlockList = [];
         $.each($(".tmplsBlocksInMenu")
           .find('li'), function(index, el) {
@@ -295,7 +295,7 @@ var controller = {
     $clickOffSetEl.css("pointer-events", "none");
     var $clickOffEl = $(".main_nav a:not([href$='#build_settings'])");
     $.each($clickOffEl, function(index, el) {
-      $(el).one("click.delete", function() {
+      $(el).on("click.delete", function() {
         $("#cmn-toggle1").prop('checked', false);
         $("#build_wrap").html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
@@ -352,6 +352,32 @@ var controller = {
       }
     }
     model.styleInRow = styleArr.join(" ");
+  },
+  addEvents: function () {
+    $(".drag_and_drop").dragAndDrop({
+      draggable: ".draggable"
+    });
+    $(".block-over").on("click", function(e) {
+      var event = $.Event("contextmenu");
+      event.pageX = e.pageX;
+      event.pageY = e.pageY;
+      $(e.target).trigger(event);
+      return false;
+    });
+    /*bootstrap slider*/
+  $(".carousel-control").on("click", function () {
+    console.log(1111);
+    var btn = $(this);
+    var carousel = $(this).closest(".carousel");
+    if (btn.hasClass("left")) {
+      carousel.carousel('prev');
+    }
+    else {
+      carousel.carousel('next');
+    }
+    return false;
+  });
+  /*end of bootstrap slider*/
   }
 };
 
@@ -367,7 +393,7 @@ var blocksView = {
         block.subscription + '</span></li>';
     });
     this.$container.html(list);
-    eventView.init();
+    controller.addEvents();
   },
   handleClicks: function() {
     this.$container.on("click", "li", function(e) {
@@ -433,7 +459,7 @@ var tmplsOnPageBlockView = {
     list += controller.getBlocksFromPage() + model.newTeplateBlock;
     list += controller.getFooterFromPage();
     this.$container.html(list);
-    eventView.init();
+    controller.addEvents();
   },
 };
 
@@ -637,7 +663,7 @@ var settingsTabletView = {
         controller.turnOffModeView();
         $('#build_wrap').html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
-        eventView.init();
+        controller.addEvents();
       }
     });
   },
@@ -669,25 +695,10 @@ var settingsMobileView = {
         controller.turnOffModeView();
         $('#build_wrap').html(model.buildWrapContent);
         $("body").removeClass("backgroundStyle");
-        eventView.init();
+        controller.addEvents();
       }
     });
   },
-};
-
-var eventView = {
-  init: function() {
-    $(".drag_and_drop").dragAndDrop({
-      draggable: ".draggable"
-    });
-    $(".block-over").on("click", function(e) {
-      var event = $.Event("contextmenu");
-      event.pageX = e.pageX;
-      event.pageY = e.pageY;
-      $(e.target).trigger(event);
-      return false;
-    });
-  }
 };
 
 controller.init();

@@ -175,21 +175,51 @@
         $(".link_modal").modal("show");
       });
     },
-    changeBackgroundFn: function (element, eventLink) {
+    changeBackgroundFnHeader: function (element, eventLink) {
       element = element;
       eventLink = $(eventLink);
-      var backModal = $(".background_modal");
+      var backModal = $(".background_modalHeader");
+      var addBackBtnSelect = backModal.find(".add_backgroundSelect");
       var addBackBtn = backModal.find(".add_background");
-      var addBackInput = backModal.find(".background_value");
+      var addBackInputSelect = backModal.find(".background_value");
+      var addBackInput =  backModal.find("#ownColor");
       eventLink.on("click", function () {
+        addBackBtnSelect.on("click", function () {
+          var inputVal = addBackInputSelect.val();
+          $(".navigationMenu").attr("style", "background-color: " + inputVal + ";");
+          $(".background_modalHeader").modal("hide");
+        });
         addBackBtn.on("click", function () {
           var inputVal = addBackInput.val();
-          $("#navig").attr("class", "navbar " + inputVal + " navbar-top");
-          $(".background_modal").modal("hide");
+          $(".navigationMenu").attr("style", "background-color: " + inputVal + ";");
+          $(".background_modalHeader").modal("hide");
         });
-        $(".background_modal").modal("show");
+        $(".background_modalHeader").modal("show");
       });
     },
+    changeBackgroundFnFooter: function (element, eventLink) {
+      element = element;
+      eventLink = $(eventLink);
+      var backModal = $(".background_modalFooter");
+      var addBackBtnSelect = backModal.find(".add_backgroundSelect");
+      var addBackBtn = backModal.find(".add_background");
+      var addBackInputSelect = backModal.find(".background_value");
+      var addBackInput =  backModal.find("#ownColor");
+      eventLink.on("click", function () {
+        addBackBtnSelect.on("click", function () {
+          var inputVal = addBackInputSelect.val();
+          $(".footers").attr("style", "background-color: " + inputVal + ";");
+          $(".background_modalFooter").modal("hide");
+        });
+        addBackBtn.on("click", function () {
+          var inputVal = addBackInput.val();
+          $(".footers").attr("style", "background-color: " + inputVal + ";");
+          $(".background_modalFooter").modal("hide");
+        });
+        $(".background_modalFooter").modal("show");
+         return false;
+      });
+    }
   };
   /*** end of event functions*/
 
