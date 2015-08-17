@@ -123,12 +123,21 @@
         }
       ]
     },
-    "background": {
-      "header": "background",
+    "backgroundHeader": {
+      "header": "Header-Background",
       "list": [
         {
           "text": "Change background",
-          "event": "changeBackgroundFn"
+          "event": "changeBackgroundFnHeader"
+        }
+      ]
+    },
+    "backgroundFooter": {
+      "header": "Footer-Background",
+      "list": [
+        {
+          "text": "Change background",
+          "event": "changeBackgroundFnFooter"
         }
       ]
     }
