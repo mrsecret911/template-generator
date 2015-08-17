@@ -49,7 +49,7 @@
     tmplsFooterInMenuView.render();
   });
   /*end of delete*/
- 
+
   /*Save the page*/
   $("#download_page").on("click", function () {
     $("#modal-save").removeClass("active");
@@ -65,12 +65,12 @@
     var bootstrapJsSrc = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>';
     var title = $("#page_title").val();
     var header = '<!DOCTYPE html><html><head><title>' + title +
-                 '</title><meta charset="utf-8">' + bootstrapCssSrc +
-                 '<link rel="stylesheet" href="css/style.css">'+ model.newFontLinkTag +
-                 '</head><body>';
+            '</title><meta charset="utf-8">' + bootstrapCssSrc +
+            '<link rel="stylesheet" href="css/style.css">' + model.newFontLinkTag +
+            '</head><body>';
     var body = $("#build_wrap").html();
     var footer = jquerySrc + bootstrapJsSrc + '</body></html>';
-    var styles = model.styleInRow.replace( /[\s\n\r]+/g, ' ');
+    var styles = model.styleInRow.replace(/[\s\n\r]+/g, ' ');
     zip.file("public/index.html", header + body + header);
     zip.file("public/css/style.css", styles);
     var content = zip.generate({
@@ -82,7 +82,7 @@
     $("#delete_page").click();
   });
 
-  $("#remove").on("click", function(){
+  $("#remove").on("click", function () {
     $("#delete_page").click();
   });
   /*end of save*/

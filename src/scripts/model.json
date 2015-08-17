@@ -2,12 +2,12 @@
   "blocks": [
     {
       "id": "block-review",
-      "imgSrc": "img/blocks/block-review.jpg",
+      "imgSrc": "img/blocks/block-review-1.jpg",
       "subscription": "block-review"
     },
     {
       "id": "block-icon",
-      "imgSrc": "img/blocks/column-3.jpg",
+      "imgSrc": "img/blocks/block-icon.jpg",
       "subscription": "block-icon"
     },
     {

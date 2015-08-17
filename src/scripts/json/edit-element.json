@@ -107,7 +107,7 @@
       ]
     },
     "link": {
-      "header": "link",
+      "header": "Link",
       "list": [
         {
           "text": "Change link",
@@ -138,6 +138,19 @@
         {
           "text": "Change background",
           "event": "changeBackgroundFnFooter"
+        }
+      ]
+    },
+    "text": {
+      "header": "Text",
+      "list": [
+        {
+          "text": "Clone",
+          "event": "cloneFn"
+        },
+        {
+          "text": "Delete",
+          "event": "deleteFn"
         }
       ]
     }
