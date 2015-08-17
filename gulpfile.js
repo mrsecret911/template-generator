@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var connect = require('gulp-connect');
 var shell = require('gulp-shell');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('html', function() { 
     return gulp.src('./src/index.html')
@@ -20,9 +21,14 @@ gulp.task('styles', function() {
    './src/styles/preloader.css'])
   .pipe(sass({
     includePaths: [
-      './bower_components/bootstrap-sass/assets/stylesheets'
+      './bower_components/bootstrap-sass/assets/stylesheets',
+      './bower_components/fontawesome/scss'
     ]
   }))
+  .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+   }))
   .pipe(minifyCSS())
   .pipe(concat('main.min.css'))
   .pipe(gulp.dest('./public/styles'));
@@ -40,7 +46,9 @@ gulp.task('img', function() { 
 });
 
 gulp.task('fonts', function() { 
-    return gulp.src('./bower_components/bootstrap-sass/assets/fonts/**/*')
+     gulp.src('./bower_components/bootstrap-sass/assets/fonts/**/*')
+    .pipe(gulp.dest('./public/fonts'))
+    return gulp.src('./bower_components/fontawesome/fonts/*')
     .pipe(gulp.dest('./public/fonts'));
 });
 

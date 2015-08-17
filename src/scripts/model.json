@@ -34,6 +34,31 @@
       "id": "block-portfolio-1",
       "imgSrc": "img/blocks/block-portfolio-1.jpg",
       "subscription": "block portfolio"
+    },
+    {
+      "id": "block-top-1",
+      "imgSrc": "img/blocks/block-top-1.jpg",
+      "subscription": "first block"
+    },
+    {
+      "id": "large-carousel-1",
+      "imgSrc": "img/blocks/large-carousel-1.jpg",
+      "subscription": "slider"
+    },
+    {
+      "id": "large-image-1",
+      "imgSrc": "img/blocks/large-image-1.jpg",
+      "subscription": "Image and text"
+    },
+    {
+      "id": "product-sale-1",
+      "imgSrc": "img/blocks/product-sale-1.jpg",
+      "subscription": "Product price"
+    },
+    {
+      "id": "block-reviews-2",
+      "imgSrc": "img/blocks/block-reviews-2.jpg",
+      "subscription": "Reviews"
     }
   ],
   "headers": [
@@ -58,6 +83,11 @@
       "id": "footer-2",
       "imgSrc": "img/blocks/column-4.jpg",
       "subscription": "footer-2"
+    },
+    {
+      "id": "large-footer-1",
+      "imgSrc": "img/blocks/large-footer-1.jpg",
+      "subscription": "large footer"
     }
   ]
 }
