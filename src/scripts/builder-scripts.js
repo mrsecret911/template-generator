@@ -30,6 +30,7 @@
   });
 
   $(".open_nav_btn").click(function () {
+    navWrap.removeClass("template_open");
     $(this).toggleClass("active");
     $("#nav_wrap").toggleClass("show_nav");
   });
