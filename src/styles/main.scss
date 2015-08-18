@@ -719,6 +719,26 @@ $blue: #37aae5;
     font-style: italic;
   }
 }
+/*timer-modal*/
+.timer_modal {
+  label {
+    float:left;
+    margin-right: 5px;
+    margin-bottom: 20px;
+  }
+  input {
+    float: left;
+    margin-right: 5px;
+    height: 25px;
+    width: 50px;
+  }
+  .add_time {
+    display: block;
+    margin: 10px;
+  }
+}
+/*endOfTimerModal*/
+
 /*end of modals*/
 
 /*drug and drop*/

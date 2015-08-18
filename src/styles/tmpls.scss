@@ -474,3 +474,45 @@
   }
 }
 /*End of block-photo_par*/
+
+/*Simple-block*/
+.simple-block {
+  padding: 150px 30px 150px 30px;
+  background-image: url(./../img/page/simple-block.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  color: #fff;
+  .img-center {
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 25px;
+  }
+}
+/*End of simple-block*/
+
+/*timer-block*/
+.timer-block {
+  background-image: url(./../img/page/timer-block.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  .row {
+    padding: 120px 0px 120px 120px;
+  }
+  h1 {
+    color: #fff;
+  }
+  #timer {
+    font-size: 45px;
+    color: #EEEEEE;
+  }
+  .lead {
+    color:#EEEEEE;
+  }
+  p {
+    font-style: italic;
+  }
+}
+/*End of timer-block*/

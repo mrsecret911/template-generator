@@ -219,6 +219,14 @@
         $(".background_modalFooter").modal("show");
          return false;
       });
+    },
+    changeTimer: function(element, eventLink) {
+      element = element;
+      eventLink = $(eventLink);
+      eventLink.one("click", function () {
+        $(".timer_modal").modal("show");
+          return false;
+      });
     }
   };
   /*** end of event functions*/

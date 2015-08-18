@@ -29,11 +29,11 @@
         </li>
       </ul>
       <ul class="list-unstyled bottom_nav">
-        <li class="">
-          <a href="#" class="glyphicon glyphicon-floppy-disk"  data-toggle="modal" data-target="#modal-save" id="download_page" aria-hidden="true"></a>
+         <li class="">
+          <a href="#" class="glyphicon glyphicon-floppy-disk" id="download_page" aria-hidden="true"></a>
         </li>
         <li class="active">
-          <a href="#" class="glyphicon glyphicon-trash" id="delete_page" aria-hidden="true"></a>
+          <a href="#" class="glyphicon glyphicon-trash" id="delete_page" data-toggle="modal" data-target="#modal-save" aria-hidden="true"></a>
         </li>
       </ul>
     </div>
@@ -289,6 +289,24 @@
       </div>
     </div>
   </div>
+  <div class="modal fade timer_modal">
+    <div class="modal-dialog" data->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Set Countdown</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-xs-12">
+            <label for="day">Day:</label><input id="day" type="text">
+            <label for="month">Month:</label><input type="text" id="month">
+            <label for="year">Year:</label><input type="text" id="year">
+          </div>
+          <button class="add_time">Change timer</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--end of modals-->
 
   <!-- modal window -->
@@ -297,7 +315,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button class="close" type="button" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Save the page</h3>
+          <h3 class="modal-title">Delete page</h3>
         </div>
         <div class="modal-body">
           <p>Do you want to save the current page?</p>

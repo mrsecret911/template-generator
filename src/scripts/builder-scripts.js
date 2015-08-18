@@ -44,6 +44,16 @@
 
   /*delete page*/
   $("#delete_page").on("click", function () {
+    $("#modal-save").removeClass("active");
+    $("#modal-save").addClass("fade");
+  });
+
+  $("#save").on('click', function(){
+    $("#download_page").click();
+    $("#remove").click();
+  });
+
+  $("#remove").on("click", function () {
     $("#build_wrap").empty();
     localStorage.clear();
     model.containerTemplateBlockList = [];
@@ -61,11 +71,6 @@
 
   /*Save the page*/
   $("#download_page").on("click", function () {
-    $("#modal-save").removeClass("active");
-    $("#modal-save").addClass("fade");
-  });
-
-  $("#save").on("click", function () {
     var $editButVideo = $(".video-over").detach();
     var $editButMap = $(".map-over").detach();
     var zip = new JSZip();
@@ -88,11 +93,6 @@
     saveAs(content, title + ".zip");
     $(".block-video").find("iframe").parent().append($editButVideo);
     $(".block-map").find("iframe").parent().append($editButMap);
-    $("#delete_page").click();
-  });
-
-  $("#remove").on("click", function () {
-    $("#delete_page").click();
   });
   /*end of save*/
 

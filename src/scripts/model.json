@@ -21,6 +21,16 @@
       "subscription": "blocks-video"
     },
     {
+      "id": "simple-block",
+      "imgSrc": "img/blocks/block-review-1.jpg",
+      "subscription": "simple-block"
+    },
+    {
+      "id": "timer-block",
+      "imgSrc": "img/blocks/block-review-1.jpg",
+      "subscription": "Timer-block"
+    },
+    {
       "id": "block-map",
       "imgSrc": "img/blocks/column-4.jpg",
       "subscription": "blocks-map"

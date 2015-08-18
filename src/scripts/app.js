@@ -378,6 +378,46 @@ var controller = {
     return false;
   });
   /*end of bootstrap slider*/
+
+    /*timer Block logic*/
+    var end = new Date('01/01/2016 00:0');
+
+    if (localStorage.getItem("blockTimer") !== null) {
+      end = new Date(JSON.parse(localStorage.getItem("blockTimer")));
+    }
+ 
+    var modal = $(".timer_modal");
+    var btn = modal.find(".add_time")
+    btn.on("click", function () {
+      var day = modal.find("#day").val();
+      var month = modal.find("#month").val();
+      var year = modal.find("#year").val();
+      end = new Date('"' + month + '/' + day + '/' + year + '"');
+      localStorage.setItem('blockTimer', JSON.stringify(end));
+      $(".timer_modal").modal("hide");
+    });
+    var container = $(".timer-block").find("#timer");
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+
+    function showRemaining() {
+      var now = new Date();
+      var distance = end - now;
+      if (distance < 0) {
+        clearInterval(timer);
+        container.text('EXPIRED!');
+        return;
+      }
+      var days = Math.floor(distance / _day);
+      var hours = Math.floor((distance % _day) / _hour);
+      var minutes = Math.floor((distance % _hour) / _minute);
+      var seconds = Math.floor((distance % _minute) / _second);
+      container.text(days + ' DAYS ' + hours + ":" + minutes + ":" + seconds);
+    }
+    setInterval(showRemaining, 1000);
+    /*End of timer block logic*/
   }
 };
 
