@@ -530,6 +530,7 @@ var tmplsOnPageHeaderView = {
     list += controller.getBlocksFromPage();
     list += controller.getFooterFromPage();
     this.$container.html(list);
+    controller.addEvents();
   },
 };
 
@@ -544,6 +545,7 @@ var tmplsOnPageFooterView = {
     list += controller.getBlocksFromPage();
     list += model.newTemplateFooter;
     this.$container.html(list);
+    controller.addEvents();
   }
 };
 
