@@ -396,8 +396,7 @@
 
 /*Simple-block*/
 .simple-block {
-  padding: 150px 30px 150px 30px;
-  background-image: url(./../img/page/simple-block.jpg);
+  padding: 150px 30px 150px 0px;
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
@@ -413,7 +412,6 @@
 
 /*timer-block*/
 .timer-block {
-  background-image: url(./../img/page/timer-block.jpg);
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
@@ -521,11 +519,11 @@
 
 /*Block-photo-par*/
 .block-photo-par {
-  background-image: url(./../img/page/block-photo-par.jpg);
   background-repeat: no-repeat;
   background-size:cover;
-  background-position: center right;
+  background-position: center;
   padding: 50px;
+  padding-left:0px;
   color: #fff;
   h1,p {
     margin: 10px 0;

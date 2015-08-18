@@ -219,7 +219,8 @@
           $(".background_modalFooter").modal("hide");
         });
         $(".background_modalFooter").modal("show");
-         return false;
+          addBackInput.click();
+          return false;
       });
     },
     changeTimer: function(element, eventLink) {
