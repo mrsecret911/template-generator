@@ -43,7 +43,9 @@
       });
     },
     cloneFnLink: function (element, eventLink) {
-      var element = element.parent();
+      if (element.parent().prop("tagName") === "LI") {
+        element = element.parent();
+      }
       var eventLink = $(eventLink);
         eventLink.on("click", function () {
           element.after(element.clone());

@@ -17,8 +17,8 @@
     },
     {
       "id": "block-video",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-video"
+      "imgSrc": "img/blocks/block-video.jpg",
+      "subscription": "Video block"
     },
     {
       "id": "simple-block",
@@ -32,8 +32,8 @@
     },
     {
       "id": "block-map",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "blocks-map"
+      "imgSrc": "img/blocks/block-map.jpg",
+      "subscription": "Map block"
     },
     {
       "id": "block-icons-1",
@@ -71,9 +71,19 @@
       "subscription": "Reviews"
     },
     {
-      "id": "block-photo_par",
-      "imgSrc": "img/blocks/block-portfolio-1.jpg",
+      "id": "block-photo-par",
+      "imgSrc": "img/blocks/block-photo-par.jpg",
       "subscription": "block photo with paragraph"
+    },
+    {
+      "id": "block-image-3",
+      "imgSrc": "img/blocks/block-three-image.jpg",
+      "subscription": "block with three image"
+    },
+    {
+      "id": "text-slider",
+      "imgSrc": "img/blocks/text-slider.jpg",
+      "subscription": "Text slider"
     }
   ],
   "headers": [
@@ -84,7 +94,7 @@
     },
     {
       "id": "header-center",
-      "imgSrc": "img/blocks/column-4.jpg",
+      "imgSrc": "img/headers/header-center.jpg",
       "subscription": "header-center"
     }
   ],
@@ -98,7 +108,7 @@
     },
     {
       "id": "footer-thin",
-      "imgSrc": "img/blocks/column-3.jpg",
+      "imgSrc": "img/footers/footer-thin.jpg",
       "subscription": "footer-thin"
     },
     {
