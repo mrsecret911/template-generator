@@ -59,6 +59,11 @@
       "id": "block-reviews-2",
       "imgSrc": "img/blocks/block-reviews-2.jpg",
       "subscription": "Reviews"
+    },
+    {
+      "id": "block-photo_par",
+      "imgSrc": "img/blocks/block-portfolio-1.jpg",
+      "subscription": "block photo with paragraph"
     }
   ],
   "headers": [
@@ -68,16 +73,23 @@
       "subscription": "Simple-Header"
     },
     {
-      "id": "header-2",
+      "id": "header-center",
       "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "header-2"
+      "subscription": "header-center"
     }
   ],
   "footers": [
     {
+
       "id": "center-footer",
       "imgSrc": "img/blocks/column-3.jpg",
+
       "subscription": "center-footer"
+    },
+    {
+      "id": "footer-thin",
+      "imgSrc": "img/blocks/column-3.jpg",
+      "subscription": "footer-thin"
     },
     {
       "id": "footer-2",

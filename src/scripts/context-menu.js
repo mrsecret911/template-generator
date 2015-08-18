@@ -45,9 +45,9 @@
     cloneFnLink: function (element, eventLink) {
       var element = element.parent();
       var eventLink = $(eventLink);
-      eventLink.on("click", function () {
-        element.after(element.clone());
-      });
+        eventLink.on("click", function () {
+          element.after(element.clone());
+        });
     },
     deleteFn: function (element, eventLink) {
       var element = element;
@@ -55,6 +55,9 @@
       eventLink = $(eventLink);
       if (element.prop("tagName") === "IFRAME") {
         element = element.parent().children();
+      }
+      if (element.parent().prop("tagName") === "LI") {
+        element = element.parent();
       }
       eventLink.on("click", function (e) {
         e.preventDefault()
@@ -152,17 +155,22 @@
       });
     },
     changeLinkFn: function (element, eventLink) {
-      element = element;
-      eventLink = $(eventLink);
+      var element = element;
+      var eventLink = $(eventLink);
       var linkModal = $(".link_modal");
       var addlinkBtn = linkModal.find(".add_link");
       var addLinkInput = linkModal.find(".link_src");
+      var addNameInput = linkModal.find(".name_src");
       eventLink.on("click", function () {
-        addlinkBtn.on("click", function () {
-          var inputVal = addLinkInput.val();
-          element.attr("href", inputVal);
+        addlinkBtn.one("click", function () {
+
+          var inputValLink = addLinkInput.val() || element.attr("href");
+          var inputValName = addNameInput.val() || element.html();
+          element.attr("href", inputValLink);
+          element.html(inputValName);
           $(".link_modal").modal("hide");
-          inputVal.clear();
+          addLinkInput.val("");
+          addNameInput.val("");
         });
         $(".link_modal").modal("show");
       });
