@@ -4,15 +4,8 @@
 
   var navWrap = $("#nav_wrap");
   var tabplateBtn = navWrap.find(".add_btn");
-
-  if (!localStorage["old_user"]) {
-    localStorage.setItem("old_user", true);
-    $(".animation").addClass("new_user");
-  }
-
-  $(".main_nav").hover(function () {
-    $(".new_user").removeClass("new_user");
-  });
+  var subNav = $(".sub_nav");
+  var openNavBtn = $(".open_nav_btn");
 
   $(".main_nav, .nav-icon").click(function () {
     navWrap.removeClass("template_open");
@@ -48,7 +41,7 @@
     $("#modal-save").addClass("fade");
   });
 
-  $("#save").on('click', function(){
+  $("#save").on('click', function () {
     $("#download_page").click();
     $("#remove").click();
   });
@@ -75,7 +68,7 @@
     var $editButMap = $(".map-over").detach();
     var zip = new JSZip();
     var bootstrapCssSrc = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">';
-    var jquerySrc = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">';
+    var jquerySrc = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>';
     var bootstrapJsSrc = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>';
     var title = $("#page_title").val();
     var header = '<!DOCTYPE html><html><head><title>' + title +
@@ -85,7 +78,10 @@
     var body = $("#build_wrap").html();
     var footer = jquerySrc + bootstrapJsSrc + '</body></html>';
     var styles = model.styleInRow.replace(/[\s\n\r]+/g, ' ');
-    zip.file("public/index.html", header + body + header);
+    var html = header + body + footer;
+    var clearedHtml = html.replace(/\scontenteditable="true"|\sdraggable="true"|\sdrag_and_drop|\sdraggable|\sdata-hover=""|\sdata-element="[^"]*"/g, "");
+
+    zip.file("public/index.html", html);
     zip.file("public/css/style.css", styles);
     var content = zip.generate({
       type: "blob"
