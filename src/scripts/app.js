@@ -185,14 +185,14 @@ var controller = {
       stop: function (event, ui) {
         var start = ui.item.startPos;
         var end = ui.item.index();
-        var $divs = $("#build_wrap > div");
+        var $divs = $("#build_wrap > section");
         if (start !== end) {
           var block = $divs.eq(start).clone();
           $divs.eq(start).remove();
           if (end) {
-            $("#build_wrap > div").eq(end - 1).after(block);
+            $("#build_wrap > section").eq(end - 1).after(block);
           } else {
-            $("#build_wrap > div").eq(0).before(block);
+            $("#build_wrap > section").eq(0).before(block);
           }
         }
         controller.addEvents();
@@ -275,7 +275,7 @@ var controller = {
     model.newTemplateFooter = tmpls.filter(id).html();
   },
   deleteBlockOnPage: function (num) {
-    $("#build_wrap > div").eq(num).remove();
+    $("#build_wrap > section").eq(num).remove();
   },
   deleteHeaderOrFooterOnPage: function (name) {
     $("#build_wrap").find(name).remove();
@@ -284,7 +284,7 @@ var controller = {
     font = font || "";
     lineHeight = lineHeight || "";
     if (font.length) {
-      $("#build_wrap > div, header, footer").css('font-family', font);
+      $("#build_wrap > section, header, footer").css('font-family', font);
     } else if (lineHeight.length) {
       $("#build_wrap p").css("line-height", lineHeight + "px");
     }
