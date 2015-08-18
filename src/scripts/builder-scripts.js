@@ -5,6 +5,15 @@
   var navWrap = $("#nav_wrap");
   var tabplateBtn = navWrap.find(".add_btn");
 
+  if (!localStorage["old_user"]) {
+    localStorage.setItem("old_user", true);
+    $(".animation").addClass("new_user");
+  }
+
+  $(".main_nav").hover(function () {
+    $(".new_user").removeClass("new_user");
+  });
+
   $(".main_nav, .nav-icon").click(function () {
     navWrap.removeClass("template_open");
     tabplateBtn.removeClass("close_icon");
@@ -27,7 +36,7 @@
     navWrap.find($(this).attr("data-open")).addClass("open");
   });
 
-  $(".nav-icon").click(function () {
+  $(".open_nav_btn").click(function () {
     $(this).toggleClass("active");
     $("#nav_wrap").toggleClass("show_nav");
   });
