@@ -46,8 +46,6 @@ gulp.task('img', function() { 
 });
 
 gulp.task('fonts', function() { 
-     gulp.src('./bower_components/bootstrap-sass/assets/fonts/**/*')
-    .pipe(gulp.dest('./public/fonts'))
     return gulp.src('./bower_components/fontawesome/fonts/*')
     .pipe(gulp.dest('./public/fonts'));
 });

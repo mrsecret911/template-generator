@@ -114,7 +114,7 @@
   p {
     font-size: 16px;
   }
-  .glyphicon {
+  .fa {
     font-size: 60px;
     color: #f05f40;
   }
@@ -263,6 +263,17 @@
   }
   .carousel-control {
     z-index: 10;
+    .fa {
+      position: absolute;
+      top: 50%  
+    }
+    &.left .fa {
+      left: 50%
+    }
+    &.right .fa {
+      right: 50%;
+    } 
+
   }
   @media screen and (max-width: 768px){
     h1 {
@@ -382,42 +393,42 @@
 /*end of block-portfolio-1*/
 
 /*Footer-thin*/
-  .footer-thin {
-    background-color: #292929;
-    position: relative;
-    color: #939393;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    line-height: 30px;
-    img {
-      margin: 5px 0;
-      height: 30px;
-    }
-    p {
-      margin: 5px 0;
-      font-size: 14px;
-      opacity: .6;
-    }
-    ul {
-      margin: 5px 0;
-      list-style: none;
-      padding: 0;
-      li {
-        display: inline-block;
-        margin: 0 5px;
-        font-size: 16px;
-        a {
-          color: #939393;
-          span {
-            pointer-events: none;
-          }
+.footer-thin {
+  background-color: #292929;
+  position: relative;
+  color: #939393;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  line-height: 30px;
+  img {
+    margin: 5px 0;
+    height: 30px;
+  }
+  p {
+    margin: 5px 0;
+    font-size: 14px;
+    opacity: .6;
+  }
+  ul {
+    margin: 5px 0;
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin: 0 5px;
+      font-size: 16px;
+      a {
+        color: #939393;
+        span {
+          pointer-events: none;
         }
-        a:hover {
-          opacity: .6;
-        }
+      }
+      a:hover {
+        opacity: .6;
       }
     }
   }
+}
 /*End of footer-thin*/
 
 /*Header-center*/
@@ -444,12 +455,12 @@
 @media screen and (min-width:768px){
   .header-center {
     .navbar-brand {
-        position: absolute;
-        top: -5px;
-        left: 45%;
-        display: block;
-        text-align: center;
-        margin: 0 10px;
+      position: absolute;
+      top: -5px;
+      left: 45%;
+      display: block;
+      text-align: center;
+      margin: 0 10px;
     }
     .navbar-left {
       margin-left: 15%;

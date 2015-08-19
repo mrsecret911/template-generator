@@ -365,7 +365,6 @@ var controller = {
     });
     /*bootstrap slider*/
     $(".carousel-control").on("click", function () {
-      console.log(1111);
       var btn = $(this);
       var carousel = $(this).closest(".carousel");
       if (btn.hasClass("left")) {
@@ -374,6 +373,12 @@ var controller = {
       else {
         carousel.carousel('next');
       }
+      return false;
+    });
+    $(".carousel-indicators").find("li").on("click", function (){
+      var btn = $(this);
+      var num = btn.index();
+      btn.closest(".carousel").carousel(num);
       return false;
     });
     /*end of bootstrap slider*/

@@ -1,6 +1,4 @@
-@import "bootstrap";
-@import "bootstrap/theme";
-
+@import "./libs";
 @import "font-awesome";
 
 /*colors*/
@@ -160,7 +158,7 @@ $blue: #37aae5;
         width: 70%
       }
       span::before, span::after {
-        font-family: 'Glyphicons Halflings';
+        font-family: FontAwesome;
       }
       span::before {
         float: left;
@@ -170,10 +168,10 @@ $blue: #37aae5;
       }
       &.settings_text-font {
         span::before {
-          content: "\e047";
+          content: "\f031";
         }
         span::after {
-          content: "\e259";
+          content: "\f078";
           float: right;
         }
         ul {
@@ -192,7 +190,7 @@ $blue: #37aae5;
       }
       &.settings_text-line-height {
         span::before {
-          content: "\e119";
+          content: "\f07d";
         }
         input {
           float: right;
@@ -202,7 +200,7 @@ $blue: #37aae5;
       }
       &.settings_tablet-view {
         span::before {
-          content: "\e237";
+          content: "\f10a";
         }
         span {
           float: left;
@@ -220,7 +218,7 @@ $blue: #37aae5;
       }
       &.settings_mobile-view {
         span::before {
-          content: "\e145";
+          content: "\f10b";
         }
         span {
           float: left;
@@ -634,20 +632,18 @@ $blue: #37aae5;
 
 /*modals*/
 .icon_modal {
-  .bs-glyphicons-list {
-    font-size: 0;
-    li {
-      width: 10%;
-      vertical-align: top;
-      text-align: center;
-    }
-    span {
-      font-size: 24px;
-      padding: 15px;
-      cursor: pointer;
-      &:hover {
-        background: #ddd;
-      }
+  text-align: center;
+  i.fa {
+    width: 42px;
+    line-height: 42px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    &:hover {
+      background: #333;
+      color: #fff;
+      font-size: 28px
     }
   }
 }

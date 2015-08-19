@@ -33,6 +33,8 @@
   //end of .img_modal
   /*** end of  modal functions*/
 
+
+
   /*** event functions*/
   var eventFunctions = {
     cloneFn: function (element, eventLink) {
@@ -45,9 +47,9 @@
     cloneFnLink: function (element, eventLink) {
       var element = element.parent();
       var eventLink = $(eventLink);
-        eventLink.on("click", function () {
-          element.after(element.clone());
-        });
+      eventLink.on("click", function () {
+        element.after(element.clone());
+      });
     },
     deleteFn: function (element, eventLink) {
       var element = element;
@@ -69,7 +71,7 @@
       var eventLink = $(eventLink);
       eventLink.on("click", function () {
         $(".icon_modal").modal("show");
-        $(".icon_modal").find(".glyphicon").dblclick(function () {
+        $(".icon_modal").find("i.fa").dblclick(function () {
           element.attr("class", $(this).attr("class"));
           $(".icon_modal").modal("hide");
         });
@@ -182,7 +184,7 @@
       var addBackBtnSelect = backModal.find(".add_backgroundSelect");
       var addBackBtn = backModal.find(".add_background");
       var addBackInputSelect = backModal.find(".background_value");
-      var addBackInput =  backModal.find("#ownColor");
+      var addBackInput = backModal.find("#ownColor");
       eventLink.on("click", function () {
         addBackBtnSelect.on("click", function () {
           var inputVal = addBackInputSelect.val();
@@ -204,7 +206,7 @@
       var addBackBtnSelect = backModal.find(".add_backgroundSelect");
       var addBackBtn = backModal.find(".add_background");
       var addBackInputSelect = backModal.find(".background_value");
-      var addBackInput =  backModal.find("#ownColor");
+      var addBackInput = backModal.find("#ownColor");
       eventLink.on("click", function () {
         addBackBtnSelect.on("click", function () {
           var inputVal = addBackInputSelect.val();
@@ -217,15 +219,15 @@
           $(".background_modalFooter").modal("hide");
         });
         $(".background_modalFooter").modal("show");
-         return false;
+        return false;
       });
     },
-    changeTimer: function(element, eventLink) {
+    changeTimer: function (element, eventLink) {
       element = element;
       eventLink = $(eventLink);
       eventLink.one("click", function () {
         $(".timer_modal").modal("show");
-          return false;
+        return false;
       });
     }
   };
@@ -272,10 +274,10 @@
           eventFunctions[el["event"]](target, eventLink);
         });
 
-      contextMenu.css({"left": positionX, "top": positionY}).addClass("open");
+        contextMenu.css({"left": positionX, "top": positionY}).addClass("open");
 
-      return false;
-     }
+        return false;
+      }
     }
   });
 
