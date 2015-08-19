@@ -2,7 +2,7 @@
   "title": "Fonts",
   "fonts": [
     {
-      "name": "OpenSans",
+      "name": "Open Sans",
       "link": "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,700",
       "img": "img/fonts/opensans.png"
     },

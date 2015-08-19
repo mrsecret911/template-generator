@@ -18,7 +18,7 @@ gulp.task('styles', function() {
   return gulp.src([
    './src/styles/main.scss',
    './bower_components/perfect-scrollbar/css/perfect-scrollbar.css',
-   './src/styles/preloader.css'])
+   './src/styles/preloader.scss'])
   .pipe(sass({
     includePaths: [
       './bower_components/bootstrap-sass/assets/stylesheets',
