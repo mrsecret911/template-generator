@@ -17,6 +17,7 @@
     "jszip": "Stuk/jszip#~2.5.0",
     "jquery-ui": "~1.11.4",
     "perfect-scrollbar": "~0.6.4",
-    "fontawesome": "~4.4.0"
+    "fontawesome": "~4.4.0",
+    "file-saver.js": "~1.20150507.2"
   }
 }

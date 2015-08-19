@@ -54,7 +54,7 @@ gulp.task('libs', function() {
   return gulp.src([
     './bower_components/jquery/dist/jquery.js',
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-    './src/scripts/libs/saveAs.js',
+    './bower_components/file-saver.js/FileSaver.js',
     './src/scripts/libs/parallaxMd.js',
     './bower_components/jszip/dist/jszip.js',
     './bower_components/jquery-ui/jquery-ui.js',
