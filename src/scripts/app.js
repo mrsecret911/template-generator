@@ -288,7 +288,7 @@ var controller = {
     if (font.length) {
       $("#build_wrap > section, header, footer").css('font-family', font);
     } else if (lineHeight.length) {
-      $("#build_wrap p").css("line-height", lineHeight + "px");
+      $("#build_wrap > section p").css("line-height", lineHeight + "px");
     }
   },
   turnOnModeView: function () {

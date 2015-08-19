@@ -42,11 +42,6 @@
     $("#modal-save").addClass("fade");
   });
 
-  $("#save").on('click', function () {
-    $("#download_page").click();
-    $("#remove").click();
-  });
-
   $("#remove").on("click", function () {
     $("#build_wrap").empty();
     localStorage.clear();

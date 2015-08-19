@@ -610,14 +610,17 @@
       }
     }
   }
+  .carousel-control {
+    display: none;
+  }
 }
 @media screen and (min-width:480px){
   .text-slider {
-    .carousel-control.left, .carousel-control.right {
-      background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
-    }
-    .carousel-inner {
+    .carousel-inner, .carousel-control {
       display: block;
+    }
+    .carousel-control {
+      padding-top: 5%;
     }
   }
 }

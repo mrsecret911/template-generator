@@ -300,7 +300,7 @@ $blue: #37aae5;
         transition: margin 0.4s;
       }
       &.cmn-toggle-round:checked + label:before {
-        background-color: #8ce196;
+        background-color: $blue;
       }
       &.cmn-toggle-round:checked + label:after {
         margin-left: 27px;
@@ -769,11 +769,6 @@ $blue: #37aae5;
     text-align: center;
     margin: 0;
     border: none;
-  }
-}
-#modal-save {
-  .modal-body {
-    font-style: italic;
   }
 }
 /*timer-modal*/

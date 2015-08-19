@@ -587,12 +587,14 @@
       position: static;
       padding: 20px 100px;
       bottom: 0; }
+  .text-slider .carousel-control {
+    display: none; }
 
 @media screen and (min-width: 480px) {
-  .text-slider .carousel-control.left, .text-slider .carousel-control.right {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%); }
-  .text-slider .carousel-inner {
-    display: block; } }
+  .text-slider .carousel-inner, .text-slider .carousel-control {
+    display: block; }
+  .text-slider .carousel-control {
+    padding-top: 5%; } }
 </style>
 </script>
 
