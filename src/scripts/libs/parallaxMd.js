@@ -2,9 +2,10 @@
   $.fn.parallaxMd = function(inputValue) {
 
     var options = $.extend({
-      "imgHeight": "300px",
+      "imgHeight": "100%",
       "imgWidth": "100%",
-      "speed" : "20"
+      "speed" : "20",
+      "container": 1
     }, inputValue);
 
     return this.each(function() {
@@ -16,14 +17,10 @@
         "overflow" : "hidden"
       });
 
-      that.wrapInner("<div class='parallaxWrap'></div>");
-      that.prepend("<div class='parallaxImageWrap'></div>");
+      that.prepend("<div class='parallaxImageWrap" + options.container + "'></div>");
+      var cont = ".parallaxImageWrap" + options.container;
 
-      $(".parallaxWrap").css({
-        "position": "relaive",
-        "z-index": "1"
-      });
-      $(".parallaxImageWrap").css({
+      $(cont).css({
         "position": "absolute",
         "z-index": "-1",
         "top": "0",
@@ -36,7 +33,7 @@
       function parallaxFunc() {
 
         var thath = that.height();
-        var child = that.children(".parallaxImageWrap");
+        var child = that.children(cont);
 
         child.css({
           "height" : thath*2,
@@ -57,10 +54,11 @@
           });
         };
       };
-
-      $(window).scroll(function() {
+      parallaxFunc();
+      $(window).load(function() {
         parallaxFunc();
-      }).load(function() {
+      });
+      $(window).scroll(function() {
         parallaxFunc();
       });
       $("*").resize(function() {

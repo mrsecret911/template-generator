@@ -45,7 +45,9 @@
       });
     },
     cloneFnLink: function (element, eventLink) {
-      var element = element.parent();
+      if (element.parent().prop("tagName") === "LI") {
+        element = element.parent();
+      }
       var eventLink = $(eventLink);
       eventLink.on("click", function () {
         element.after(element.clone());
@@ -219,7 +221,8 @@
           $(".background_modalFooter").modal("hide");
         });
         $(".background_modalFooter").modal("show");
-        return false;
+          addBackInput.click();
+          return false;
       });
     },
     changeTimer: function (element, eventLink) {

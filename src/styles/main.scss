@@ -896,3 +896,11 @@ iframe:hover + .block-over{
   opacity: 0.9;
 }
 /*End of edit button*/
+
+footer {
+    &::before {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

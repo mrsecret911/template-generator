@@ -138,6 +138,7 @@ var controller = {
               controller.setNewTemplateBlock($templates, id);
               tmplsBlocksInMenuView.render();
               tmplsOnPageBlockView.render();
+              $(window).scroll();
               break;
             case "header":
               model.containerTemplateHeader = id;
@@ -185,14 +186,14 @@ var controller = {
       stop: function (event, ui) {
         var start = ui.item.startPos;
         var end = ui.item.index();
-        var $divs = $("#build_wrap > div");
+        var $divs = $("#build_wrap > section");
         if (start !== end) {
           var block = $divs.eq(start).clone();
           $divs.eq(start).remove();
           if (end) {
-            $("#build_wrap > div").eq(end - 1).after(block);
+            $("#build_wrap > section").eq(end - 1).after(block);
           } else {
-            $("#build_wrap > div").eq(0).before(block);
+            $("#build_wrap > section").eq(0).before(block);
           }
         }
         controller.addEvents();
@@ -203,6 +204,7 @@ var controller = {
           newContainerTemplateBlockList.push("#" + tmplId);
         });
         model.containerTemplateBlockList = newContainerTemplateBlockList;
+        $(window).scroll();
         localStorage.setItem('listItem', JSON.stringify($(".tmplsBlocksInMenu").html()));
       },
     });
@@ -275,7 +277,7 @@ var controller = {
     model.newTemplateFooter = tmpls.filter(id).html();
   },
   deleteBlockOnPage: function (num) {
-    $("#build_wrap > div").eq(num).remove();
+    $("#build_wrap > section").eq(num).remove();
   },
   deleteHeaderOrFooterOnPage: function (name) {
     $("#build_wrap").find(name).remove();
@@ -284,7 +286,7 @@ var controller = {
     font = font || "";
     lineHeight = lineHeight || "";
     if (font.length) {
-      $("#build_wrap > div, header, footer").css('font-family', font);
+      $("#build_wrap > section, header, footer").css('font-family', font);
     } else if (lineHeight.length) {
       $("#build_wrap p").css("line-height", lineHeight + "px");
     }
@@ -438,6 +440,31 @@ var controller = {
     }
     setInterval(showRemaining, 1000);
     /*End of timer block logic*/
+    $(".timer-block").parallaxMd();
+    $(".block-top-1").parallaxMd({
+            "imgHeight": "80%",
+            "imgWidth": "100%",
+            "speed": "15",
+            "container": 2
+    });
+    $(".large-image-1").parallaxMd({
+            "imgHeight": "550px",
+            "imgWidth": "100%",
+            "speed": "15",
+            "container": 3
+    });
+    $(".block-photo-par").parallaxMd({
+            "imgHeight": "400px",
+            "imgWidth": "100%",
+            "speed": "15",
+            "container": 4
+    });
+    $(".simple-block").parallaxMd({
+            "imgHeight": "400px",
+            "imgWidth": "100%",
+            "speed": "12",
+            "container": 5
+    });
   }
 };
 

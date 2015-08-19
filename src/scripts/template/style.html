@@ -1,12 +1,21 @@
 <script type="tmpl/html" id="block-video">
-  <style>
-  .block-video {
-  background-color: #ccc;
-  position: relative; }
+<style>
+  background-color: #dedbdb;
+  line-height: 0; }
+  .block-video .text {
+    padding: 40px;
+    line-height: 20px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center; }
+    .block-video .text h1 {
+      margin-top: 30px; }
+    .block-video .text p {
+      margin: 30px 0; }
   .block-video iframe {
-  width: 100%;
-  height: 400px; }
-  </style>
+    width: 100%;
+    height: 400px; }
+</style>
 </script>
 
 <script type="tmpl/html" id="block-1">
@@ -307,8 +316,6 @@
       font-size: 20px; } }
 </style>  
 </script>
-</style>
-</script>
 
 <script type="tmpl/html" id="large-image-1">
 <style>
@@ -409,42 +416,9 @@
     color: #E0E0E0;
     font-size: 15px;
   }
-<script type="tmpl/html" id="header-center">
-<style>
-.header-center .navbar-brand {
-  float: right;
-  }
-
-.header-center .navbar-toggle {
-  float: left;
-  }
-
-.header-center .dropdown:hover ul {
-  display: block; }
-
-.header-center .dropdown-menu {
-  z-index: 2; }
-
-.header-center .navbar-nav > li {
-  text-align: center; }
-  .header-center .navbar-nav > li > a {
-    padding: 15px 5px;
-    text-align: center; }
-
-@media screen and (min-width: 768px) {
-  .header-center .navbar-brand {
-    position: absolute;
-    top: -5px;
-    left: 45%;
-    display: block;
-    text-align: center;
-    margin: 0 10px; }
-  .header-center .navbar-left {
-    margin-left: 15%; }
-  .header-center .navbar-right {
-    margin-right: 11%; } }
-</style>
+ </style>
 </script>
+
 
 <script type="tmpl/html" id="simple-block">
 <style>
@@ -489,6 +463,131 @@
   .timer-block p {
     font-style: italic;
   }
+</style>
+</script>
+
+<script type="tmpl/html" id="header-center">
+<style>
+.header-center .navbar-brand {
+  float: right;
+  margin-right: 15px;
+  text-transform: uppercase; }
+
+.header-center .navbar-toggle {
+  float: left;
+  margin-left: 15px; }
+
+.header-center .dropdown-menu {
+  z-index: 2; }
+
+.header-center .navbar-nav > li {
+  text-align: center; }
+  .header-center .navbar-nav > li > a {
+    padding: 15px 5px;
+    text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .header-center .navbar-brand {
+    position: absolute;
+    left: 42%;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    margin: 0; }
+  .header-center .navbar-left {
+    margin-left: 15%; }
+  .header-center .navbar-right {
+    margin-right: 11%; } }
+</style>
+</script>
+
+<script type="tmpl/html" id="footer-thin">
+<style>
+.footer-thin {
+  background-color: #292929;
+  color: #939393;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  line-height: 30px; }
+  .footer-thin a {
+    font-size: 18px;
+    color: #939393;
+    text-transform: uppercase;
+    line-height: 36px;
+    text-decoration: none;
+    margin: 0 10px; }
+  .footer-thin a:hover {
+    opacity: .6; }
+  .footer-thin p {
+    margin: 5px 0;
+    font-size: 14px;
+    opacity: .6; }
+  .footer-thin ul {
+    margin: 5px 0;
+    list-style: none;
+    padding: 0; }
+    .footer-thin ul li {
+      display: inline-block;
+      margin: 0 5px;
+      font-size: 16px; }
+      .footer-thin ul li a span {
+        pointer-events: none; }
+</style>
+</script>
+
+<script type="tmpl/html" id="block-image-3">
+<style>
+.block-image-3 .title {
+  margin: 20px 0;
+  color: #666;
+  padding: 10px 35px; }
+  .block-image-3 .title p {
+    font-size: 13px; }
+  .block-image-3 .title img {
+    max-height: 200px;
+    margin: auto; }
+</style>
+</script>
+
+<script type="tmpl/html" id="text-slider">
+<style>
+.text-slider {
+  background-image: url(./../img/page/text-slider.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center right;
+  padding: 50px 30px;
+  color: #fff; }
+  .text-slider .carousel-control.left, .text-slider .carousel-control.right {
+    background-image: none !important;
+    filter: none !important; }
+  .text-slider .carousel-inner {
+    display: none; }
+    .text-slider .carousel-inner .text .carousel-caption {
+      min-height: 175px;
+      position: static;
+      padding: 20px 100px;
+      bottom: 0; }
+
+@media screen and (min-width: 480px) {
+  .text-slider .carousel-control.left, .text-slider .carousel-control.right {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%); }
+  .text-slider .carousel-inner {
+    display: block; } }
+</style>
+</script>
+
+<script type="tmpl/html" id="block-photo-par">
+<style>
+  .block-photo-par {
+    background-image: url(./../img/page/block-photo-par.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center right;
+    padding: 50px;
+    color: #fff; }
+    .block-photo-par h1, .block-photo-par p {
+      margin: 10px 0; }
 </style>
 </script>
 
