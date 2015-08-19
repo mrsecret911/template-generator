@@ -96,6 +96,27 @@
         $(".img_modal").modal("show");
       });
     },
+    changeParallaxImgFn: function (element, eventLink) {
+      var element = element;
+      var eventLink = $(eventLink);
+      var img = imageList.find("img");
+
+      eventLink.on("click", function () {
+        img.unbind("dblclick");
+        var addEvent = function () {
+          element.attr("data-mdparallax", $(this).attr("src"));
+          $(".img_modal").modal("hide");
+          location.reload();
+        };
+        img.dblclick(addEvent);
+        addImgBtn.on("click", function () {
+          imageList.find("li").last().find("img").dblclick(addEvent);
+        });
+        $(".img_modal").modal("show");
+        addImgInput.click();
+        return false;
+      });
+    },
     changeVideoFn: function (element, eventLink) {
       var element = element;
       var eventLink = $(eventLink);

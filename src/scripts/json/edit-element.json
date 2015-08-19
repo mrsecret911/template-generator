@@ -33,6 +33,15 @@
         }
       ]
     },
+    "image-paralax": {
+      "header": "Image-paralax",
+      "list": [
+        {
+          "text": "Cnahge",
+          "event": "changeParallaxImgFn"
+        }
+      ]
+    },
     "text": {
       "header": "Text",
       "list": [
