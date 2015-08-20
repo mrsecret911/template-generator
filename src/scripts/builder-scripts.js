@@ -76,10 +76,10 @@
             '</head><body>';
     var body = $("#build_wrap").html();
     var scripts = '<script>$(".carousel-control").on("click",function(){var s=$(this),c=$(this).closest(".carousel");return c.carousel(s.hasClass("left")?"prev":"next"),!1}),$(".carousel-indicators").find("li").on("click",function(){var s=$(this),c=s.index();return s.closest(".carousel").carousel(c),!1});</script>';
-    var footer = bootstrapJsSrc + filePar + '</body></html>';
+    var footer = bootstrapJsSrc  + '</body></html>';
     var styles = model.styleInRow.replace(/[\s\n\r]+/g, ' ');
-    var html = header + body + scripts  + footer;
-    var clearedHtml = html.replace(/\scontenteditable="true"|\sdraggable="true"|\sdrag_and_drop|\sdraggable|\sdata-hover=""|\sdata-element="[^"]*"/g, "");
+    var html = header + body + scripts + filePar + footer;
+    var clearedHtml = html.replace(/\scontenteditable="true"|\sdraggable="true"|\sdrag_and_drop|\sdraggable|\sdata-hover=""|\sdata-element="[^"]*"|<div class="parallax[^>]*><\/div>/g, "");
 
     zip.file("public/index.html", clearedHtml);
     zip.file("public/css/style.css", styles);

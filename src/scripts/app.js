@@ -440,6 +440,7 @@ var controller = {
     }
     setInterval(showRemaining, 1000);
     /*End of timer block logic*/
+      $(".paralax_wrap").remove();
       $(".timer-block").parallaxMd();
       $(".block-top-1").parallaxMd({
             "imgHeight": "80%",

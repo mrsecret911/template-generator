@@ -17,7 +17,7 @@
         "overflow" : "hidden"
       });
 
-      that.prepend("<div class='parallaxImageWrap" + options.container + "'></div>");
+      that.prepend("<div class='parallaxImageWrap" + options.container + " paralax_wrap'></div>");
       var cont = ".parallaxImageWrap" + options.container;
 
       $(cont).css({
