@@ -796,7 +796,7 @@ $blue: #37aae5;
 /*drug and drop*/
 [draggable="true"] {
   cursor: move;
-  [data-hover] {
+  * {
     cursor: initial;  
   }
 }

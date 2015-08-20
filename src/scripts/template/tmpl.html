@@ -47,11 +47,11 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"contenteditable="true" data-element="link">Dropdown<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#" contenteditable="true" data-element="link">First</a></li>
-                <li><a href="#" contenteditable="true" data-element="link">Second</a></li>
-                <li><a href="#" contenteditable="true" data-element="link">Third</a></li>
+                <li><a href="#" contenteditable="true" data-element="link" data-hover>First</a></li>
+                <li><a href="#" contenteditable="true" data-element="link" data-hover>Second</a></li>
+                <li><a href="#" contenteditable="true" data-element="link" data-hover>Third</a></li>
                 <li class="divider"></li>
-                <li><a href="#" contenteditable="true" data-element="link">Separated</a></li>
+                <li><a href="#" contenteditable="true" data-element="link" data-hover>Separated</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -68,55 +68,30 @@
 </header>
 </script>
 
-<script type="tmpl/html" id="block-1">
-<section class="container block-1">
+<script type="tmpl/html" id="block-column-3">
+<section>
+<div class="container block-column-3 drag_and_drop">
   <div class="col-xs-12 col-sm-18">
-    <div class="row">
-      <div class="col-xs-6 col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+    <div class="row" contenteditable="true">
+      <div class="col-xs-6 col-lg-4 margin draggable">
+        <h2 data-hover data-element="title">Heading</h2>
+        <p data-hover data-element="text">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-primary" href="#" role="button" data-hover data-element="link">View details »</a></p>
       </div>
-      <div class="col-xs-6 col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+      <div class="col-xs-6 col-lg-4 margin draggable">
+        <h2 data-hover data-element="title">Heading</h2>
+        <p data-hover data-element="text">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-primary" href="#" role="button" data-hover data-element="link">View details »</a></p>
       </div>
-      <div class="col-xs-6 col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
-      </div>
-      <div class="col-xs-6 col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
-      </div>
-      <div class="col-xs-6 col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
-      </div>
-      <div class="col-xs-6 col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+      <div class="col-xs-6 col-lg-4 margin draggable">
+        <h2 data-hover data-element="title">Heading</h2>
+        <p data-hover data-element="text">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-primary" href="#" role="button" data-hover data-element="link">View details »</a></p>
       </div>
     </div>
   </div>
+  </div>
 </section>
-</script>
-
-<script type="tmpl/html" id="footer-1">
-  <footer>
-  <div class="container">
-  <div class="row">
-  <div class="col-lg-12 text-center">
-  <p>Copyright © Your Website 2014</p>
-  </div>
-  </div>
-  </div>
-  </footer>
 </script>
 
 <script type="tmpl/html" id="center-footer">
@@ -132,21 +107,21 @@
           <p data-hover class="lead mb48 mb-xs-16" data-element="text"><span data-hover>Glen Iris, Melbourne 3146</span></p>
           <p data-hover class="lead mb48 mb-xs-16" data-element="text"><span data-hover>(096)669-31-29</span></p>
           <ul class="list-inline social-list">
-            <li data-hover><a href="#"><span class="col-md-3 fa fa-twitter fa-2x"></span></a></li>
-            <li data-hover><a href="#"><span class="col-md-3 fa fa-facebook fa-2x"></span></a></li>
-            <li data-hover><a href="#"><span class="col-md-3 fa fa-linkedin fa-2x"></span></a></li>
-            <li data-hover><a href="#"><span class="col-md-3 fa fa-instagram fa-2x"></span></a></li>
+            <li><a href="#" data-hover data-element="link"><i class="fa fa-twitter" data-hover data-element="icon"></i></a></li>
+            <li><a href="#" data-hover data-element="link"><i class="fa fa-facebook" data-hover data-element="icon"></i></a></li>
+            <li><a href="#" data-hover data-element="link"><i class="fa fa-linkedin" data-hover data-element="icon"></i></a></li>
+            <li><a href="#" data-hover data-element="link"><i class="fa fa-instagram" data-hover data-element="icon"></i></a></li>
           </ul>
         </div>
       </div>
       <div data-hover contenteditable="true" class="row fade-half">
-        <div data-hover class="col-sm-4 text-center hidden-xs">
+        <div data-hover class="col-sm-4 text-center">
           <span>© Copyright 2015 Epam</span>
         </div>
         <div data-hover class="col-sm-4 text-center">
           <span>Website Design &amp; Development</span>
         </div>
-        <div data-hover class="col-sm-4 text-right hidden-xs">
+        <div data-hover class="col-sm-4 text-right">
           <span>buildpage@mail.com</span>
         </div>
       </div>
@@ -156,21 +131,9 @@
 </footer>
 </script>
 
-<script type="tmpl/html" id="footer-2">
-  <footer>
-  <div class="container">
-  <div class="row">
-  <div class="col-lg-12 text-center">
-  <p>Awesome Copyright © Your Website 2014</p>
-  </div>
-  </div>
-  </div>
-  </footer>
-</script>
-
 <script type="tmpl/html" id="block-icon">
 <section data-element="section" class="section_wrap drag_and_drop">
-  <div class="container">
+  <div class="container" contenteditable="true">
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header" data-hover data-element="title">
@@ -180,33 +143,33 @@
       <div class="col-md-4 draggable" data-hover>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 data-hover contenteditable="true" data-element="title"><i class="fa fa-thumbs-o-up" data-hover data-element="icon"></i> Bootstrap v3.2.0</h4>
+            <h4 data-hover data-element="title"><i class="fa fa-thumbs-o-up" data-hover data-element="icon"></i> Bootstrap v3.2.0</h4>
           </div>
           <div class="panel-body">
-            <p data-hover contenteditable="true" data-element="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-            <a href="#" class="btn btn-default" data-hover  contenteditable="true">Learn More</a>
+            <p data-hover data-element="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+            <a href="#" class="btn btn-default" data-hover data-element="link">Learn More</a>
           </div>
         </div>
       </div>
       <div class="col-md-4 draggable" data-hover>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 data-hover contenteditable="true" data-element="title"><i class="fa fa-calendar" data-hover data-element="icon"></i> Free &amp; Open Source</h4>
+            <h4 data-hover data-element="title"><i class="fa fa-calendar" data-hover data-element="icon"></i> Free &amp; Open Source</h4>
           </div>
         <div class="panel-body">
-          <p data-hover contenteditable="true" data-element="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-          <a href="#" class="btn btn-default" data-hover  contenteditable="true">Learn More</a>
+          <p data-hover data-element="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+          <a href="#" class="btn btn-default" data-hover data-element="link">Learn More</a>
         </div>
       </div>
     </div>
     <div class="col-md-4 draggable" data-hover>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 data-hover contenteditable="true" data-element="title"><i class="fa fa-check" data-hover data-element="icon"></i> Easy to Use</h4>
+          <h4 data-hover data-element="title"><i class="fa fa-check" data-hover data-element="icon"></i> Easy to Use</h4>
         </div>
         <div class="panel-body">
-          <p data-hover contenteditable="true" data-element="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-          <a href="#" class="btn btn-default" data-hover contenteditable="true">Learn More</a>
+          <p data-hover data-element="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+          <a href="#" class="btn btn-default" data-hover data-element="link">Learn More</a>
         </div>
       </div>
     </div>
@@ -216,43 +179,45 @@
 </script>
 
 <script type="tmpl/html" id="block-review">
-<section data-element="section" class="section_wrap drag_and_drop">
+<section>
+  <div data-element="section" class="section_wrap drag_and_drop block-review" contenteditable="true">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 draggable" data-hover>
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" data-hover data-element="image">
+      <div class="col-sm-4 draggable margin" data-hover>
+        <img class="img-circle" src="https://randomuser.me/api/portraits/med/women/39.jpg" alt="Generic placeholder image" width="140" height="140" data-hover data-element="image">
         <h2 contenteditable="true" data-hover data-element="title">Heading</h2>
         <p contenteditable="true" data-hover data-element="text">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-default" href="#" role="button" contenteditable="true" data-hover>View details »</a></p>
+        <p><a class="btn btn-default" href="#" role="button" data-hover data-element="link">View details »</a></p>
       </div>
-      <div class="col-lg-4 draggable" data-hover>
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" data-hover data-element="image">
+      <div class="col-sm-4 draggable margin" data-hover>
+        <img class="img-circle" src="https://randomuser.me/api/portraits/med/women/49.jpg" alt="Generic placeholder image" width="140" height="140" data-hover data-element="image">
         <h2 contenteditable="true" data-hover data-element="title">Heading</h2>
         <p contenteditable="true" data-hover data-element="text">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-default" href="#" role="button" contenteditable="true" data-hover data-element="title">View details »</a></p>
+        <p><a class="btn btn-default" href="#" role="button" data-hover data-element="link">View details »</a></p>
       </div>
-      <div class="col-lg-4 draggable" data-hover>
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" data-hover data-element="image">
+      <div class="col-sm-4 draggable margin" data-hover>
+        <img class="img-circle" src="" alt="Generic placeholder image" width="140" height="140" data-hover data-element="image">
         <h2 contenteditable="true" data-hover data-element="title">Heading</h2>
         <p contenteditable="true" data-hover data-element="text">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-default" href="#" role="button" contenteditable="true" data-hover data-element="title">View details »</a></p>
+        <p><a class="btn btn-default" href="#" role="button" data-hover data-element="link">View details »</a></p>
       </div>
     </div>
+  </div>
   </div>
 </section>
 </script>
 
 <script type="tmpl/html" id="block-video">
-<section data-element="section" class="block-video">
+<section data-element="section" class="block-video drag_and_drop">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 middle">
+      <div class="col-md-6 middle draggable" contenteditable="true">
         <div class="text">
-          <h2 contenteditable="true" data-hover data-element="title">If You Could Live Your Life Again</h2>
-          <p contenteditable="true" data-hover data-element="text">In turpis. Cras varius. Maecenas egestas arcu quis ligula mattis placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Donec mollis hendrerit risus. Curabitur suscipit suscipit tellus. Curabitur a felis in nunc fringilla tristique. Aliquam erat volutpat. Fusce pharetra convallis urna. Cras varius.</p> 
+          <h2 data-hover data-element="title">If You Could Live Your Life Again</h2>
+          <p data-hover data-element="text">In turpis. Cras varius. Maecenas egestas arcu quis ligula mattis placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Donec mollis hendrerit risus. Curabitur suscipit suscipit tellus. Curabitur a felis in nunc fringilla tristique. Aliquam erat volutpat. Fusce pharetra convallis urna. Cras varius.</p> 
         </div>
       </div>
-      <div class="col-md-6 middle" data-hover>
+      <div class="col-md-6 middle draggable" data-hover>
         <div class="video_wrap">
           <iframe src="https://www.youtube.com/embed/is5W6GxAI3c?wmode=transparent" frameborder="0" allowfullscreen data-hover></iframe>
           <div class="block-over video-over" style="font-family: Helvetica" data-element="video">Edit video</div>
@@ -265,25 +230,19 @@
 
 <script type="tmpl/html" id="block-map">
 <section data-element="section" class="block-map">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4861.171957591791!2d24.050371078797397!3d49.80268155039748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ae809efa3bbbb%3A0x8167583d1a6d52cb!2z0LLRg9C7LiDQkdC10YDQtdC20LDQvdGB0YzQutCwLCDQm9GM0LLRltCyLCDQm9GM0LLRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0Yw!5e0!3m2!1suk!2sua!4v1439719603772" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <div class="block-over map-over" data-element="map">Edit map</div>
-      </div>
-    </div>
-  </div>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4861.171957591791!2d24.050371078797397!3d49.80268155039748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ae809efa3bbbb%3A0x8167583d1a6d52cb!2z0LLRg9C7LiDQkdC10YDQtdC20LDQvdGB0YzQutCwLCDQm9GM0LLRltCyLCDQm9GM0LLRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0Yw!5e0!3m2!1suk!2sua!4v1439719603772" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <div class="block-over map-over" data-element="map">Edit map</div>
 </section>
 </script>
 
 <script type="tmpl/html" id="block-top-1">
-<section data-element="image-paralax" class="block-top-1" data-mdparallax="img/page/header.jpg">
+<section data-element="image-paralax" class="block-top-1" data-mdparallax="http://templategenerator.esy.es/img/page/header.jpg"  contenteditable="true">
   <div class="header-content">
     <div class="header-content-inner">
-      <h1 contenteditable="true" data-hover data-element="title">Your Favorite Source of Free Bootstrap Themes</h1>
+      <h1 data-hover data-element="title">Your Favorite Source of Free Bootstrap Themes</h1>
         <hr>
-        <p contenteditable="true" data-hover data-element="text">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-        <a href="#" data-element="link"  contenteditable="true" data-hover class="btn btn-xl" data-element="title">Find Out More</a>
+        <p data-hover data-element="text">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+        <a href="#" data-element="link" data-hover class="btn btn-xl" data-element="title">Find Out More</a>
     </div>
   </div>
   <script>
@@ -298,11 +257,11 @@
 </script>
 
 <script type="tmpl/html" id="block-icons-1">
-<section data-element="section" class="block-icons-1 drag_and_drop">
+<section data-element="section" class="block-icons-1 drag_and_drop" contenteditable="true">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 contenteditable="true" data-hover data-element="title">At Your Service</h2>
+        <h2 data-hover data-element="title">At Your Service</h2>
         <hr>
       </div>
     </div>
@@ -311,23 +270,23 @@
     <div class="row">
       <div class="col-lg-3 col-sm-6 text-center  draggable"  data-hover>
         <span class="fa fa-calendar" aria-hidden="true" data-hover data-element="icon"></span>
-        <h3 contenteditable="true" data-hover>Sturdy Templates</h3>
-        <p contenteditable="true" data-hover data-element="text">Our templates are updated regularly so they dont break.</p>
+        <h3 data-hover>Sturdy Templates</h3>
+        <p data-hover data-element="text">Our templates are updated regularly so they dont break.</p>
       </div>
       <div class="col-lg-3 col-sm-6 text-center draggable"  data-hover>
         <span class="fa fa-clipboard" aria-hidden="true" data-hover data-element="icon"></span>
-        <h3 contenteditable="true" data-hover>Ready to Ship</h3>
-        <p contenteditable="true" data-hover data-element="text">You can use this theme as is, or you can make changes!</p>
+        <h3 data-hover>Ready to Ship</h3>
+        <p data-hover data-element="text">You can use this theme as is, or you can make changes!</p>
       </div>
       <div class="col-lg-3 col-sm-6 text-center draggable"  data-hover>
         <span class="fa fa-check" aria-hidden="true" data-hover data-element="icon"></span>
-        <h3 contenteditable="true" data-hover>Up to Date</h3>
-        <p contenteditable="true" data-hover data-element="text">We update dependencies to keep things fresh.</p>
+        <h3 data-hover>Up to Date</h3>
+        <p data-hover data-element="text">We update dependencies to keep things fresh.</p>
       </div>
       <div class="col-lg-3 col-sm-6 text-center draggable" data-hover>
         <span class="fa fa-thumbs-o-up" aria-hidden="true" data-hover data-element="icon"></span>
-        <h3 contenteditable="true" data-hover>Made with Love</h3>
-        <p contenteditable="true" data-hover data-element="text">You have to make your websites with love these days!</p>
+        <h3 data-hover>Made with Love</h3>
+        <p data-hover data-element="text">You have to make your websites with love these days!</p>
       </div>
     </div>
   </div>
@@ -335,9 +294,9 @@
 </script>
 
 <script type="tmpl/html" id="block-portfolio-1">
-<section class="block-portfolio-1 drag_and_drop">
+<section class="block-portfolio-1 drag_and_drop" contenteditable="true">
   <div class="col-lg-12 text-center">
-    <h2 contenteditable="true" data-hover data-element="title">Portfolio</h2>
+    <h2 data-hover data-element="title">Portfolio</h2>
     <hr>
   </div>
   <div class="portfolio_wrap">
@@ -346,8 +305,8 @@
         <img src="http://templategenerator.esy.es/img/page/portfolio_1_1.jpg">
       <div class="info">
         <div>
-          <h3 contenteditable="true" data-hover data-element="title">Mauris</h3>
-          <p contenteditable="true" data-hover data-element="text">Integer tincidunt.</p>
+          <h3 data-hover data-element="title">Mauris</h3>
+          <p data-hover data-element="text">Integer tincidunt.</p>
         </div>
       </div>
     </div>
@@ -357,8 +316,8 @@
       <img src="http://templategenerator.esy.es/img/page/portfolio_1_2.jpg">
       <div class="info">
         <div>
-          <h3 contenteditable="true" data-hover data-element="title">Mauris</h3>
-          <p contenteditable="true" data-hover data-element="text">Integer tincidunt.</p>
+          <h3 data-hover data-element="title">Mauris</h3>
+          <p data-hover data-element="text">Integer tincidunt.</p>
         </div>
       </div>
     </div>
@@ -368,8 +327,8 @@
       <img src="http://templategenerator.esy.es/img/page/portfolio_1_3.jpg">
       <div class="info">
         <div>
-          <h3 contenteditable="true" data-hover data-element="title">Mauris</h3>
-          <p contenteditable="true" data-hover data-element="text">Integer tincidunt.</p>
+          <h3 data-hover data-element="title">Mauris</h3>
+          <p data-hover data-element="text">Integer tincidunt.</p>
         </div>
       </div>
     </div>
@@ -379,8 +338,8 @@
       <img src="http://templategenerator.esy.es/img/page/portfolio_1_4.jpg">
       <div class="info">
         <div>
-          <h3 contenteditable="true" data-hover data-element="title">Mauris</h3>
-          <p contenteditable="true" data-hover data-element="text">Integer tincidunt.</p>
+          <h3 data-hover data-element="title">Mauris</h3>
+          <p data-hover data-element="text">Integer tincidunt.</p>
         </div>
       </div>
     </div>
@@ -390,8 +349,8 @@
       <img src="http://templategenerator.esy.es/img/page/portfolio_1_5.jpg">
       <div class="info">
         <div>
-          <h3 contenteditable="true" data-hover data-element="title">Mauris</h3>
-          <p contenteditable="true" data-hover data-element="text">Integer tincidunt.</p>
+          <h3 data-hover data-element="title">Mauris</h3>
+          <p data-hover data-element="text">Integer tincidunt.</p>
         </div>
       </div>
     </div>
@@ -401,8 +360,8 @@
       <img src="http://templategenerator.esy.es/img/page/portfolio_1_6.jpg">
         <div class="info">
           <div>
-            <h3 contenteditable="true" data-hover data-element="title">Mauris</h3>
-            <p contenteditable="true" data-hover data-element="text">Integer tincidunt.</p>
+            <h3 data-hover data-element="title">Mauris</h3>
+            <p data-hover data-element="text">Integer tincidunt.</p>
           </div>
         </div>
       </div>
@@ -413,27 +372,27 @@
 
 <script type="tmpl/html" id="large-footer-1">
 <footer>
-  <div class="large-footer-1 drag_and_drop">
+  <div class="large-footer-1 drag_and_drop" contenteditable="true" >
   <div class="container text-center">
     <div class="row">
       <div class="col-sm-5 column-1 draggable">
-        <h2 contenteditable="true" data-hover data-element="title">Duis lobortis massa imperdiet quam</h2>
+        <h2 data-hover data-element="title">Duis lobortis massa imperdiet quam</h2>
       </div>
       <div class="col-sm-2 column-2 draggable">
         <i class="fa fa-file-text" data-element="icon" data-hover></i>
       </div>
       <div class="col-sm-5 column-3 draggable">
-        <h4 contenteditable="true" data-hover data-element="title">Vestibulum dapibus nunc ac augue. Vestibulum dapibus nunc ac augue.</h4>
+        <h4 data-hover data-element="title">Vestibulum dapibus nunc ac augue. Vestibulum dapibus nunc ac augue.</h4>
         <ul class="list-unstyled">
-          <li contenteditable="true" data-hover><i class="fa fa-phone" data-element="icon" data-hover></i> +53037214783</li>
-          <li contenteditable="true" data-hover><i class="fa fa-envelope-o" data-element="icon" data-hover></i> name@gmail.com</li>
-          <li contenteditable="true" data-hover><i class="fa fa-skype" data-element="icon" data-hover></i> nikname</li>
+          <li data-hover><i class="fa fa-phone" data-element="icon" data-hover></i> +53037214783</li>
+          <li data-hover><i class="fa fa-envelope-o" data-element="icon" data-hover></i> name@gmail.com</li>
+          <li data-hover><i class="fa fa-skype" data-element="icon" data-hover></i> nikname</li>
         </ul>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <p class="copyright" contenteditable="true" data-hover data-element="text">The © symbol, or the word 'Copyright' or abbreviation 'Copr.';</p>
+        <p class="copyright" data-hover data-element="text">The © symbol, or the word 'Copyright' or abbreviation 'Copr.';</p>
         <ul class="list-inline">
           <li><a href="#" data-element="link" data-hover><i class="fa fa-facebook-square fa-6" data-element="icon" data-hover></i></a></li>
           <li><a href="#" data-element="link" data-hover><i class="fa fa-twitter-square" data-element="icon" data-hover></i></a></li>
@@ -478,20 +437,20 @@
           <i class="fa fa-chevron-right"></i>
         </a>
 
-        <div class="text_wrap">
-          <h1 contenteditable="true" data-hover data-element="title">Nam eget dui</h1>
+        <div class="text_wrap" contenteditable="true">
+          <h1 data-hover data-element="title">Nam eget dui</h1>
           <br/>
-          <p  contenteditable="true" data-hover data-element="text">Nullam tincidunt adipiscing enim.</p>
+          <p data-hover data-element="text">Nullam tincidunt adipiscing enim.</p>
         </div>
       </div>
     </section>
 </script>
 
 <script type="tmpl/html" id="large-image-1">
-<section class="large-image-1" data-element="image-paralax" data-mdparallax="img/page/130H.jpg">
+<section class="large-image-1" data-element="image-paralax" data-mdparallax="http://templategenerator.esy.es/img/page/130H.jpg" contenteditable="true">
   <div class="container">
-    <h2 contenteditable="true" data-hover data-element="title">Donec mi odio faucibus at odio faucibus at</h2>
-    <p contenteditable="true" data-hover data-element="text">Donec venenatis vulputate lorem. Nullam tincidunt adipiscing enim. Curabitur at lacus ac velit ornare lobortis. Aliquam eu nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci.</p>
+    <h2 data-hover data-element="title">Donec mi odio faucibus at odio faucibus at</h2>
+    <p data-hover data-element="text">Donec venenatis vulputate lorem. Nullam tincidunt adipiscing enim. Curabitur at lacus ac velit ornare lobortis. Aliquam eu nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci.</p>
   </div>
   <script>
     $(".large-image-1").parallaxMd({
@@ -505,24 +464,24 @@
 </script>
 
 <script type="tmpl/html" id="product-sale-1">
-  <section class="product-sale-1 drag_and_drop">
+  <section class="product-sale-1 drag_and_drop" contenteditable="true">
       <div class="container">
         <div class="row">
           <div class="col-xs-6 draggable">
             <img src="http://templategenerator.esy.es/img/page/service4.jpg" alt="" data-element="image" data-hover>
           </div>
           <div class="col-xs-6 draggable">
-            <h2 contenteditable="true" data-hover data-element="title">Nunc nonummy metus</h2>
-            <span class="old-price" contenteditable="true" data-hover>300 $</span>
-            <span class="new-price" contenteditable="true" data-hover>100 $</span>
-            <p contenteditable="true" data-hover data-element="text">Suspendisse feugiat. Mauris sollicitudin fermentum libero. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean massa.</p>
+            <h2 data-hover data-element="title">Nunc nonummy metus</h2>
+            <span class="old-price" data-hover  data-element="text">300 $</span>
+            <span class="new-price" data-hover  data-element="text">100 $</span>
+            <p data-hover data-element="text">Suspendisse feugiat. Mauris sollicitudin fermentum libero. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean massa.</p>
             <ul class="list-unstyled">
-              <li contenteditable="true" data-hover><strong>Width:</strong> 100</li>
-              <li contenteditable="true" data-hover><strong>Height:</strong> 300</li>
-              <li contenteditable="true" data-hover><strong>Color:</strong> Black</li>
-              <li contenteditable="true" data-hover><strong>Weight:</strong> 2 kg</li>
+              <li data-hover data-element="text"><strong>Width:</strong> 100</li>
+              <li data-hover data-element="text"><strong>Height:</strong> 300</li>
+              <li data-hover data-element="text"><strong>Color:</strong> Black</li>
+              <li data-hover data-element="text"><strong>Weight:</strong> 2 kg</li>
             </ul>
-            <a href="#" class="btn btn-primary" contenteditable="true" data-hover data-element="link">Buy</a>
+            <a href="#" class="btn btn-primary" data-hover data-element="link">Buy</a>
           </div>
         </div>
       </div>
@@ -530,29 +489,29 @@
 </script>
 
 <script type="tmpl/html" id="block-reviews-2">
-  <section class="block-reviews-2 drag_and_drop">
+  <section class="block-reviews-2 drag_and_drop" contenteditable="true">
       <div class="container">
-        <h2 contenteditable="true" data-hover data-element="title">Reviews</h2>
+        <h2 data-hover data-element="title">Reviews</h2>
         <div class="row">
           <div class="col-md-4 draggable">
             <div class="rev_wrap">
               <img src="https://randomuser.me/api/portraits/med/women/54.jpg" alt="" class="img-circle" data-element="image" data-hover>
-              <p class="name" contenteditable="true" data-hover>Leslie Cunningham</p>
-              <p contenteditable="true" data-hover data-element="text">Sed fringilla mauris sit amet nibh. Curabitur turpis. Suspendisse eu ligula. Etiam rhoncus. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.</p>
+              <p class="name" data-hover>Leslie Cunningham</p>
+              <p data-hover data-element="text">Sed fringilla mauris sit amet nibh. Curabitur turpis. Suspendisse eu ligula. Etiam rhoncus. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.</p>
             </div>
           </div>
           <div class="col-md-4 draggable">
             <div class="rev_wrap">
               <img src="https://randomuser.me/api/portraits/med/women/84.jpg" alt="" class="img-circle" data-element="image" data-hover>
-              <p class="name" contenteditable="true" data-hover data-element="text">Marcia Neal</p>
-              <p contenteditable="true" data-hover data-element="text">Sed fringilla mauris sit amet nibh. Curabitur turpis. Suspendisse eu ligula. Etiam rhoncus. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.</p>
+              <p class="name" data-hover data-element="text">Marcia Neal</p>
+              <p data-hover data-element="text">Sed fringilla mauris sit amet nibh. Curabitur turpis. Suspendisse eu ligula. Etiam rhoncus. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.</p>
             </div>
           </div>
           <div class="col-md-4 draggable">
             <div class="rev_wrap">
               <img src="https://randomuser.me/api/portraits/med/women/64.jpg" alt="" class="img-circle" data-element="image" data-hover>
-              <p class="name" contenteditable="true" data-hover data-element="text">Hannah Bailey</p>
-              <p contenteditable="true" data-hover data-element="text">Sed fringilla mauris sit amet nibh. Curabitur turpis. Suspendisse eu ligula. Etiam rhoncus. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.</p>
+              <p class="name" data-hover data-element="text">Hannah Bailey</p>
+              <p data-hover data-element="text">Sed fringilla mauris sit amet nibh. Curabitur turpis. Suspendisse eu ligula. Etiam rhoncus. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.</p>
             </div>
           </div>
         </div>
@@ -561,16 +520,16 @@
 </script>
 
 <script type="tmpl/html" id="simple-block">
-<section>
-  <div id="center-block" class="simple-block" data-element="image-paralax" data-mdparallax="img/page/simple-block.jpg">
+<section contenteditable="true">
+  <div id="center-block" class="simple-block" data-element="image-paralax" data-mdparallax="http://templategenerator.esy.es/img/page/simple-block.jpg">
     <div class="container" data-hover>
       <div class="row">
-        <div data-hover contenteditable="true" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center mb64 mb-xs-24">
+        <div data-hover class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center mb64 mb-xs-24">
           <a  class="lead mb48 mb-xs-16" data-hover>
             <img class="img-responsive center-block"  data-element="image"  src="http://foundry.mediumra.re/img/vent2.png">
           </a>
-          <h1 data-hover class="lead mb48 mb-xs-16">Design news and projects</h1>
-          <p data-hover class="lead mb48 mb-xs-16">
+          <h1 data-hover data-element="title" class="lead mb48 mb-xs-16">Design news and projects</h1>
+          <p data-hover data-element="text" class="lead mb48 mb-xs-16">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua.
           </p>
@@ -590,16 +549,16 @@
 </script>
 
 <script type="tmpl/html" id="timer-block">
-<section>
-  <div class="timer-block" data-element="image-paralax" data-mdparallax="img/page/timer-block.jpg">
+<section contenteditable="true">
+  <div class="timer-block" data-element="image-paralax" data-mdparallax="http://templategenerator.esy.es/img/page/timer-block.jpg">
     <div class="container" data-hover>
       <div class="row">
-        <div data-hover contenteditable="true" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center mb64 mb-xs-24 pull-right">
+        <div data-hover class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center mb64 mb-xs-24 pull-right">
           <h1 data-hover>To my victory</h1>
           <div id="timer" data-hover data-element="timer">
           </div>
-          <h1 data-hover class="lead mb48 mb-xs-16">Design news and projects</h1>
-          <p data-hover class="lead mb48 mb-xs-16">
+          <h1 data-hover data-element="title" class="lead mb48 mb-xs-16">Design news and projects</h1>
+          <p data-hover data-element="text" class="lead mb48 mb-xs-16">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua.
           </p>
@@ -615,7 +574,7 @@
 
 <script type="tmpl/html" id="header-center">
 <header>
-  <div class="header-center">
+  <div class="header-center" contenteditable="true" >
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -625,28 +584,28 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#" contenteditable="true" data-element="link">Inception</a>
+          <a class="navbar-brand" href="#" data-hover data-element="link">Inception</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="#" contenteditable="true" data-element="link">Home</a></li>
+            <li><a href="#" data-hover data-element="link">Home</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" contenteditable="true" data-element="link">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-hover data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-element="link" data-hover>Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#" contenteditable="true" data-element="link">First page</a></li>
-                <li><a href="#" contenteditable="true" data-element="link">Second page</a></li>
+                <li><a href="#" data-hover data-element="link">First page</a></li>
+                <li><a href="#" data-hover data-element="link">Second page</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" contenteditable="true" data-element="link">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover role="button" aria-haspopup="true" aria-expanded="false" data-element="link">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#" contenteditable="true" data-element="link">First page</a></li>
-                <li><a href="#" contenteditable="true" data-element="link">Second page</a></li>
+                <li><a href="#" data-element="link" data-hover>First page</a></li>
+                <li><a href="#" data-element="link" data-hover>Second page</a></li>
               </ul>
             </li>
-            <li><a href="#" contenteditable="true" data-element="link">Contact</a></li>
+            <li><a href="#" data-element="link" data-hover>Contact</a></li>
           </ul>
         </div>
       </div>
@@ -656,11 +615,11 @@
 </script>
 
 <script type="tmpl/html" id="block-photo-par">
-<section class="block-photo-par" data-element="image-paralax" data-mdparallax="img/page/block-photo-par.jpg">
+<section class="block-photo-par" data-element="image-paralax" contenteditable="true" data-mdparallax="http://templategenerator.esy.es/img/page/block-photo-par.jpg">
   <div class="row">
     <div class="col-md-4 text-center col-md-offset-7 photo" data-hover>
-      <h1 contenteditable="true" data-hover data-element="text">Great minds think alike</h1>
-      <p class=".hidden-xs"contenteditable="true" data-hover data-element="text">Very intelligent people tend to come up with the same ideas at the same time. (Used playfully, to commend someone for expressing the same thing you were thinking of; implies that you are congratulating that person for being as smart as you are. Also Great minds run in the same gutters, a casual and jocular variant.)</p>
+      <h1 data-hover data-element="text">Great minds think alike</h1>
+      <p class=".hidden-xs" data-hover data-element="text">Very intelligent people tend to come up with the same ideas at the same time. (Used playfully, to commend someone for expressing the same thing you were thinking of; implies that you are congratulating that person for being as smart as you are. Also Great minds run in the same gutters, a casual and jocular variant.)</p>
     </div>
   </div>
   <script>
@@ -676,20 +635,20 @@
 
 <script type="tmpl/html" id="footer-thin">
 <footer>
-  <div class="footer-thin footers"  data-element="backgroundFooter" data-hover >
+  <div class="footer-thin footers"  data-element="backgroundFooter" data-hover contenteditable="true" >
     <div class="row">
-      <div class="col-sm-4 text-center" data-hover>
-        <a href="#" data-element="link">Inception</a>
+      <div class="col-sm-4 text-center">
+        <a href="#" data-element="link" data-hover>Inception</a>
       </div>
-      <div class="col-sm-4 text-center" data-hover>
-        <p data-hover contenteditable="true" data-element="text">Copyright © Your Website 2015</p>
+      <div class="col-sm-4 text-center">
+        <p data-hover data-element="text">Copyright © Your Website 2015</p>
       </div>
-      <div class="col-sm-4 text-center" data-hover>
+      <div class="col-sm-4 text-center">
         <ul>
-          <li data-hover><a href="https://www.facebook.com/" data-element="link"><span class="fa fa-facebook fa-1x"></span></a></li>
-          <li data-hover><a href="https://twitter.com" data-element="link"><span class="fa fa-twitter fa-1x"></span></a></li>
-          <li data-hover><a href="https://instagram.com/" data-element="link"><span class="fa fa-instagram fa-1x"></span></a></li>
-          <li data-hover><a href="https://www.linkedin.com/" data-element="link"><span class="fa fa-linkedin fa-1x"></span></a></li>
+          <li><a href="https://www.facebook.com/" data-element="link"  data-hover><i class="fa fa-facebook" data-hover data-element="icon"></i></a></li>
+          <li><a href="https://twitter.com" data-element="link" data-hover><i class="fa fa-twitter" data-hover data-element="icon"></i></a></li>
+          <li><a href="https://instagram.com/" data-element="link" data-hover><i class="fa fa-instagram" data-hover data-element="icon"></i></a></li>
+          <li><a href="https://www.linkedin.com/" data-element="link" data-hover><i class="fa fa-linkedin" data-hover data-element="icon"></i></a></li>
         </ul>
       </div>
     </div>
@@ -698,30 +657,30 @@
 </script>
 
 <script type="tmpl/html" id="block-image-3">
-  <section data-element="section" class="container block-image-3">
+  <section data-element="section" class="container block-image-3 drag_and_drop" contenteditable="true" >
     <div class="row">
-      <div class="col-md-4 col-sm-6 text-center" data-hover>
+      <div class="col-md-4 col-sm-6 text-center draggable" data-hover>
         <div class="title">
           <img class="img-responsive" src="http://api.randomuser.me/portraits/women/39.jpg" data-hover data-element="image" alt>
-          <h4 data-hover contenteditable="true" data-element="text">Project manager</h4>
-          <p data-hover contenteditable="true" data-element="text">Ginger O. Long</p>
-          <p data-hover contenteditable="true" data-element="text">A project manager is often a client representative and has to determine and implement the exact needs of the client. </p>
+          <h4 data-hover data-element="text">Project manager</h4>
+          <p data-hover data-element="text">Ginger O. Long</p>
+          <p data-hover data-element="text">A project manager is often a client representative and has to determine and implement the exact needs of the client. </p>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 text-center" data-hover>
+      <div class="col-md-4 col-sm-6 text-center draggable" data-hover>
         <div class="title">
           <img class="img-responsive" src="http://api.randomuser.me/portraits/men/29.jpg" data-hover data-element="image" alt>
-          <h4 data-hover contenteditable="true" data-element="text">Construction millwright</h4>
-          <p data-hover contenteditable="true" data-element="text">Melvin V. Camarillo</p>
-          <p data-hover contenteditable="true" data-element="text">Based on knowledge of the firm they are representing. A project manager is the bridging gap between the production team and client.</p>
+          <h4 data-hover data-element="text">Construction millwright</h4>
+          <p data-hover data-element="text">Melvin V. Camarillo</p>
+          <p data-hover data-element="text">Based on knowledge of the firm they are representing. A project manager is the bridging gap between the production team and client.</p>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 text-center" data-hover>
+      <div class="col-md-4 col-sm-6 text-center draggable" data-hover>
         <div class="title">
           <img class="img-responsive" src="http://api.randomuser.me/portraits/women/44.jpg" data-hover data-element="image" alt>
-          <h4 data-hover contenteditable="true" data-element="text">Emergency care nurse</h4>
-          <p data-hover contenteditable="true" data-element="text">Moira S. Smith</p>
-          <p data-hover contenteditable="true" data-element="text">Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus.</p>
+          <h4 data-hover data-element="text">Emergency care nurse</h4>
+          <p data-hover data-element="text">Moira S. Smith</p>
+          <p data-hover data-element="text">Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus.</p>
         </div>
       </div>
     </div>
@@ -730,29 +689,29 @@
 
 
 <script type="tmpl/html" id="text-slider">
-  <section class="col-lg-12 text-center text-slider" data-hover>
-    <h1 data-hover contenteditable="true" data-element="text">All things to all people</h1>
+  <section class="col-lg-12 text-center text-slider" data-hover contenteditable="true" >
+    <h1 data-hover data-element="title">All things to all people</h1>
     <div id="carousel" class="carousel slide">
       <div class="carousel-inner" role="listbox">
         <div class="item active text">
           <div class="carousel-caption">
-            <h4 data-hover contenteditable="true" data-element="text">If you are all things to all people, you please or satisfy everyone. She is exhausted tying to be a good wife,  a good mother and a good teacher, but she can not be all things to all people.</h4>
-            <p data-hover contenteditable="true" data-element="text">Amanda M. Vela</p>
-            <p data-hover contenteditable="true" data-element="text">Glass installer</p>
+            <h4 data-hover data-element="text">If you are all things to all people, you please or satisfy everyone. She is exhausted tying to be a good wife,  a good mother and a good teacher, but she can not be all things to all people.</h4>
+            <p data-hover data-element="text">Amanda M. Vela</p>
+            <p data-hover data-element="text">Glass installer</p>
           </div>
         </div>
         <div class="item text">
           <div class="carousel-caption">
-            <h4 data-hover contenteditable="true" data-element="text">Someone who reads books or watches TV programmes about other places and countries, but does not actually travel anywhere, is called an armchair traveller.</h4>
-            <p data-hover contenteditable="true" data-element="text">Patrick L. Silver</p>
-            <p data-hover contenteditable="true" data-element="text">Structural and reinforcing iron and metal worker</p>
+            <h4 data-hover data-element="text">Someone who reads books or watches TV programmes about other places and countries, but does not actually travel anywhere, is called an armchair traveller.</h4>
+            <p data-hover data-element="text">Patrick L. Silver</p>
+            <p data-hover data-element="text">Structural and reinforcing iron and metal worker</p>
           </div>
         </div>
         <div class="item text">
           <div class="carousel-caption">
-            <h4 data-hover contenteditable="true" data-element="text">A person who is born with a silver spoon in their mouth is born into a very rich family.</h4>
-            <p data-hover contenteditable="true" data-element="text">Elijah D. Williamson</p>
-            <p data-hover contenteditable="true" data-element="text">Roofer</p>
+            <h4 data-hover data-element="text">A person who is born with a silver spoon in their mouth is born into a very rich family.</h4>
+            <p data-hover data-element="text">Elijah D. Williamson</p>
+            <p data-hover data-element="text">Roofer</p>
           </div>
         </div>
       </div>

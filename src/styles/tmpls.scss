@@ -33,6 +33,11 @@
     float: none;
     font-size: initial;
   }
+  @media screen and (max-width: 991px){
+    .middle {
+      display: block;
+    }
+  }
 }
 /* End of block-video */
 
@@ -132,10 +137,10 @@
 
 /*block-icons-1*/
 .block-icons-1 {
-  padding: 100px 0;
+  padding: 50px 0;
   hr {
     max-width: 50px;
-    border-color: #f05f40;
+    border-color: #333;
     border-width: 3px;
     margin: 40px auto;
   }
@@ -144,7 +149,6 @@
   }
   .fa {
     font-size: 60px;
-    color: #f05f40;
   }
 }
 /*end of block-icons-1*/
@@ -160,9 +164,9 @@
   }
   hr {
     max-width: 50px;
-    border-color: #f05f40;
+    border-color: #333;
     border-width: 3px;
-    margin: 40px auto;
+    margin: 30px auto 40px auto;
   }
   .wrap {
     width: 100%;
@@ -286,6 +290,16 @@
     text-align: center;
     color: #fff;
   }
+  .item {
+    padding-bottom: 65%;
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+  }
   h1 {
     margin-top: 0;
     font-size: 70px;
@@ -311,7 +325,6 @@
     &.right .fa {
       right: 50%;
     } 
-
   }
   @media screen and (max-width: 768px){
     h1 {
@@ -403,9 +416,8 @@
   text-align: center;
   background-color: #66BB6A;
   .row {
-    width: 100%;
     color: #fff;
-    #linkLogo{
+    #linkLogo {
       padding: 15px;
       font-weight: bold;
       font-size: 20px;
@@ -416,14 +428,29 @@
     p {
       margin-bottom: 2px;
     }
-    li span {
-      padding: 15px;
-      color: #E0E0E0;
-    }
   }
   .fade-half {
     color: #E0E0E0;
     font-size: 15px;
+  }
+  .social-list {
+    margin: 10px 0; 
+    a {
+      display: inline-block;
+      padding: 10px;
+      color: #fff;
+      .fa {
+        font-size: 32px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px){
+  #center-footer {
+    padding: 60px 0;
+    .text-right {
+      text-align: center;
+    }
   }
 }
 /*end of center-footer*/
@@ -499,11 +526,14 @@
     padding: 0;
     li {
       display: inline-block;
-      margin: 0 5px;
       font-size: 16px;
       a {
-        span {
-          pointer-events: none;
+        line-height: normal;
+        padding: 0 15px;
+        display: inline-block;
+        margin: 0;
+        .fa {
+          width: 20px;
         }
       } 
     }
@@ -625,3 +655,27 @@
   }
 }
 /*End text-slider*/
+
+
+/*block-review"*/
+.block-review {
+  padding: 50px 0 20px 0;
+  .margin {
+    margin-bottom: 30px
+  }
+}
+@media screen and (max-width: 768px) {
+  .block-review {
+    text-align: center;
+  }  
+}
+/*block-review"*/
+
+/*block-column-3*/
+.block-column-3 {
+  padding: 50px 0 20px 0;
+  .margin {
+    margin-bottom: 30px
+  }
+}
+/*end of block-column-3*/

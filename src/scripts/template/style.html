@@ -23,6 +23,11 @@
     float: none;
     font-size: initial;
   }
+  @media screen and (max-width: 991px){
+  .block-video .middle {
+      display: block;
+    }
+  }
 </style>
 </script>
 
@@ -161,21 +166,16 @@
 <script type="tmpl/html" id="block-icons-1">
   <style>
   .block-icons-1 {
-  padding: 100px 0;
-  }
+  padding: 50px 0; }
   .block-icons-1 hr {
-  max-width: 50px;
-  border-color: #f05f40;
-  border-width: 3px;
-  margin: 40px auto;
-  }
+    max-width: 50px;
+    border-color: #333;
+    border-width: 3px;
+    margin: 40px auto; }
   .block-icons-1 p {
-  font-size: 16px;
-  }
+    font-size: 16px; }
   .block-icons-1 .fa {
-  font-size: 60px;
-  color: #f05f40;
-  }
+    font-size: 60px; }
   </style>
 </script>
 
@@ -192,9 +192,9 @@
   }
   .block-portfolio-1 hr {
   max-width: 50px;
-  border-color: #f05f40;
+  border-color: #333;
   border-width: 3px;
-  margin: 40px auto;
+  margin: 30px auto 40px auto
   }
   .block-portfolio-1 .wrap {
   width: 100%;
@@ -312,6 +312,14 @@
     width: 100%;
     text-align: center;
     color: #fff; }
+  .large-carousel-1 .item {
+    padding-bottom: 65%; }
+    .large-carousel-1 .item img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      min-height: 100%; }
   .large-carousel-1 h1 {
     margin-top: 0;
     font-size: 70px;
@@ -325,7 +333,14 @@
     padding: 0 10px; }
   .large-carousel-1 .carousel-control {
     z-index: 10; }
-      @media screen and (max-width: 768px) {
+    .large-carousel-1 .carousel-control .fa {
+      position: absolute;
+      top: 50%; }
+    .large-carousel-1 .carousel-control.left .fa {
+      left: 50%; }
+    .large-carousel-1 .carousel-control.right .fa {
+      right: 50%; }
+  @media screen and (max-width: 768px) {
     .large-carousel-1 h1 {
       font-size: 38px; }
     .large-carousel-1 p {
@@ -403,35 +418,38 @@
 <script type="tmpl/html" id="center-footer">
 <style>
 #center-footer {
-  margin:0;
+  margin: 0;
   width: 100%;
   padding: 60px;
   text-align: center;
-  background-color: #66BB6A;
-}
+  background-color: #66BB6A; }
   #center-footer .row {
-    width: 100%;
-    color: #fff;
-  }
-    .row #linkLogo {
+    color: #fff; }
+    #center-footer .row #linkLogo {
       padding: 15px;
       font-weight: bold;
-      font-size: 20px;
-    }
-    .row a {
-       color: #fff;
-    }
-  #center-footer p {
-     margin-bottom: 2px;
-  }
-  #center-footer li span {
-     padding: 15px;
-      color: #E0E0E0;
-  }
-  #center-footer .fade-half{
+      font-size: 20px; }
+      #center-footer .row #linkLogo a {
+        color: #fff; }
+    #center-footer .row p {
+      margin-bottom: 2px; }
+  #center-footer .fade-half {
     color: #E0E0E0;
-    font-size: 15px;
-  }
+    font-size: 15px; }
+  #center-footer .social-list {
+    margin: 10px 0; }
+    #center-footer .social-list a {
+      display: inline-block;
+      padding: 10px;
+      color: #fff; }
+      #center-footer .social-list a .fa {
+        font-size: 32px; }
+
+@media screen and (max-width: 768px) {
+  #center-footer {
+    padding: 60px 0; }
+    #center-footer .text-right {
+      text-align: center; } }
  </style>
 </script>
 
@@ -547,10 +565,15 @@
     padding: 0; }
     .footer-thin ul li {
       display: inline-block;
-      margin: 0 5px;
       font-size: 16px; }
-      .footer-thin ul li a span {
-        pointer-events: none; }
+      .footer-thin ul li a {
+        line-height: normal;
+        padding: 0 15px;
+        display: inline-block;
+        margin: 0; }
+        .footer-thin ul li a .fa {
+          width: 20px; }
+
 </style>
 </script>
 
@@ -609,6 +632,33 @@
     color: #fff; }
     .block-photo-par h1, .block-photo-par p {
       margin: 10px 0; }
+</style>
+</script>
+
+<script type="tmpl/html" id="block-review">
+<style>
+.block-review {
+  padding: 50px 0 20px 0;
+}
+.block-review .margin {
+    margin-bottom: 30px
+}
+@media screen and (max-width: 768px) {
+  .block-review {
+    text-align: center;
+  }  
+}
+</style>
+</script>
+
+<script type="tmpl/html" id="block-column-3">
+<style>
+.block-column-3 {
+  padding: 50px 0 20px 0;
+  .margin {
+    margin-bottom: 30px
+  }
+}
 </style>
 </script>
 

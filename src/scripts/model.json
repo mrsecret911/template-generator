@@ -11,9 +11,9 @@
       "subscription": "block-icon"
     },
     {
-      "id": "block-1",
-      "imgSrc": "img/blocks/column-3.jpg",
-      "subscription": "blocks-1"
+      "id": "block-column-3",
+      "imgSrc": "img/blocks/block-column-3.jpg",
+      "subscription": "3 column"
     },
     {
       "id": "block-video",
@@ -22,7 +22,7 @@
     },
     {
       "id": "simple-block",
-      "imgSrc": "img/blocks/block-review-1.jpg",
+      "imgSrc": "img/blocks/simple-block.jpg",
       "subscription": "simple-block"
     },
     {
@@ -89,7 +89,7 @@
   "headers": [
     {
       "id": "header-simple",
-      "imgSrc": "img/blocks/column-3.jpg",
+      "imgSrc": "img/blocks/header-simple.jpg",
       "subscription": "Simple-Header"
     },
     {
@@ -100,21 +100,14 @@
   ],
   "footers": [
     {
-
       "id": "center-footer",
-      "imgSrc": "img/blocks/column-3.jpg",
-
+      "imgSrc": "img/blocks/center-footer.jpg",
       "subscription": "center-footer"
     },
     {
       "id": "footer-thin",
       "imgSrc": "img/footers/footer-thin.jpg",
       "subscription": "footer-thin"
-    },
-    {
-      "id": "footer-2",
-      "imgSrc": "img/blocks/column-4.jpg",
-      "subscription": "footer-2"
     },
     {
       "id": "large-footer-1",
